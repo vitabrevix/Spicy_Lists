@@ -125,6 +125,25 @@
       ]
     },
     {
+      "name": "Foreplay",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Kissing Body",   "dots": [0, 0] },
+        { "label": "Making Out", "dots": [0, 0] },
+        { "label": "Dirty Talk", "dots": [0, 0] },
+        { "label": "Teasing",  "dots": [0, 0] },
+        { "label": "Taunting",  "dots": [0, 0] },
+        { "label": "Flirting",  "dots": [0, 0] },
+        { "label": "Touching",  "dots": [0, 0] },
+        { "label": "Pinning",  "dots": [0, 0] },
+        { "label": "Undressing Partner",  "dots": [0, 0] },
+        { "label": "Strip Tease",  "dots": [0, 0] },
+        { "label": "Biting",  "dots": [0, 0] },
+        { "label": "Scratching",  "dots": [0, 0] },
+        { "label": "Play Fight",  "dots": [0, 0] }
+      ]
+    },
+    {
       "name": "Dynamic",
       "columns": ["Self", "Partner"],
       "items": [
