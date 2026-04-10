@@ -1,0 +1,153 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Body type",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Tall",   "dots": [0, 0] },
+        { "label": "Short", "dots": [0, 0] },
+        { "label": "Skinny",  "dots": [0, 0] },
+        { "label": "Lean",  "dots": [0, 0] },
+        { "label": "Fit",  "dots": [0, 0] },
+        { "label": "Athletic",  "dots": [0, 0] },
+        { "label": "Muscular",  "dots": [0, 0] },
+        { "label": "Chubby",  "dots": [0, 0] },
+        { "label": "Curvy",  "dots": [0, 0] },
+        { "label": "Overweight",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Erogenous Zones",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Big Ass",   "dots": [0, 0] },
+        { "label": "Average Ass",   "dots": [0, 0] },
+        { "label": "Small Ass",  "dots": [0, 0] },
+        { "label": "Big Cock",   "dots": [0, 0] },
+        { "label": "Average Cock",   "dots": [0, 0] },
+        { "label": "Small Cock",   "dots": [0, 0] },
+        { "label": "Circumcised Cock",   "dots": [0, 0] },
+        { "label": "Un-Circumcised Cock",   "dots": [0, 0] },
+        { "label": "Big Testicles",   "dots": [0, 0] },
+        { "label": "Average Testicles",   "dots": [0, 0] },
+        { "label": "Small Testicles",   "dots": [0, 0] },
+        { "label": "Big Breasts",   "dots": [0, 0] },
+        { "label": "Average Breasts",   "dots": [0, 0] },
+        { "label": "Small Breasts",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Body Parts",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Crow Feet",   "dots": [0, 0] },
+        { "label": "Gray Hair",   "dots": [0, 0] },
+        { "label": "Smile Lines",  "dots": [0, 0] },
+        { "label": "Freckless",   "dots": [0, 0] },
+        { "label": "Under-eye Circles",   "dots": [0, 0] },
+        { "label": "Stretch Marks",   "dots": [0, 0] },
+        { "label": "Scars",   "dots": [0, 0] },
+        { "label": "Veiny Hands/Arms",   "dots": [0, 0] },
+        { "label": "Collarbones",   "dots": [0, 0] },
+        { "label": "Hip Dips",   "dots": [0, 0] },
+        { "label": "Wrists",   "dots": [0, 0] },
+        { "label": "Ankles",   "dots": [0, 0] },
+        { "label": "Fingers",   "dots": [0, 0] },
+        { "label": "Feet",   "dots": [0, 0] },
+        { "label": "Body Hair",   "dots": [0, 0] }
+      ]
+    }
+    ,
+    {
+      "name": "Body Modification",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Piercings",   "dots": [0, 0] },
+        { "label": "Tatoos",   "dots": [0, 0] },
+        { "label": "Shaving",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Gender",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Male",   "dots": [0, 0] },
+        { "label": "Female", "dots": [0, 0] },
+        { "label": "Trans Female",  "dots": [0, 0] },
+        { "label": "Trans Male",  "dots": [0, 0] },
+        { "label": "Non-Binary",  "dots": [0, 0] },
+        { "label": "Femboy/Twink",  "dots": [0, 0] },
+        { "label": "Tomboy",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sexuality",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Monogamy",   "dots": [0, 0] },
+        { "label": "Polygamy",   "dots": [0, 0] },
+        { "label": "Polyamorous",  "dots": [0, 0] },
+        { "label": "Swinging",   "dots": [0, 0] },
+        { "label": "2 Partners",   "dots": [0, 0] },
+        { "label": "3 Partners",   "dots": [0, 0] },
+        { "label": "4 Partners",   "dots": [0, 0] },
+        { "label": "Male & Female Parteners",   "dots": [0, 0] },
+        { "label": "Multiple Males",   "dots": [0, 0] },
+        { "label": "Multiple Females",   "dots": [0, 0] },
+        { "label": "Orgy",   "dots": [0, 0] },
+        { "label": "Bukake",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Usual Clothes",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Cross-dressing",   "dots": [0, 0] },
+        { "label": "Masculine Clothes", "dots": [0, 0] },
+        { "label": "Feminine Clothes",  "dots": [0, 0] },
+        { "label": "Heels",  "dots": [0, 0] },
+        { "label": "Sport Shoes",  "dots": [0, 0] },
+        { "label": "Suit",  "dots": [0, 0] },
+        { "label": "Latex",  "dots": [0, 0] },
+        { "label": "Leather",  "dots": [0, 0] },
+        { "label": "Fishnets",  "dots": [0, 0] },
+        { "label": "Jeans",  "dots": [0, 0] },
+        { "label": "Skirts",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Intimate clothes",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Lingerie",   "dots": [0, 0] },
+        { "label": "Boxers",   "dots": [0, 0] },
+        { "label": "Stockings",  "dots": [0, 0] },
+        { "label": "Transparent Underware",   "dots": [0, 0] },
+        { "label": "Opaque Underware",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Accessories",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Makeup",   "dots": [0, 0] },
+        { "label": "Natural Look",   "dots": [0, 0] },
+        { "label": "Painted Lips",   "dots": [0, 0] },
+        { "label": "Lipstick Marks",   "dots": [0, 0] },
+        { "label": "Long Nails",   "dots": [0, 0] },
+        { "label": "Short Nails",  "dots": [0, 0] },
+        { "label": "Painted Fingernails",   "dots": [0, 0] },
+        { "label": "Painted Toenails",   "dots": [0, 0] },
+        { "label": "Jewlery",   "dots": [0, 0] }
+      ]
+    }
+  ]
+}

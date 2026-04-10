@@ -1,0 +1,79 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Body type",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Tall",   "dots": [0, 0] },
+        { "label": "Short", "dots": [0, 0] },
+        { "label": "Skinny",  "dots": [0, 0] },
+        { "label": "Lean",  "dots": [0, 0] },
+        { "label": "Fit",  "dots": [0, 0] },
+        { "label": "Athletic",  "dots": [0, 0] },
+        { "label": "Muscular",  "dots": [0, 0] },
+        { "label": "Chubby",  "dots": [0, 0] },
+        { "label": "Curvy",  "dots": [0, 0] },
+        { "label": "Overweight",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Erogenous Zones",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Big Ass",   "dots": [0, 0] },
+        { "label": "Average Ass",   "dots": [0, 0] },
+        { "label": "Small Ass",  "dots": [0, 0] },
+        { "label": "Big Cock",   "dots": [0, 0] },
+        { "label": "Average Cock",   "dots": [0, 0] },
+        { "label": "Small Cock",   "dots": [0, 0] },
+        { "label": "Circumcised Cock",   "dots": [0, 0] },
+        { "label": "Un-Circumcised Cock",   "dots": [0, 0] },
+        { "label": "Big Testicles",   "dots": [0, 0] },
+        { "label": "Average Testicles",   "dots": [0, 0] },
+        { "label": "Small Testicles",   "dots": [0, 0] },
+        { "label": "Big Breasts",   "dots": [0, 0] },
+        { "label": "Average Breasts",   "dots": [0, 0] },
+        { "label": "Small Breasts",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Body Parts",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Crow Feet",   "dots": [0, 0] },
+        { "label": "Gray Hair",   "dots": [0, 0] },
+        { "label": "Smile Lines",  "dots": [0, 0] },
+        { "label": "Freckless",   "dots": [0, 0] },
+        { "label": "Under-eye Circles",   "dots": [0, 0] },
+        { "label": "Stretch Marks",   "dots": [0, 0] },
+        { "label": "Scars",   "dots": [0, 0] },
+        { "label": "Veiny Hands/Arms",   "dots": [0, 0] },
+        { "label": "Collarbones",   "dots": [0, 0] },
+        { "label": "Hip Dips",   "dots": [0, 0] },
+        { "label": "Wrists",   "dots": [0, 0] },
+        { "label": "Ankles",   "dots": [0, 0] },
+        { "label": "Fingers",   "dots": [0, 0] },
+        { "label": "Feet",   "dots": [0, 0] },
+        { "label": "Body Hair",   "dots": [0, 0] }
+      ]
+    }
+    ,
+    {
+      "name": "Body Modification",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Piercings",   "dots": [0, 0] },
+        { "label": "Tatoos",   "dots": [0, 0] },
+        { "label": "Shaving",  "dots": [0, 0] }
+      ]
+    }
+  ]
+}

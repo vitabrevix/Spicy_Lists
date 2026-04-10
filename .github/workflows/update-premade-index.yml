@@ -1,0 +1,32 @@
+name: Update premade index
+
+on:
+  push:
+    paths:
+      - 'premade/**.json'
+
+jobs:
+  rebuild-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Regenerate premade/index.json
+        run: |
+          cd premade
+          # Collect all .json files except index.json itself, output as a JSON array
+          files=$(ls *.json 2>/dev/null | grep -v '^index\.json$' | sort | jq -R . | jq -s .)
+          echo "$files" > index.json
+          echo "Generated index.json: $files"
+
+      - name: Commit updated index.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add premade/index.json
+          git diff --cached --quiet || git commit -m "chore: regenerate premade/index.json"
+          git push

@@ -1,0 +1,38 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Dynamic",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Dominant",   "dots": [0, 0] },
+        { "label": "Submissive", "dots": [0, 0] },
+        { "label": "Switching Role", "dots": [0, 0] },
+        { "label": "Role Reversal", "dots": [0, 0] },
+        { "label": "Role Uncertainity", "dots": [0, 0], "desc": "Before it becomes clear who will be the Dom and who will be the Sub" },
+        { "label": "DD/lg or MD/lb",  "dots": [0, 0] },
+        { "label": "Petplay",  "dots": [0, 0] },
+        { "label": "Domestic Servitude",  "dots": [0, 0] },
+        { "label": "Slavery",  "dots": [0, 0] },
+        { "label": "Power Exchange",  "dots": [0, 0] },
+        { "label": "Gentle Dominant",  "dots": [0, 0] },
+        { "label": "Brat Submissive",  "dots": [0, 0] },
+        { "label": "Brat Taming",  "dots": [0, 0] },
+        { "label": "Older Domiannt",  "dots": [0, 0] },
+        { "label": "Older Submissive",  "dots": [0, 0] },
+        { "label": "Full Ownership",  "dots": [0, 0] },
+        { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },
+        { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
+        { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
+        { "label": "Trainer Submissive",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" }
+      ]
+    }
+  ]
+}

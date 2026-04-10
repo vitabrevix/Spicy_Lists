@@ -1,0 +1,43 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Gender",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Male",   "dots": [0, 0] },
+        { "label": "Female", "dots": [0, 0] },
+        { "label": "Trans Female",  "dots": [0, 0] },
+        { "label": "Trans Male",  "dots": [0, 0] },
+        { "label": "Non-Binary",  "dots": [0, 0] },
+        { "label": "Femboy/Twink",  "dots": [0, 0] },
+        { "label": "Tomboy",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sexuality",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Monogamy",   "dots": [0, 0], "desc": "Legally or formally married to one single spouses" },
+        { "label": "Polygamy",   "dots": [0, 0], "desc": "Legally or formally married to multiple spouses" },
+        { "label": "Polyamorous",  "dots": [0, 0], "desc": "Maintaing a romantic relationship with multiple partner" },
+        { "label": "Swinging",   "dots": [0, 0], "desc": "A couple commited to each other romantically, who allow each other to find sexual satisfaction otuside the relationship too" },
+        { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "3 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "4 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "Male & Female Parteners",   "dots": [0, 0] },
+        { "label": "Multiple Males",   "dots": [0, 0] },
+        { "label": "Multiple Females",   "dots": [0, 0] },
+        { "label": "Orgy",   "dots": [0, 0] },
+        { "label": "Bukake",   "dots": [0, 0] }
+      ]
+    }
+  ]
+}

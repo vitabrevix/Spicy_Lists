@@ -1,0 +1,46 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Sensitive Body Parts",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Face",   "dots": [0, 0] },
+        { "label": "Lips",   "dots": [0, 0] },
+        { "label": "Nose",   "dots": [0, 0] },
+        { "label": "Ears",   "dots": [0, 0] },
+        { "label": "Neck", "dots": [0, 0] },
+        { "label": "Chest/s",  "dots": [0, 0] },
+        { "label": "Shoulders",  "dots": [0, 0] },
+        { "label": "Arms",  "dots": [0, 0] },
+        { "label": "Wrists",  "dots": [0, 0] },
+        { "label": "Hands",  "dots": [0, 0] },
+        { "label": "Stomach",  "dots": [0, 0] },
+        { "label": "Hips",  "dots": [0, 0] },
+        { "label": "Crotch",  "dots": [0, 0] },
+        { "label": "Buttocks",  "dots": [0, 0] },
+        { "label": "Thighs",  "dots": [0, 0] },
+        { "label": "Legs",  "dots": [0, 0] },
+        { "label": "Ankles",  "dots": [0, 0] },
+        { "label": "Feet",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sensitivity Tools",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Hot Wax",   "dots": [0, 0] },
+        { "label": "Ice",   "dots": [0, 0] },
+        { "label": "Electro Stimulation",  "dots": [0, 0] },
+        { "label": "Tickling",   "dots": [0, 0] }
+      ]
+    }
+  ]
+}

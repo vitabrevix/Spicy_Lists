@@ -1,0 +1,51 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Usual Clothes",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Cross-dressing",   "dots": [0, 0] },
+        { "label": "Masculine Clothes", "dots": [0, 0] },
+        { "label": "Feminine Clothes",  "dots": [0, 0] },
+        { "label": "Heels",  "dots": [0, 0] },
+        { "label": "Sport Shoes",  "dots": [0, 0] },
+        { "label": "Suit",  "dots": [0, 0] },
+        { "label": "Latex",  "dots": [0, 0] },
+        { "label": "Leather",  "dots": [0, 0] },
+        { "label": "Fishnets",  "dots": [0, 0] },
+        { "label": "Uniform",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Intimate clothes",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Lingerie",   "dots": [0, 0] },
+        { "label": "Boxers",   "dots": [0, 0] },
+        { "label": "Stockings",  "dots": [0, 0] },
+        { "label": "Transparent Underware",   "dots": [0, 0] },
+        { "label": "Opaque Underware",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Accessories",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Lipstick",   "dots": [0, 0] },
+        { "label": "Lipstick Marks",   "dots": [0, 0] },
+        { "label": "Long nails",   "dots": [0, 0] },
+        { "label": "Short nails",  "dots": [0, 0] },
+        { "label": "Painted nails",   "dots": [0, 0] },
+        { "label": "Jewlery",   "dots": [0, 0] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Domination",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Disciplining",   "dots": [0, 0] },
+        { "label": "Tasks", "dots": [0, 0] },
+        { "label": "Rules", "dots": [0, 0] },
+        { "label": "Inmobilization",  "dots": [0, 0] },
+        { "label": "Orgasm Control",  "dots": [0, 0] },
+        { "label": "Forced Orgasm",  "dots": [0, 0] },
+        { "label": "Orgasm Denial",  "dots": [0, 0] },
+        
+        { "label": "Account Control",  "dots": [0, 0], "desc":"Submissive giving control over their social media accounts to their Dom" },
+        { "label": "Techdom",  "dots": [0, 0], "desc":"Submissive giving control over their devices to their Dom, whether remotely or physically" }
+      ]
+    }
+  ]
+}
