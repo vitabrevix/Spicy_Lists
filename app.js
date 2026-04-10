@@ -940,7 +940,12 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
 
   dot.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
-    pressTimer = setTimeout(() => { startBlendDrag(e); }, 300);
+    //Capture clientX/Y immediately — the event object may be recycled by the time the timer fires
+    const snapshotX = e.clientX;
+    const snapshotY = e.clientY;
+    pressTimer = setTimeout(() => {
+      startBlendDrag({ clientX: snapshotX, clientY: snapshotY, preventDefault: () => {} });
+    }, 300);
     document.addEventListener('mouseup', function cancelHold() {
       clearTimeout(pressTimer);
       document.removeEventListener('mouseup', cancelHold);
@@ -948,7 +953,13 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
   });
 
   dot.addEventListener('touchstart', e => {
-    pressTimer = setTimeout(() => { startBlendDrag(e); }, 300);
+    //Capture touch coordinates immediately for the same reason
+    const touch = e.touches[0];
+    const snapshotX = touch.clientX;
+    const snapshotY = touch.clientY;
+    pressTimer = setTimeout(() => {
+      startBlendDrag({ touches: [{ clientX: snapshotX, clientY: snapshotY }], preventDefault: () => {} });
+    }, 300);
   }, { passive: true });
 
   dot.addEventListener('touchend', () => {
