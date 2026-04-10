@@ -954,19 +954,29 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
     }
   }
 
+  //Suppress native drag on the dot so the browser never hijacks mousemove during a hold
+  dot.addEventListener('dragstart', e => { e.preventDefault(); });
+
   dot.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
+    //Prevent native drag selection/drag-and-drop from stealing mousemove on GitHub Pages (HTTPS)
+    e.preventDefault();
     console.log(DBTAG, `mousedown — starting 300ms hold timer`);
     //Capture clientX/Y immediately — the event object may be recycled by the time the timer fires
     const snapshotX = e.clientX;
     const snapshotY = e.clientY;
+    let holdFired = false;
     pressTimer = setTimeout(() => {
+      holdFired = true;
       console.log(DBTAG, '300ms hold elapsed — calling startBlendDrag');
       startBlendDrag({ clientX: snapshotX, clientY: snapshotY, preventDefault: () => {} });
     }, 300);
+    //Only cancel if the hold timer hasn't fired yet — avoids interfering with onDragEnd's own mouseup
     document.addEventListener('mouseup', function cancelHold() {
-      console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
-      clearTimeout(pressTimer);
+      if (!holdFired) {
+        console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
+        clearTimeout(pressTimer);
+      }
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
   });
