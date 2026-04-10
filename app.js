@@ -872,7 +872,7 @@ function _updatePreviewPill(dotsDiv, idxA, idxB) {
 
 function _onBlendMove(e) {
   if (!_blendState) return;
-  const { dotsDiv, originLi } = _blendState;
+  const { dotsDiv, originLi, DBTAG } = _blendState;
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const allDots = Array.from(dotsDiv.querySelectorAll('.dot'));
   allDots.forEach(d => d.classList.remove('blend-candidate'));
@@ -883,6 +883,8 @@ function _onBlendMove(e) {
     if (clientX >= rect.left - 4 && clientX <= rect.right + 4) hovered = idx;
   });
 
+  console.log(DBTAG, `onDragMove clientX=${clientX} hovered=${hovered} originLi=${originLi} dotsCount=${allDots.length}`);
+
   if (hovered !== null && hovered !== originLi) {
     _blendState.currentTarget = hovered;
     const a = Math.min(originLi, hovered);
@@ -890,6 +892,7 @@ function _onBlendMove(e) {
     if (allDots[a]) allDots[a].classList.add('blend-candidate');
     if (b !== a && allDots[b]) allDots[b].classList.add('blend-candidate');
     _updatePreviewPill(dotsDiv, originLi, hovered);
+    console.log(DBTAG, `updatePreviewPill a=${a} b=${b}`);
   } else {
     _blendState.currentTarget = originLi;
     _removePreviewPill(dotsDiv);
@@ -903,7 +906,8 @@ function _onBlendTouchMove(e) {
 
 function _onBlendEnd() {
   if (!_blendState) return;
-  const { dotsDiv, originLi, currentTarget, lid, iid, ci } = _blendState;
+  const { dotsDiv, originLi, currentTarget, lid, iid, ci, DBTAG } = _blendState;
+  console.log(DBTAG, `onDragEnd — currentBlendTarget=${currentTarget} originLi=${originLi}`);
   _blendState = null;
 
   _removePreviewPill(dotsDiv);
@@ -914,7 +918,10 @@ function _onBlendEnd() {
   document.removeEventListener('touchend',   _onBlendEnd);
 
   if (currentTarget !== originLi) {
+    console.log(DBTAG, `Committing blend between ${originLi} and ${currentTarget}`);
     setDotBlend(lid, iid, ci, originLi, currentTarget);
+  } else {
+    console.log(DBTAG, 'onDragEnd — no target change, blend not committed');
   }
 }
 
@@ -925,17 +932,20 @@ function _startBlendDrag(dot) {
   const lid = parseInt(dot.dataset.lid, 10);
   const iid = parseInt(dot.dataset.iid, 10);
   const ci  = parseInt(dot.dataset.ci,  10);
+  const DBTAG = `[Blend dot=${li} ci=${ci} iid=${iid}]`;
 
-  _blendState = { dotsDiv, originLi: li, currentTarget: li, lid, iid, ci };
+  _blendState = { dotsDiv, originLi: li, currentTarget: li, lid, iid, ci, DBTAG };
   dotsDiv.classList.add('dragging-blend');
   document.addEventListener('mousemove',  _onBlendMove);
   document.addEventListener('mouseup',    _onBlendEnd);
   document.addEventListener('touchmove',  _onBlendTouchMove, { passive: false });
   document.addEventListener('touchend',   _onBlendEnd);
+  console.log(DBTAG, 'startBlendDrag — blendMode=true, listeners attached');
 }
 
 function initDotDelegation() {
   const grid = document.getElementById('lists-grid');
+  console.log('[initDotDelegation] grid found=', !!grid);
 
   //Track per-dot hold timers keyed by dataset identity
   const _pressTimers = new Map();
@@ -953,16 +963,22 @@ function initDotDelegation() {
     e.preventDefault(); //Prevent native drag from stealing mousemove on HTTPS origins
 
     const key = dotKey(dot);
+    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
+    console.log(DBTAG, 'mousedown — starting 300ms hold timer');
     _holdFired.set(key, false);
 
     const timer = setTimeout(() => {
       _holdFired.set(key, true);
+      console.log(DBTAG, '300ms hold elapsed — calling startBlendDrag');
       _startBlendDrag(dot);
     }, 300);
     _pressTimers.set(key, timer);
 
     document.addEventListener('mouseup', function cancelHold() {
-      if (!_holdFired.get(key)) clearTimeout(_pressTimers.get(key));
+      if (!_holdFired.get(key)) {
+        console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
+        clearTimeout(_pressTimers.get(key));
+      }
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
   });
@@ -992,11 +1008,13 @@ function initDotDelegation() {
     const dot = e.target.closest('.dot');
     if (!dot) return;
     const key = dotKey(dot);
-    const snapshotX = e.touches[0].clientX;
+    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
+    console.log(DBTAG, 'touchstart — starting 300ms hold timer');
 
     _holdFired.set(key, false);
     const timer = setTimeout(() => {
       _holdFired.set(key, true);
+      console.log(DBTAG, '300ms hold elapsed (touch) — calling startBlendDrag');
       _startBlendDrag(dot);
     }, 300);
     _pressTimers.set(key, timer);
@@ -1006,7 +1024,11 @@ function initDotDelegation() {
     const dot = e.target.closest('.dot');
     if (!dot) return;
     const key = dotKey(dot);
-    if (!_holdFired.get(key)) clearTimeout(_pressTimers.get(key));
+    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
+    if (!_holdFired.get(key)) {
+      console.log(DBTAG, 'touchend — clearing hold timer');
+      clearTimeout(_pressTimers.get(key));
+    }
   });
 }
 
@@ -1449,3 +1471,19 @@ render();
 initPremade();
 initDropImport();
 initDotDelegation();
+
+document.addEventListener('mousedown', e => {
+  const dot = e.target.closest('.dot');
+  console.log('[DIAG mousedown] target=', e.target.className || e.target.tagName, '| closest .dot=', dot ? 'dot[li='+dot.dataset.li+' ci='+dot.dataset.ci+']' : 'none');
+}, true);
+
+setTimeout(() => {
+  const dots = document.querySelectorAll('.dot');
+  console.log('[DIAG 2s] dot count=', dots.length, '| lists.length=', lists.length);
+  if (dots.length > 0) {
+    const d = dots[0];
+    console.log('[DIAG 2s] first dot dataset=', JSON.stringify(d.dataset), '| pointer-events=', getComputedStyle(d).pointerEvents);
+  }
+  const grid = document.getElementById('lists-grid');
+  console.log('[DIAG 2s] grid exists=', !!grid, '| grid childCount=', grid ? grid.children.length : 'N/A');
+}, 2000);
