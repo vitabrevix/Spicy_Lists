@@ -1,12 +1,4 @@
-// Debug
-
-const DBG = {
-  log:  (...a) => console.log( '[Premade]', ...a),
-  warn: (...a) => console.warn('[Premade]', ...a),
-  err:  (...a) => console.error('[Premade]', ...a),
-};
-
-// Constants
+// Colored dot list builder — main application logic, state management, rendering, and preset loading.
 
 const PRESET_COLORS = [
   '#888888','#4a90d9','#3dba6f','#b08030','#cc6820','#c0392b',
@@ -136,7 +128,6 @@ function applyPresetData(data, mode) {
 }
 
 function populateSelect(filenames) {
-  DBG.log(`populateSelect() called with ${filenames.length} file(s):`, filenames);
   const menu = document.getElementById('custom-dropdown-menu');
   const dropdown = document.getElementById('custom-dropdown');
   const folderBtn = document.getElementById('premade-folder-btn');
@@ -197,88 +188,38 @@ function closeCustomDropdown() {
 
 async function fetchPresetData(filename) {
   if (location.protocol === 'file:') {
-    DBG.log(`fetchPresetData (local) — looking up "${filename}" in fileMap`);
-    DBG.log('fileMap keys currently registered:', Object.keys(fileMap));
     const file = fileMap[filename];
-    if (!file) {
-      DBG.err(`"${filename}" not found in fileMap. Was the folder picked correctly?`);
-      throw new Error('File not in map');
-    }
-    DBG.log(`Found "${filename}" in fileMap, reading text...`);
-    const text = await file.text();
-    DBG.log(`Read ${text.length} bytes from "${filename}"`);
-    return JSON.parse(text);
+    if (!file) throw new Error('File not in map');
+    return JSON.parse(await file.text());
   } else {
     const url = `./premade/${encodeURIComponent(filename)}`;
-    DBG.log(`fetchPresetData (remote) — fetching: ${url}`);
-    DBG.log(`Full resolved URL: ${new URL(url, location.href).href}`);
     const res = await fetch(url);
-    DBG.log(`Response for "${filename}": status=${res.status}, ok=${res.ok}, type=${res.type}, url=${res.url}`);
-    if (!res.ok) {
-      DBG.err(`Fetch failed for "${filename}": HTTP ${res.status} ${res.statusText}`);
-      DBG.err(`Requested URL was: ${new URL(url, location.href).href}`);
-      throw new Error(`HTTP ${res.status}`);
-    }
-    const contentType = res.headers.get('content-type');
-    DBG.log(`Content-Type for "${filename}": ${contentType}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const text = await res.text();
-    DBG.log(`Received ${text.length} bytes for "${filename}"`);
     try {
       return JSON.parse(text);
     } catch (parseErr) {
-      DBG.err(`JSON parse failed for "${filename}":`, parseErr);
-      DBG.err('First 200 chars of response:', text.slice(0, 200));
       throw parseErr;
     }
   }
 }
 
 async function initPremade() {
-  DBG.log('initPremade() called');
-  DBG.log(`location.protocol="${location.protocol}", location.href="${location.href}"`);
-
-  if (location.protocol === 'file:') {
-    DBG.log('Running locally via file:// — skipping auto-fetch, waiting for folder picker');
-    return;
-  }
-
-  DBG.log('Running on a server — attempting to auto-load _Default.json...');
+  if (location.protocol === 'file:') return;
   try {
     const defData = await fetchPresetData('_Default.json');
-    DBG.log('_Default.json loaded successfully, keys:', Object.keys(defData));
     const parsedLegend = parseLegend(defData);
-    if (parsedLegend) {
-      DBG.log(`Applying legend from _Default.json (${parsedLegend.length} entries)`);
-      legend = parsedLegend;
-    } else {
-      DBG.warn('_Default.json has no valid legend array, keeping default');
-    }
+    if (parsedLegend) legend = parsedLegend;
     applyPresetData(defData, 'replace');
-    DBG.log('_Default.json applied as initial data');
   } catch (e) {
-    DBG.err('Failed to load _Default.json:', e.message);
   }
-
-  DBG.log('Fetching premade/index.json...');
   try {
-    const indexUrl = './premade/index.json';
-    DBG.log(`Full index URL: ${new URL(indexUrl, location.href).href}`);
-    const res = await fetch(indexUrl);
-    DBG.log(`index.json response: status=${res.status}, ok=${res.ok}`);
-    if (!res.ok) {
-      DBG.err(`index.json fetch failed: HTTP ${res.status} ${res.statusText}`);
-      return;
-    }
+    const res = await fetch('./premade/index.json');
+    if (!res.ok) return;
     const files = await res.json();
-    DBG.log('index.json contents:', files);
-    if (!Array.isArray(files) || files.length === 0) {
-      DBG.warn('index.json is empty or not an array — no presets will appear in dropdown');
-      return;
-    }
-    DBG.log(`Populating dropdown with ${files.length} preset(s):`, files);
+    if (!Array.isArray(files) || files.length === 0) return;
     populateSelect(files);
   } catch (e) {
-    DBG.err('Could not load premade/index.json:', e);
     console.warn('Could not load premade/index.json:', e);
   }
 }
@@ -288,39 +229,22 @@ function pickPremadeFolder() {
 }
 
 async function onFolderPicked(input) {
-  DBG.log('onFolderPicked() triggered');
-  DBG.log(`Total files selected: ${input.files.length}`);
   const jsonFiles = Array.from(input.files).filter(f =>
     f.name.endsWith('.json') && f.name !== 'index.json'
   );
-  DBG.log(`JSON files found (excluding index.json): ${jsonFiles.length}`, jsonFiles.map(f => f.name));
-  if (jsonFiles.length === 0) {
-    DBG.warn('No valid .json files found in picked folder');
-    return;
-  }
+  if (jsonFiles.length === 0) return;
   jsonFiles.forEach(f => { fileMap[f.name] = f; });
-  DBG.log('fileMap populated with:', Object.keys(fileMap));
 
   const defaultFile = jsonFiles.find(f => f.name === '_Default.json');
   if (defaultFile) {
-    DBG.log('Found _Default.json in picked folder, applying it...');
     try {
       const data = JSON.parse(await defaultFile.text());
-      DBG.log('_Default.json parsed successfully, keys:', Object.keys(data));
       const parsedLegend = parseLegend(data);
-      if (parsedLegend) {
-        DBG.log(`Applying legend from _Default.json (${parsedLegend.length} entries)`);
-        legend = parsedLegend;
-      } else {
-        DBG.warn('_Default.json has no valid legend');
-      }
+      if (parsedLegend) legend = parsedLegend;
       applyPresetData(data, 'replace');
     } catch (e) {
-      DBG.err('Could not parse _Default.json:', e);
       console.warn('Could not parse _Default.json:', e);
     }
-  } else {
-    DBG.warn('No _Default.json found in picked folder');
   }
 
   populateSelect(jsonFiles.map(f => f.name));
@@ -328,26 +252,20 @@ async function onFolderPicked(input) {
 
 async function loadPremadeAdd(filename) {
   if (!filename) return;
-  DBG.log(`loadPremadeAdd("${filename}")`);
   try {
     const data = await fetchPresetData(filename);
-    DBG.log(`Preset "${filename}" loaded, applying in 'add' mode`);
     applyPresetData(data, 'add');
   } catch (e) {
-    DBG.err(`loadPremadeAdd failed for "${filename}":`, e.message);
     alert(`Could not load preset "${filename}".`);
   }
 }
 
 async function loadPremadeReplace(filename) {
   if (!filename) return;
-  DBG.log(`loadPremadeReplace("${filename}")`);
   try {
     const data = await fetchPresetData(filename);
-    DBG.log(`Preset "${filename}" loaded, applying in 'replace' mode`);
     applyPresetData(data, 'replace');
   } catch (e) {
-    DBG.err(`loadPremadeReplace failed for "${filename}":`, e.message);
     alert(`Could not load preset "${filename}".`);
   }
 }
