@@ -1,0 +1,27 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "BDSM",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Blinding", "dots": [0, 0] },
+        { "label": "Deafening",  "dots": [0, 0] },
+        { "label": "Sensory Deprivation",  "dots": [0, 0] },
+        { "label": "Gags",  "dots": [0, 0] },
+        { "label": "Collaring",  "dots": [0, 0] },
+        { "label": "Leash and Collar",  "dots": [0, 0] },
+        { "label": "Light Bondage",  "dots": [0, 0] },
+        { "label": "Heavy Bondage",  "dots": [0, 0] }
+        
+      ]
+    }
+  ]
+}

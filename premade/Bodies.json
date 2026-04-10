@@ -62,6 +62,7 @@
         { "label": "Ankles",   "dots": [0, 0] },
         { "label": "Fingers",   "dots": [0, 0] },
         { "label": "Feet",   "dots": [0, 0] },
+        { "label": "Head Hair",   "dots": [0, 0] },
         { "label": "Body Hair",   "dots": [0, 0] }
       ]
     }
@@ -72,7 +73,9 @@
       "items": [
         { "label": "Piercings",   "dots": [0, 0] },
         { "label": "Tatoos",   "dots": [0, 0] },
-        { "label": "Shaving",  "dots": [0, 0] }
+        { "label": "Shaving",  "dots": [0, 0] },
+        { "label": "3D Implants",  "dots": [0, 0], "desc":"More professionally named {subdermal implants}[https://en.wikipedia.org/wiki/Subdermal_implant], a type of implant placed under the skin to modify its shape, like for example {making a dick bumpy}[https://en.wikipedia.org/wiki/Pearling_(body_modification)]" },
+        { "label": "Tongue splitting",  "dots": [0, 0] }
       ]
     }
   ]

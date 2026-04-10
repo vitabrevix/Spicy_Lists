@@ -44,7 +44,8 @@
         { "label": "Long nails",   "dots": [0, 0] },
         { "label": "Short nails",  "dots": [0, 0] },
         { "label": "Painted nails",   "dots": [0, 0] },
-        { "label": "Jewlery",   "dots": [0, 0] }
+        { "label": "Jewlery",   "dots": [0, 0] },
+        { "label": "Glasses",   "dots": [0, 0] }
       ]
     }
   ]

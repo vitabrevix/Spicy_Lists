@@ -9,7 +9,7 @@
   ],
   "lists": [
     {
-      "name": "Non Consensual",
+      "name": "Consensual Non Consensual",
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "CNC / Play Rape",   "dots": [0, 0] },
@@ -17,7 +17,11 @@
         { "label": "Drugging", "dots": [0, 0] },
         { "label": "Alcohol",  "dots": [0, 0] },
         { "label": "Kidnapping",  "dots": [0, 0] },
-        { "label": "Sleep Play",  "dots": [0, 0] }
+        { "label": "Somnophilia",  "dots": [0, 0], "desc": "A sexual interaction where one of the partners is asleep while it happens" },
+        { "label": "Forced Feminaztion",  "dots": [0, 0] },
+        { "label": "Forced Masculinization",  "dots": [0, 0] },
+        { "label": "Forced Transitioning",  "dots": [0, 0] },
+        { "label": "Forced De-Transitioning",  "dots": [0, 0] }
       ]
     }
   ]

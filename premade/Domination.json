@@ -19,9 +19,12 @@
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
+        { "label": "Begging",  "dots": [0, 0] },
+        { "label": "Body Worship",  "dots": [0, 0] },
+        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
         
-        { "label": "Account Control",  "dots": [0, 0], "desc":"Submissive giving control over their accounts to their Dom" },
-        { "label": "Techdom",  "dots": [0, 0], "desc":"Submissive giving control over their devices to their Dom" }
+        { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
+        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" }
       ]
     }
   ]

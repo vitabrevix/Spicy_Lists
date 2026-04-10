@@ -25,8 +25,8 @@
       "name": "Sexuality",
       "columns": ["Self"],
       "items": [
-        { "label": "Monogamy",   "dots": [0, 0], "desc": "Legally or formally married to one single spouses" },
-        { "label": "Polygamy",   "dots": [0, 0], "desc": "Legally or formally married to multiple spouses" },
+        { "label": "Monogamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with one single partner" },
+        { "label": "Polygamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with multiple partner" },
         { "label": "Polyamorous",  "dots": [0, 0], "desc": "Maintaing a romantic relationship with multiple partner" },
         { "label": "Swinging",   "dots": [0, 0], "desc": "A couple commited to each other romantically, who allow each other to find sexual satisfaction otuside the relationship too" },
         { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
@@ -35,8 +35,9 @@
         { "label": "Male & Female Parteners",   "dots": [0, 0] },
         { "label": "Multiple Males",   "dots": [0, 0] },
         { "label": "Multiple Females",   "dots": [0, 0] },
-        { "label": "Orgy",   "dots": [0, 0] },
-        { "label": "Bukake",   "dots": [0, 0] }
+        { "label": "Orgy",   "dots": [0, 0], "desc": "A groupal sexual scenario where all participants can interact with each other in any way" },
+        { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" },
+        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" }
       ]
     }
   ]

@@ -1,0 +1,29 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Toys",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Remote Toys",  "dots": [0, 0] },
+        { "label": "Dildos",   "dots": [0, 0] },
+        { "label": "Plugs", "dots": [0, 0] },
+        { "label": "Vibrators", "dots": [0, 0] },
+        { "label": "Fleshlights", "dots": [0, 0] },
+        { "label": "Sounding",  "dots": [0, 0] },
+        { "label": "Strap-on",  "dots": [0, 0] },
+        { "label": "Chastity",  "dots": [0, 0] },
+        { "label": "Nipple Clamps",  "dots": [0, 0] },
+        { "label": "Nipple Suckers",  "dots": [0, 0] },
+        { "label": "Double Headed Dildos",  "dots": [0, 0] }
+      ]
+    }
+  ]
+}

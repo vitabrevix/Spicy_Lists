@@ -1,0 +1,32 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Pain",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Sadism",   "dots": [0, 0], "desc": "Deriving pleasure from causing pain" },
+        { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
+        { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
+        { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
+        { "label": "Spanking", "dots": [0, 0] },
+        { "label": "Slapping",  "dots": [0, 0] },
+        { "label": "Caning",  "dots": [0, 0] },
+        { "label": "Flogging",  "dots": [0, 0] },
+        { "label": "Choking",  "dots": [0, 0] },
+        { "label": "Genital Torture",  "dots": [0, 0], "desc": "Regardless of gender, all genitals have the right to be tortured, althought the most known is, of course, {Cock and Ball Torture}[https://en.wikipedia.org/wiki/Cock_and_ball_torture]" },
+        { "label": "Abrasions",  "dots": [0, 0] },
+        { "label": "Cutting",  "dots": [0, 0], "desc": "The use of a blade or sharp object to cut into the skin, provoking bleeding" },
+        { "label": "Scarification",  "dots": [0, 0], "desc": "The use of a blade to create intentional scars in patterns" },
+        { "label": "Branding",  "dots": [0, 0], "desc": "The use of a hot iron to create a specific permanent pattern on the skin, much like a tattoo" }
+      ]
+    }
+  ]
+}

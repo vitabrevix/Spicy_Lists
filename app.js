@@ -199,7 +199,7 @@ async function fetchPresetData(filename) {
 async function initPremade() {
   if (location.protocol === 'file:') return;
   try {
-    const defData = await fetchPresetData('Default.json');
+    const defData = await fetchPresetData('_Default.json');
     const parsedLegend = parseLegend(defData);
     if (parsedLegend) legend = parsedLegend;
     applyPresetData(defData, 'replace');
@@ -227,7 +227,7 @@ async function onFolderPicked(input) {
   if (jsonFiles.length === 0) return;
   jsonFiles.forEach(f => { fileMap[f.name] = f; });
 
-  const defaultFile = jsonFiles.find(f => f.name === 'Default.json');
+  const defaultFile = jsonFiles.find(f => f.name === '_Default.json');
   if (defaultFile) {
     try {
       const data = JSON.parse(await defaultFile.text());
@@ -235,7 +235,7 @@ async function onFolderPicked(input) {
       if (parsedLegend) legend = parsedLegend;
       applyPresetData(data, 'replace');
     } catch (e) {
-      console.warn('Could not parse Default.json:', e);
+      console.warn('Could not parse _Default.json:', e);
     }
   }
 
@@ -547,31 +547,55 @@ function buildLabelCell(item) {
     dot.textContent = 'i';
     dot.setAttribute('tabindex', '0');
 
-    const showPop = () => {
-      let pop = document.getElementById('desc-popover');
-      if (!pop) {
-        pop = document.createElement('div');
-        pop.id = 'desc-popover';
-        pop.style.cssText = [
-          'position:fixed', 'z-index:9999',
-          'background:var(--bg-card,#2a2a2a)', 'color:var(--text,#eee)',
-          'border:0.5px solid var(--border,#444)', 'border-radius:8px',
-          'padding:7px 12px', 'font-size:12px', 'max-width:240px',
-          'white-space:normal', 'line-height:1.5',
-          'box-shadow:0 4px 16px rgba(0,0,0,0.35)',
-          'pointer-events:none', 'opacity:0',
-          'transition:opacity 0.2s ease',
-        ].join(';');
-        document.body.appendChild(pop);
+    const renderDesc = (raw) => {
+      //Parses {word}[url] as links and [url] alone as images
+      const frag = document.createDocumentFragment();
+      const re = /\{([^}]+)\}\[([^\]]+)\]|\[([^\]]+)\]/g;
+      let last = 0;
+      let m;
+      while ((m = re.exec(raw)) !== null) {
+        if (m.index > last) {
+          frag.appendChild(document.createTextNode(raw.slice(last, m.index)));
+        }
+        if (m[1] && m[2]) {
+          //Named link: {word}[url]
+          const a = document.createElement('a');
+          a.href = m[2];
+          a.textContent = m[1];
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.style.cssText = 'color:var(--text,#eee);text-decoration:underline;pointer-events:auto;';
+          frag.appendChild(a);
+        } else if (m[3]) {
+          //Bare image: [url]
+          const img = document.createElement('img');
+          img.src = m[3];
+          img.alt = '';
+          img.style.cssText = [
+            'display:block', 'margin-top:6px',
+            'max-width:min(220px,70vw)', 'max-height:min(160px,40vh)',
+            'width:auto', 'height:auto',
+            'border-radius:6px', 'object-fit:contain',
+          ].join(';');
+          frag.appendChild(img);
+        }
+        last = re.lastIndex;
       }
-      pop.textContent = item.desc;
-      const r = dot.getBoundingClientRect();
+      if (last < raw.length) {
+        frag.appendChild(document.createTextNode(raw.slice(last)));
+      }
+      return frag;
+    };
+
+    const positionPop = (pop, anchorEl) => {
       pop.style.opacity = '0';
       pop.style.display = 'block';
+      const r    = anchorEl.getBoundingClientRect();
       const popW = pop.offsetWidth;
       const popH = pop.offsetHeight;
       let left = r.right + 8;
       if (left + popW > window.innerWidth - 8) left = r.left - popW - 8;
+      if (left < 4) left = 4;
       let top = r.top - popH / 2 + r.height / 2;
       if (top < 4) top = 4;
       if (top + popH > window.innerHeight - 4) top = window.innerHeight - popH - 4;
@@ -581,15 +605,60 @@ function buildLabelCell(item) {
       pop.style.opacity = '1';
     };
 
+    //Delay timer shared between this dot and the popover so neither closes it prematurely
+    let hideTimer = null;
+    const cancelHide = () => { clearTimeout(hideTimer); hideTimer = null; };
+    const scheduleHide = () => {
+      cancelHide();
+      //Small delay lets the mouse travel across the gap between dot and popover
+      hideTimer = setTimeout(() => {
+        const pop = document.getElementById('desc-popover');
+        if (pop) pop.style.opacity = '0';
+      }, 120);
+    };
+
+    const showPop = () => {
+      cancelHide();
+      let pop = document.getElementById('desc-popover');
+      if (!pop) {
+        pop = document.createElement('div');
+        pop.id = 'desc-popover';
+        pop.style.cssText = [
+          'position:fixed', 'z-index:9999',
+          'background:var(--bg-card,#2a2a2a)', 'color:var(--text,#eee)',
+          'border:0.5px solid var(--border,#444)', 'border-radius:8px',
+          'padding:7px 12px', 'font-size:12px', 'max-width:min(260px,80vw)',
+          'white-space:normal', 'line-height:1.5',
+          'box-shadow:0 4px 16px rgba(0,0,0,0.35)',
+          'pointer-events:auto', 'opacity:0',
+          'transition:opacity 0.2s ease',
+        ].join(';');
+        document.body.appendChild(pop);
+      }
+
+      //Re-bind every time so the popover always uses the current dot's cancel/schedule closures
+      pop.onmouseenter = cancelHide;
+      pop.onmouseleave = scheduleHide;
+
+      pop.innerHTML = '';
+      pop.appendChild(renderDesc(item.desc));
+      positionPop(pop, dot);
+      //Re-position once images have loaded so the box fits the content
+      pop.querySelectorAll('img').forEach(img => {
+        if (!img.complete) img.addEventListener('load', () => positionPop(pop, dot), { once: true });
+      });
+    };
+
     const hidePop = () => {
+      cancelHide();
       const pop = document.getElementById('desc-popover');
       if (pop) pop.style.opacity = '0';
     };
 
     dot.addEventListener('mouseenter', showPop);
-    dot.addEventListener('mouseleave', hidePop);
-    dot.addEventListener('focus',      showPop);
-    dot.addEventListener('blur',       hidePop);
+    dot.addEventListener('mouseleave', scheduleHide);
+    dot.addEventListener('focus', showPop);
+    dot.addEventListener('blur', scheduleHide);
     dot.addEventListener('click', e => {
       e.stopPropagation();
       const pop = document.getElementById('desc-popover');

@@ -1,0 +1,31 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Other Philias",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Dacryphilia",   "dots": [0, 0], "desc": "Being turned on by seeing someone cry" },
+        { "label": "Objectophilia",   "dots": [0, 0], "desc": "Being turned on by innanimated objects" },
+        { "label": "Mechanophilia",   "dots": [0, 0], "desc": "Being turned on by machines" },
+        { "label": "Retifism",   "dots": [0, 0], "desc": "Being turned on by shoes or shoewear" },
+        { "label": "Autogynephilia",   "dots": [0, 0], "desc": "Is this really a philia? Idk, I'm putting it in anyways. Being turned on by imagining oneself as a different gender" },
+        { "label": "Frotteurism",   "dots": [0, 0], "desc": "Being turned on by rubbing against others (in a crows, not the other kind of frotting)" },
+        { "label": "Teratophilia",   "dots": [0, 0], "desc": "Being turned on by monsters" },
+        { "label": "Spectrophilia",   "dots": [0, 0], "desc": "Being turned on by ghosts/spirits" },
+        { "label": "Dendrophilia",   "dots": [0, 0], "desc": "Being turned on by trees and plants" },
+        { "label": "Plushophilia",   "dots": [0, 0], "desc": "Being turned on by stuffed animals" },
+        { "label": "Vorephilia",   "dots": [0, 0], "desc": "Being turned on by the idea of being consumed / swallowed whole" },
+        { "label": "Macro/Microphilia",   "dots": [0, 0], "desc": "Being turned on by giant size differences" },
+        { "label": "Necrophilia",   "dots": [0, 0], "desc": "Being turned on by dead stuff" }
+      ]
+    }
+  ]
+}

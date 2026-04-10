@@ -1,0 +1,32 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Degradation",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
+        { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },
+        { "label": "Exhibitionism", "dots": [0, 0] },
+        { "label": "Voyeourism", "dots": [0, 0] },
+        { "label": "Cuckquean", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Bull", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Cuckold", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Small Penis Humiliation", "dots": [0, 0] },
+        { "label": "Penis Size Difference", "dots": [0, 0] },
+        { "label": "Small Breasts Humiliation", "dots": [0, 0] },
+        { "label": "Name Calling", "dots": [0, 0] },
+        { "label": "Censored Porn", "dots": [0, 0] },
+        { "label": "Sissification", "dots": [0, 0] },
+        { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" }
+      ]
+    }
+  ]
+}

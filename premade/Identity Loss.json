@@ -1,0 +1,23 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Identity Loss",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Ego Death",  "dots": [0, 0], "desc": "The death of a previous self, for a greater future self. Using tools such as hypnosis to rebuild anew oneself bit by bit" },
+        { "label": "Feminization",   "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
+        { "label": "Masculinization", "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
+        { "label": "Bimboficiation",  "dots": [0, 0], "desc": "Sometimes being a little dummy in bed is just what you need" },
+        { "label": "Corruption",  "dots": [0, 0] }
+      ]
+    }
+  ]
+}
