@@ -954,29 +954,19 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
     }
   }
 
-  //Suppress native drag on the dot so the browser never hijacks mousemove during a hold
-  dot.addEventListener('dragstart', e => { e.preventDefault(); });
-
   dot.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
-    //Prevent native drag selection/drag-and-drop from stealing mousemove on GitHub Pages (HTTPS)
-    e.preventDefault();
     console.log(DBTAG, `mousedown — starting 300ms hold timer`);
     //Capture clientX/Y immediately — the event object may be recycled by the time the timer fires
     const snapshotX = e.clientX;
     const snapshotY = e.clientY;
-    let holdFired = false;
     pressTimer = setTimeout(() => {
-      holdFired = true;
       console.log(DBTAG, '300ms hold elapsed — calling startBlendDrag');
       startBlendDrag({ clientX: snapshotX, clientY: snapshotY, preventDefault: () => {} });
     }, 300);
-    //Only cancel if the hold timer hasn't fired yet — avoids interfering with onDragEnd's own mouseup
     document.addEventListener('mouseup', function cancelHold() {
-      if (!holdFired) {
-        console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
-        clearTimeout(pressTimer);
-      }
+      console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
+      clearTimeout(pressTimer);
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
   });
@@ -1444,3 +1434,31 @@ restoreDarkMode();
 render();
 initPremade();
 initDropImport();
+
+document.addEventListener('mousedown', e => {
+  const dot = e.target.closest('.dot');
+  const dots = e.target.closest('.dots');
+  console.log('[DIAG mousedown] target=', e.target.className, '| closest .dot=', dot ? dot.className : 'none', '| closest .dots=', dots ? 'yes' : 'no');
+}, true); // capture phase so this fires before anything can stop it
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[DIAG DOMContentLoaded] dot count=', document.querySelectorAll('.dot').length);
+});
+
+setTimeout(() => {
+  const dots = document.querySelectorAll('.dot');
+  console.log('[DIAG 2s] dot count=', dots.length, '| lists.length=', lists.length);
+  if (dots.length > 0) {
+    const d = dots[0];
+    const rect = d.getBoundingClientRect();
+    console.log('[DIAG 2s] first dot rect=', JSON.stringify(rect), '| computed pointer-events=', getComputedStyle(d).pointerEvents, '| display=', getComputedStyle(d).display);
+    let el = d;
+    let chain = [];
+    while (el && el !== document.body) {
+      const pe = getComputedStyle(el).pointerEvents;
+      chain.push(el.tagName + (el.className ? '.' + el.className.replace(/\s+/g, '.') : '') + '[pe=' + pe + ']');
+      el = el.parentElement;
+    }
+    console.log('[DIAG 2s] pointer-events chain from dot up:', chain.join(' > '));
+  }
+}, 2000);
