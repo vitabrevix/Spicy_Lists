@@ -843,6 +843,8 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
   let originLi = li;
   let currentBlendTarget = li;
 
+  const DBTAG = `[Blend dot=${li} ci=${ci} iid=${iid}]`;
+
   function startBlendDrag(e) {
     e.preventDefault();
     blendMode = true;
@@ -853,6 +855,7 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
     document.addEventListener('mouseup', onDragEnd);
     document.addEventListener('touchmove', onTouchMove, { passive: false });
     document.addEventListener('touchend', onDragEnd);
+    console.log(DBTAG, 'startBlendDrag — blendMode=true, listeners attached');
   }
 
   function getClientX(e) {
@@ -888,10 +891,14 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
     pill.style.left       = leftPx + 'px';
     pill.style.width      = (rightPx - leftPx) + 'px';
     pill.style.background = `linear-gradient(to right, ${colA}, ${colB})`;
+    console.log(DBTAG, `updatePreviewPill a=${a} b=${b} left=${leftPx}px width=${rightPx - leftPx}px`);
   }
 
   function onDragMove(e) {
-    if (!blendMode) return;
+    if (!blendMode) {
+      console.warn(DBTAG, 'onDragMove fired but blendMode=false, ignoring');
+      return;
+    }
     const clientX = getClientX(e);
     const allDots = Array.from(dotsDiv.querySelectorAll('.dot'));
     allDots.forEach(d => d.classList.remove('blend-candidate'));
@@ -903,6 +910,8 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
         hovered = idx;
       }
     });
+
+    console.log(DBTAG, `onDragMove clientX=${clientX} hovered=${hovered} originLi=${originLi} dotsCount=${allDots.length}`);
 
     if (hovered !== null && hovered !== originLi) {
       currentBlendTarget = hovered;
@@ -923,7 +932,11 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
   }
 
   function onDragEnd(e) {
-    if (!blendMode) return;
+    if (!blendMode) {
+      console.warn(DBTAG, 'onDragEnd fired but blendMode=false, ignoring');
+      return;
+    }
+    console.log(DBTAG, `onDragEnd — currentBlendTarget=${currentBlendTarget} originLi=${originLi}`);
     blendMode = false;
     removePreviewPill();
     dotsDiv.classList.remove('dragging-blend');
@@ -933,36 +946,45 @@ function attachDotInteraction(dot, lid, iid, ci, li, dotsDiv) {
     document.removeEventListener('touchend', onDragEnd);
 
     if (currentBlendTarget !== originLi) {
+      console.log(DBTAG, `Committing blend between ${originLi} and ${currentBlendTarget}`);
       blendCommitted = true;
       setDotBlend(lid, iid, ci, originLi, currentBlendTarget);
+    } else {
+      console.log(DBTAG, 'onDragEnd — no target change, blend not committed');
     }
   }
 
   dot.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
+    console.log(DBTAG, `mousedown — starting 300ms hold timer`);
     //Capture clientX/Y immediately — the event object may be recycled by the time the timer fires
     const snapshotX = e.clientX;
     const snapshotY = e.clientY;
     pressTimer = setTimeout(() => {
+      console.log(DBTAG, '300ms hold elapsed — calling startBlendDrag');
       startBlendDrag({ clientX: snapshotX, clientY: snapshotY, preventDefault: () => {} });
     }, 300);
     document.addEventListener('mouseup', function cancelHold() {
+      console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
       clearTimeout(pressTimer);
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
   });
 
   dot.addEventListener('touchstart', e => {
+    console.log(DBTAG, 'touchstart — starting 300ms hold timer');
     //Capture touch coordinates immediately for the same reason
     const touch = e.touches[0];
     const snapshotX = touch.clientX;
     const snapshotY = touch.clientY;
     pressTimer = setTimeout(() => {
+      console.log(DBTAG, '300ms hold elapsed (touch) — calling startBlendDrag');
       startBlendDrag({ touches: [{ clientX: snapshotX, clientY: snapshotY }], preventDefault: () => {} });
     }, 300);
   }, { passive: true });
 
   dot.addEventListener('touchend', () => {
+    console.log(DBTAG, 'touchend — clearing hold timer');
     clearTimeout(pressTimer);
   });
 
