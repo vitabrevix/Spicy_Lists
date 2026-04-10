@@ -956,9 +956,12 @@ function initDotDelegation() {
   }
 
   // Mouse
+  console.log('[initDotDelegation] attaching mousedown to grid=', grid, '| grid.id=', grid.id);
   grid.addEventListener('mousedown', e => {
+    console.log('[DIAG grid-mousedown] FIRED target=', e.target.className, '| currentTarget.id=', e.currentTarget.id, '| button=', e.button);
     if (e.button !== 0) return;
     const dot = e.target.closest('.dot');
+    console.log('[DIAG grid-mousedown] dot=', dot ? dot.dataset.li : 'none');
     if (!dot) return;
     e.preventDefault(); //Prevent native drag from stealing mousemove on HTTPS origins
 
