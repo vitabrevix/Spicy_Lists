@@ -648,3 +648,42 @@ button:hover { background: var(--bg-hover); }
 }
 
 .btn-add:hover { background: #c8e3f8; }
+
+///// Pinnable Header /////
+
+.pinnable-header {
+  background: var(--bg);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.pinnable-header.is-pinned {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 1.5rem 1.5rem 0.75rem;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.pinnable-header-spacer {
+  display: none;
+}
+
+.pinnable-header-spacer.is-pinned {
+  display: block;
+}
+
+.btn-pin {
+  font-size: 13px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-pin.active {
+  background: #ddeeff;
+  color: #1a5fa8;
+  border-color: #7ab4e8;
+}

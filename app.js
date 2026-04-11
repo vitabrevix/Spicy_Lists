@@ -14,6 +14,7 @@ let dragSrc = null;
 let dragSrcList = null;
 let darkMode = false;
 let dropdownOpen = false;
+let headerPinned = false;
 
 //URL Share State
 let activePresetNames = [];
@@ -1106,6 +1107,7 @@ function render() {
   renderLegend();
   renderLists();
   if (openColorPicker !== null) positionColorPicker();
+  applyPinState();
 }
 
 document.addEventListener('click', e => {
@@ -1126,14 +1128,45 @@ document.addEventListener('click', e => {
   }
 });
 
-window.addEventListener('scroll', () => { positionColorPicker(); }, true);
-window.addEventListener('resize', () => { positionColorPicker(); });
+window.addEventListener('scroll', () => {
+  positionColorPicker();
+  if (headerPinned) {
+    const spacer = document.getElementById('pinnable-header-spacer');
+    const header = document.getElementById('pinnable-header');
+    if (spacer && header) spacer.style.height = header.offsetHeight + 'px';
+  }
+}, true);
+window.addEventListener('resize', () => { positionColorPicker(); applyPinState(); });
 
 function toggleDark() {
   darkMode = !darkMode;
   document.body.classList.toggle('dark', darkMode);
   document.getElementById('darkmode-btn').textContent = darkMode ? 'Light' : 'Dark';
   try { localStorage.setItem('darkMode', darkMode ? '1' : '0'); } catch (e) {}
+}
+
+function applyPinState() {
+  const header  = document.getElementById('pinnable-header');
+  const spacer  = document.getElementById('pinnable-header-spacer');
+  const btn     = document.getElementById('pin-btn');
+  if (!header || !spacer) return;
+  if (headerPinned) {
+    header.classList.add('is-pinned');
+    spacer.classList.add('is-pinned');
+    spacer.style.height = header.offsetHeight + 'px';
+    if (btn) btn.classList.add('active');
+  } else {
+    header.classList.remove('is-pinned');
+    spacer.classList.remove('is-pinned');
+    spacer.style.height = '';
+    if (btn) btn.classList.remove('active');
+  }
+}
+
+function togglePin() {
+  headerPinned = !headerPinned;
+  try { localStorage.setItem('headerPinned', headerPinned ? '1' : '0'); } catch (e) {}
+  applyPinState();
 }
 
 function restoreDarkMode() {
@@ -1143,6 +1176,14 @@ function restoreDarkMode() {
       document.body.classList.add('dark');
       const btn = document.getElementById('darkmode-btn');
       if (btn) btn.textContent = 'Light';
+    }
+  } catch (e) {}
+}
+
+function restoreHeaderPin() {
+  try {
+    if (localStorage.getItem('headerPinned') === '1') {
+      headerPinned = true;
     }
   } catch (e) {}
 }
@@ -1716,6 +1757,7 @@ async function exportJpg() {
 })();
 
 restoreDarkMode();
+restoreHeaderPin();
 render();
 initPremade();
 initDropImport();
