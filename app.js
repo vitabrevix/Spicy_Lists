@@ -957,12 +957,19 @@ function initDotDelegation() {
   }
 
   // Mouse
+  let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild
+
+  document.addEventListener('mouseup', () => { _mouseIsDown = false; }, true);
+
   document.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
+    //Ignore re-entrant mousedown while button is still physically held (e.g. after render() rebuilds DOM)
+    if (_mouseIsDown) return;
     const dot = e.target.closest('.dot');
     if (!isDot(dot)) return;
     //Only handle dots inside the lists-grid
     if (!dot.closest('#lists-grid')) return;
+    _mouseIsDown = true;
     const key = dotKey(dot);
     const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
     console.log(DBTAG, 'mousedown — starting 300ms hold timer');
