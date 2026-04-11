@@ -60,6 +60,10 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
+@media (max-width: 600px) {
+  body { padding: 0.75rem; }
+}
+
 .sr-only {
   position: absolute; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
@@ -71,9 +75,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 16px;
+  gap: 8px;
   margin-bottom: 1.5rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .top-bar { gap: 6px; margin-bottom: 1rem; }
 }
 
 .top-bar-left {
@@ -649,7 +657,92 @@ button:hover { background: var(--bg-hover); }
 
 .btn-add:hover { background: #c8e3f8; }
 
-///// Pinnable Header /////
+.top-bar-left-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+.top-bar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .top-bar-right-group {
+    margin-left: 0;
+    width: 100%;
+  }
+  .top-bar-left-group {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .lists-grid {
+    flex-direction: column;
+  }
+
+  .list-block {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .list-table {
+    width: 100%;
+  }
+
+  .list-table.has-columns thead {
+    display: none;
+  }
+
+  .list-table.has-columns tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0;
+    border-bottom: 0.5px solid var(--border-row);
+  }
+
+  .list-table.has-columns tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .list-table.has-columns tbody td {
+    display: flex;
+    align-items: center;
+    padding: 3px 0;
+    white-space: normal;
+  }
+
+  .list-table.has-columns tbody td.label-td {
+    font-weight: 500;
+    padding-bottom: 4px;
+  }
+
+  .list-table.has-columns tbody td[data-col]::before {
+    content: attr(data-col);
+    font-size: 11px;
+    color: var(--text-faint);
+    font-weight: 500;
+    min-width: 60px;
+    flex-shrink: 0;
+    padding-right: 8px;
+  }
+
+  .list-table.has-columns tbody td.label-td::before {
+    display: none;
+  }
+
+  .list-table:not(.has-columns) {
+    width: 100%;
+  }
+}
 
 .pinnable-header {
   background: var(--bg);

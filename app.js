@@ -767,6 +767,7 @@ function renderLists() {
 
     const table = document.createElement('table');
     table.className = 'list-table';
+    if (list.columns.length > 0) table.classList.add('has-columns');
 
     if (list.columns.length > 0) {
       const thead = document.createElement('thead');
@@ -788,8 +789,9 @@ function renderLists() {
       labelTd.appendChild(buildLabelCell(item));
       tr.appendChild(labelTd);
 
-      list.columns.forEach((_, ci) => {
+      list.columns.forEach((col, ci) => {
         const td = document.createElement('td');
+        td.dataset.col = col;
         const dotVal = item.dots[ci] != null ? item.dots[ci] : 0;
         const isBlend = typeof dotVal === 'object' && dotVal !== null;
 
