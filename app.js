@@ -905,6 +905,7 @@ function _onBlendTouchMove(e) {
 }
 
 function _onBlendEnd() {
+  console.log('[_onBlendEnd] called _blendState=', !!_blendState);
   if (!_blendState) return;
   const { dotsDiv, originLi, currentTarget, lid, iid, ci, DBTAG } = _blendState;
   console.log(DBTAG, `onDragEnd — currentBlendTarget=${currentTarget} originLi=${originLi}`);
@@ -948,6 +949,11 @@ function _startBlendDrag(dot) {
 let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild after blend commit
 
 function initDotDelegation() {
+  //Raw mouseup probe — fires before everything else in capture phase
+  document.addEventListener('mouseup', e => {
+    console.log('[PROBE mouseup] button=', e.button, 'target=', e.target.className || e.target.tagName, '_blendState=', !!_blendState);
+  }, true);
+
   //Track per-dot hold timers keyed by dataset identity
   const _pressTimers = new Map();
   const _holdFired   = new Map();
