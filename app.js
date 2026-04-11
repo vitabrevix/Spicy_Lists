@@ -214,6 +214,7 @@ async function initPremade() {
 
   // URL Preset + Dot Loading
   // ?p=Name1,Name2 loads presets in order (first = replace, rest = add).
+  // ?d=<encoded> restores selected dot values after all presets are applied.
   const urlParams = new URLSearchParams(location.search);
   const pParam = urlParams.get('p');
   const dParam = urlParams.get('d');
@@ -1173,7 +1174,8 @@ function exportJson() {
   setTimeout(() => URL.revokeObjectURL(link.href), 10000);
 }
 
-// Dot State Encoding
+//Dot State Encoding
+
 // d= packs multiple dot selections into each character.
 // b= stores only the blend cells that actually exist, as a sparse sequence.
 
@@ -1233,25 +1235,26 @@ function _unpackDots(str, L, totalDots) {
   return out;
 }
 
-// d= : pack all single-selection dot values, blend cells stored as 0
+// d= : single flat stream of all dot values across all lists/items/columns, no separators.
+// The loaded list structure provides all the boundary info needed to decode.
 function encodeDotSelections() {
   const L = legend.length;
-  const listParts = lists.map(list =>
-    list.items.map(item => {
-      const values = list.columns.map((_, ci) => {
+  const allValues = [];
+  lists.forEach(list =>
+    list.items.forEach(item =>
+      list.columns.forEach((_, ci) => {
         const v = item.dots[ci];
-        if (typeof v === 'object' && v !== null) return 0; // blend placeholder
-        return typeof v === 'number' ? Math.max(0, Math.min(v, L - 1)) : 0;
-      });
-      return _packDots(values, L);
-    }).join('.')
+        if (typeof v === 'object' && v !== null) { allValues.push(0); return; }
+        allValues.push(typeof v === 'number' ? Math.max(0, Math.min(v, L - 1)) : 0);
+      })
+    )
   );
-  return listParts.join('_');
+  return _packDots(allValues, L);
 }
 
 // b= : sparse blend entries only
 function encodeBlends() {
-  const L   = legend.length;
+  const L     = legend.length;
   const ssMax = (L - 1) * (L - 1) - 1;
   const ssCpd = _charsFor(ssMax);
   let out = '';
@@ -1276,18 +1279,16 @@ function encodeBlends() {
 function applyEncodedDots(encoded) {
   if (!encoded) return;
   const L = legend.length;
-  const listParts = encoded.split('_');
-  lists.forEach((list, li) => {
-    const itemParts = (listParts[li] || '').split('.');
-    list.items.forEach((item, ii) => {
-      const chunk      = itemParts[ii] || '';
-      const totalDots  = list.columns.length;
-      const values     = _unpackDots(chunk, L, totalDots);
+  const totalDots = lists.reduce((s, list) => s + list.items.length * list.columns.length, 0);
+  const flat = _unpackDots(encoded, L, totalDots);
+  let cursor = 0;
+  lists.forEach(list =>
+    list.items.forEach(item =>
       list.columns.forEach((_, ci) => {
-        item.dots[ci] = values[ci] || 0;
-      });
-    });
-  });
+        item.dots[ci] = flat[cursor++] || 0;
+      })
+    )
+  );
 }
 
 // Apply b= string back onto current lists (blends, overrides any d= value for that cell).
