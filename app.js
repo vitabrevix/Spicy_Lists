@@ -16,7 +16,7 @@ let darkMode = false;
 let dropdownOpen = false;
 let headerPinned = false;
 
-//URL Share State
+// URL Share State
 let activePresetNames = [];
 
 const loadedPresetFingerprints = new Set();
@@ -133,11 +133,89 @@ function applyPresetData(data, mode, presetName) {
   render();
 }
 
+// Custom Preset Persistence
+
+const CUSTOM_PRESETS_KEY = 'spicyLists_customPresets';
+
+function loadCustomPresetsFromStorage() {
+  try {
+    const raw = localStorage.getItem(CUSTOM_PRESETS_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw);
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCustomPresetsToStorage(presets) {
+  try {
+    localStorage.setItem(CUSTOM_PRESETS_KEY, JSON.stringify(presets));
+  } catch (e) {}
+}
+
+function deleteCustomPreset(name) {
+  const presets = loadCustomPresetsFromStorage().filter(p => p.name !== name);
+  saveCustomPresetsToStorage(presets);
+  populateSelect(_currentFilenames || []);
+}
+
+function loadCustomPresetAdd(name) {
+  const presets = loadCustomPresetsFromStorage();
+  const found = presets.find(p => p.name === name);
+  if (!found) return;
+  closeCustomDropdown();
+  applyPresetData(found.data, 'add', name);
+}
+
+function loadCustomPresetReplace(name) {
+  const presets = loadCustomPresetsFromStorage();
+  const found = presets.find(p => p.name === name);
+  if (!found) return;
+  closeCustomDropdown();
+  applyPresetData(found.data, 'replace', name);
+}
+
+function importCustomPreset() {
+  closeCustomDropdown();
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.multiple = true;
+  input.onchange = async () => {
+    const files = Array.from(input.files).filter(f => f.name.endsWith('.json'));
+    if (files.length === 0) return;
+    const existing = loadCustomPresetsFromStorage();
+    for (const file of files) {
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        const name = file.name.replace(/\.json$/i, '');
+        const idx = existing.findIndex(p => p.name === name);
+        if (idx !== -1) {
+          existing[idx] = { name, data };
+        } else {
+          existing.push({ name, data });
+        }
+        showPresetPopover(`Saved "${name}" to presets`);
+      } catch (err) {
+        showPresetPopover(`Could not read ${file.name}`);
+      }
+    }
+    saveCustomPresetsToStorage(existing);
+    populateSelect(_currentFilenames || []);
+  };
+  input.click();
+}
+
+let _currentFilenames = [];
+
 function populateSelect(filenames) {
+  _currentFilenames = filenames;
   const menu = document.getElementById('custom-dropdown-menu');
   const dropdown = document.getElementById('custom-dropdown');
   const folderBtn = document.getElementById('premade-folder-btn');
   menu.innerHTML = '';
+
   const sorted = filenames.slice().sort((a, b) => {
     const aPin = a.startsWith('_') ? 0 : 1;
     const bPin = b.startsWith('_') ? 0 : 1;
@@ -176,8 +254,56 @@ function populateSelect(filenames) {
     });
     menu.appendChild(item);
   });
+
+  // Custom (saved) presets from localStorage
+  const customPresets = loadCustomPresetsFromStorage();
+  if (customPresets.length > 0) {
+    const sep = document.createElement('div');
+    sep.className = 'custom-dropdown-separator';
+    menu.appendChild(sep);
+
+    customPresets.forEach(preset => {
+      const item = document.createElement('div');
+      item.className = 'custom-dropdown-item';
+      item.innerHTML = `
+        <span class="custom-dropdown-item-label custom-preset-label">&#128190; ${preset.name}</span>
+        <button class="custom-dropdown-replace-btn" title="Replace all">&#x1F504;</button>
+        <button class="custom-dropdown-delete-btn" title="Delete from memory">&#x1F5D1;</button>`;
+      item.querySelector('.custom-preset-label').addEventListener('click', () => {
+        loadCustomPresetAdd(preset.name);
+      });
+      item.querySelector('.custom-dropdown-replace-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        loadCustomPresetReplace(preset.name);
+      });
+      item.querySelector('.custom-dropdown-delete-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        deleteCustomPreset(preset.name);
+      });
+      menu.appendChild(item);
+    });
+  }
+
+  // Import JSON footer item
+  const footerSep = document.createElement('div');
+  footerSep.className = 'custom-dropdown-separator';
+  menu.appendChild(footerSep);
+
+  const importItem = document.createElement('div');
+  importItem.className = 'custom-dropdown-item custom-dropdown-import-item';
+  importItem.innerHTML = `<span class="custom-dropdown-import-label">&#x1F4E5; Import JSON&#x2026;</span>`;
+  importItem.addEventListener('click', () => {
+    importCustomPreset();
+  });
+  menu.appendChild(importItem);
+
+  //Only hide the folder picker button when real server/folder presets are present.
+  if (filenames.length > 0) {
+    folderBtn.style.display = 'none';
+  } else {
+    folderBtn.style.display = '';
+  }
   dropdown.style.display = '';
-  folderBtn.style.display = 'none';
 }
 
 function toggleCustomDropdown() {
@@ -211,7 +337,11 @@ async function fetchPresetData(filename) {
 }
 
 async function initPremade() {
-  if (location.protocol === 'file:') return;
+  if (location.protocol === 'file:') {
+    //Still show the dropdown so custom (saved) presets are accessible
+    populateSelect([]);
+    return;
+  }
 
   // URL Preset + Dot Loading
   // ?p=Name1,Name2 loads presets in order (first = replace, rest = add).
@@ -267,12 +397,15 @@ async function initPremade() {
 
   try {
     const res = await fetch('./premade/index.json');
-    if (!res.ok) return;
+    if (!res.ok) {
+      populateSelect([]);
+      return;
+    }
     const files = await res.json();
-    if (!Array.isArray(files) || files.length === 0) return;
-    populateSelect(files);
+    populateSelect(Array.isArray(files) ? files : []);
   } catch (e) {
     console.warn('Could not load premade/index.json:', e);
+    populateSelect([]);
   }
 }
 
