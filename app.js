@@ -963,8 +963,6 @@ function initDotDelegation() {
     if (!isDot(dot)) return;
     //Only handle dots inside the lists-grid
     if (!dot.closest('#lists-grid')) return;
-    e.preventDefault(); //Prevent native drag stealing mousemove on HTTPS
-
     const key = dotKey(dot);
     const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
     console.log(DBTAG, 'mousedown — starting 300ms hold timer');
