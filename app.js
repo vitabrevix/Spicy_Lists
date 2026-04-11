@@ -944,9 +944,6 @@ function _startBlendDrag(dot) {
 }
 
 function initDotDelegation() {
-  const grid = document.getElementById('lists-grid');
-  console.log('[initDotDelegation] grid found=', !!grid);
-
   //Track per-dot hold timers keyed by dataset identity
   const _pressTimers = new Map();
   const _holdFired   = new Map();
@@ -955,15 +952,18 @@ function initDotDelegation() {
     return `${dot.dataset.lid}-${dot.dataset.iid}-${dot.dataset.ci}-${dot.dataset.li}`;
   }
 
+  function isDot(el) {
+    return el && el.classList && el.classList.contains('dot') && el.dataset.lid;
+  }
+
   // Mouse
-  console.log('[initDotDelegation] attaching mousedown to grid=', grid, '| grid.id=', grid.id);
-  grid.addEventListener('mousedown', e => {
-    console.log('[DIAG grid-mousedown] FIRED target=', e.target.className, '| currentTarget.id=', e.currentTarget.id, '| button=', e.button);
+  document.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
     const dot = e.target.closest('.dot');
-    console.log('[DIAG grid-mousedown] dot=', dot ? dot.dataset.li : 'none');
-    if (!dot) return;
-    e.preventDefault(); //Prevent native drag from stealing mousemove on HTTPS origins
+    if (!isDot(dot)) return;
+    //Only handle dots inside the lists-grid
+    if (!dot.closest('#lists-grid')) return;
+    e.preventDefault(); //Prevent native drag stealing mousemove on HTTPS
 
     const key = dotKey(dot);
     const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
@@ -984,19 +984,20 @@ function initDotDelegation() {
       }
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
-  }, { capture: true });
+  }, true); //capture=true: fires before any element can stop it
 
-  //Suppress browser native drag-and-drop on dots
-  grid.addEventListener('dragstart', e => {
-    if (e.target.closest('.dot')) e.preventDefault();
-  }, { capture: true });
+  //Suppress native drag on dots
+  document.addEventListener('dragstart', e => {
+    if (isDot(e.target.closest('.dot'))) e.preventDefault();
+  }, true);
 
-  grid.addEventListener('click', e => {
+  document.addEventListener('click', e => {
     const dot = e.target.closest('.dot');
-    if (!dot) return;
-    //If a blend drag just committed, swallow the click that follows mouseup then reset
+    if (!isDot(dot)) return;
+    if (!dot.closest('#lists-grid')) return;
     const key = dotKey(dot);
-    if (_blendState === null && _holdFired.get(key)) { _holdFired.set(key, false); return; }
+    //Swallow the click that fires immediately after a completed blend drag
+    if (_holdFired.get(key)) { _holdFired.set(key, false); return; }
     if (!_blendState) {
       const li  = parseInt(dot.dataset.li,  10);
       const lid = parseInt(dot.dataset.lid, 10);
@@ -1004,12 +1005,13 @@ function initDotDelegation() {
       const ci  = parseInt(dot.dataset.ci,  10);
       cycleDot(lid, iid, ci, li);
     }
-  }, { capture: true });
+  }, true);
 
   // Touch
-  grid.addEventListener('touchstart', e => {
+  document.addEventListener('touchstart', e => {
     const dot = e.target.closest('.dot');
-    if (!dot) return;
+    if (!isDot(dot)) return;
+    if (!dot.closest('#lists-grid')) return;
     const key = dotKey(dot);
     const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
     console.log(DBTAG, 'touchstart — starting 300ms hold timer');
@@ -1023,9 +1025,10 @@ function initDotDelegation() {
     _pressTimers.set(key, timer);
   }, { passive: true, capture: true });
 
-  grid.addEventListener('touchend', e => {
+  document.addEventListener('touchend', e => {
     const dot = e.target.closest('.dot');
-    if (!dot) return;
+    if (!isDot(dot)) return;
+    if (!dot.closest('#lists-grid')) return;
     const key = dotKey(dot);
     const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
     if (!_holdFired.get(key)) {
