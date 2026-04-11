@@ -984,12 +984,12 @@ function initDotDelegation() {
       }
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
-  });
+  }, { capture: true });
 
   //Suppress browser native drag-and-drop on dots
   grid.addEventListener('dragstart', e => {
     if (e.target.closest('.dot')) e.preventDefault();
-  });
+  }, { capture: true });
 
   grid.addEventListener('click', e => {
     const dot = e.target.closest('.dot');
@@ -1004,9 +1004,9 @@ function initDotDelegation() {
       const ci  = parseInt(dot.dataset.ci,  10);
       cycleDot(lid, iid, ci, li);
     }
-  });
+  }, { capture: true });
 
-  //Touch
+  // Touch
   grid.addEventListener('touchstart', e => {
     const dot = e.target.closest('.dot');
     if (!dot) return;
@@ -1021,7 +1021,7 @@ function initDotDelegation() {
       _startBlendDrag(dot);
     }, 300);
     _pressTimers.set(key, timer);
-  }, { passive: true });
+  }, { passive: true, capture: true });
 
   grid.addEventListener('touchend', e => {
     const dot = e.target.closest('.dot');
@@ -1032,7 +1032,7 @@ function initDotDelegation() {
       console.log(DBTAG, 'touchend — clearing hold timer');
       clearTimeout(_pressTimers.get(key));
     }
-  });
+  }, { capture: true });
 }
 
 function render() {

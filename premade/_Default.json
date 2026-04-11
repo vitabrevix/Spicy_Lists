@@ -161,13 +161,15 @@
         { "label": "Gentle Dominant",  "dots": [0, 0] },
         { "label": "Brat Submissive",  "dots": [0, 0] },
         { "label": "Brat Taming",  "dots": [0, 0] },
-        { "label": "Older Domiannt",  "dots": [0, 0] },
+        { "label": "Older Dominant",  "dots": [0, 0] },
         { "label": "Older Submissive",  "dots": [0, 0] },
-        { "label": "Full Ownership",  "dots": [0, 0] },
+        { "label": "Full Ownership",  "dots": [0, 0], "desc": "For the better or worse, some pesky laws prohibit the full ownership of another human being in the day of now, but the closer we get to that reality through the dynamic, the better, no?" },
+        { "label": "Public Display of Ownership",  "dots": [0, 0], "desc": "It may be hidden/coded message for only those that understand, or easily redable message, but a symbol of the Dom's ownership over the Sub will never not be extremely alluring for all involved" },
         { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },
         { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
         { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
-        { "label": "Trainer Submissive",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" }
+        { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
+        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
       ]
     },
     {
@@ -177,7 +179,6 @@
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
         { "label": "Rules", "dots": [0, 0] },
-        { "label": "Inmobilization",  "dots": [0, 0] },
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
@@ -272,6 +273,7 @@
         { "label": "Leash and Collar",  "dots": [0, 0] },
         { "label": "Light Bondage",  "dots": [0, 0] },
         { "label": "Heavy Bondage",  "dots": [0, 0] }
+
         
       ]
     }
