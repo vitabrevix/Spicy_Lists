@@ -1174,8 +1174,7 @@ function exportJson() {
   setTimeout(() => URL.revokeObjectURL(link.href), 10000);
 }
 
-//Dot State Encoding
-
+// Dot State Encoding
 // d= packs multiple dot selections into each character.
 // b= stores only the blend cells that actually exist, as a sparse sequence.
 
@@ -1235,8 +1234,11 @@ function _unpackDots(str, L, totalDots) {
   return out;
 }
 
-// d= : single flat stream of all dot values across all lists/items/columns, no separators.
-// The loaded list structure provides all the boundary info needed to decode.
+// d= : all dot values packed as a single base-62 stream (no separators).
+// Uses mixed-radix packing: floor(log(62)/log(L)) dot values per char.
+// Zero is the default value and trailing zeros are omitted — on decode,
+// any position past the end of the string is treated as 0.
+// Blend cells are stored as 0 here and overridden by b=.
 function encodeDotSelections() {
   const L = legend.length;
   const allValues = [];
@@ -1249,6 +1251,9 @@ function encodeDotSelections() {
       })
     )
   );
+  // Trim trailing zeros so all-default state produces an empty string
+  while (allValues.length > 0 && allValues[allValues.length - 1] === 0) allValues.pop();
+  if (allValues.length === 0) return '';
   return _packDots(allValues, L);
 }
 
@@ -1276,6 +1281,7 @@ function encodeBlends() {
 }
 
 // Apply d= string back onto current lists (single selections only).
+// Positions past the end of the encoded string default to 0.
 function applyEncodedDots(encoded) {
   if (!encoded) return;
   const L = legend.length;
