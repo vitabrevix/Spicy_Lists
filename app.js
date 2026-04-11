@@ -905,7 +905,6 @@ function _onBlendTouchMove(e) {
 }
 
 function _onBlendEnd() {
-  console.log('[_onBlendEnd] called _blendState=', !!_blendState);
   if (!_blendState) return;
   const { dotsDiv, originLi, currentTarget, lid, iid, ci, DBTAG } = _blendState;
   console.log(DBTAG, `onDragEnd — currentBlendTarget=${currentTarget} originLi=${originLi}`);
@@ -949,10 +948,7 @@ function _startBlendDrag(dot) {
 let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild after blend commit
 
 function initDotDelegation() {
-  //Raw mouseup probe — fires before everything else in capture phase
-  document.addEventListener('mouseup', e => {
-    console.log('[PROBE mouseup] button=', e.button, 'target=', e.target.className || e.target.tagName, '_blendState=', !!_blendState);
-  }, true);
+  document.addEventListener('mouseup', () => {}, true);
 
   //Track per-dot hold timers keyed by dataset identity
   const _pressTimers = new Map();
@@ -1494,16 +1490,12 @@ initDotDelegation();
 
 document.addEventListener('mousedown', e => {
   const dot = e.target.closest('.dot');
-  console.log('[DIAG mousedown] target=', e.target.className || e.target.tagName, '| closest .dot=', dot ? 'dot[li='+dot.dataset.li+' ci='+dot.dataset.ci+']' : 'none');
 }, true);
 
 setTimeout(() => {
   const dots = document.querySelectorAll('.dot');
-  console.log('[DIAG 2s] dot count=', dots.length, '| lists.length=', lists.length);
   if (dots.length > 0) {
     const d = dots[0];
-    console.log('[DIAG 2s] first dot dataset=', JSON.stringify(d.dataset), '| pointer-events=', getComputedStyle(d).pointerEvents);
   }
   const grid = document.getElementById('lists-grid');
-  console.log('[DIAG 2s] grid exists=', !!grid, '| grid childCount=', grid ? grid.children.length : 'N/A');
 }, 2000);
