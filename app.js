@@ -912,10 +912,10 @@ function _onBlendEnd() {
 
   _removePreviewPill(dotsDiv);
   dotsDiv.classList.remove('dragging-blend');
-  document.removeEventListener('mousemove',  _onBlendMove);
-  document.removeEventListener('mouseup',    _onBlendEnd);
-  document.removeEventListener('touchmove',  _onBlendTouchMove);
-  document.removeEventListener('touchend',   _onBlendEnd);
+  document.removeEventListener('mousemove',  _onBlendMove,       true);
+  document.removeEventListener('mouseup',    _onBlendEnd,        true);
+  document.removeEventListener('touchmove',  _onBlendTouchMove,  true);
+  document.removeEventListener('touchend',   _onBlendEnd,        true);
 
   if (currentTarget !== originLi) {
     console.log(DBTAG, `Committing blend between ${originLi} and ${currentTarget}`);
@@ -938,10 +938,10 @@ function _startBlendDrag(dot) {
 
   _blendState = { dotsDiv, originLi: li, currentTarget: li, lid, iid, ci, DBTAG };
   dotsDiv.classList.add('dragging-blend');
-  document.addEventListener('mousemove',  _onBlendMove);
-  document.addEventListener('mouseup',    _onBlendEnd);
-  document.addEventListener('touchmove',  _onBlendTouchMove, { passive: false });
-  document.addEventListener('touchend',   _onBlendEnd);
+  document.addEventListener('mousemove',  _onBlendMove,       true);
+  document.addEventListener('mouseup',    _onBlendEnd,        true);
+  document.addEventListener('touchmove',  _onBlendTouchMove, { passive: false, capture: true });
+  document.addEventListener('touchend',   _onBlendEnd,        true);
   console.log(DBTAG, 'startBlendDrag — blendMode=true, listeners attached');
 }
 
@@ -982,15 +982,16 @@ function initDotDelegation() {
     }, 300);
     _pressTimers.set(key, timer);
 
-    document.addEventListener('mouseup', function cancelHold() {
+    function cancelHold() {
       if (!_holdFired.get(key)) {
         console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
         clearTimeout(_pressTimers.get(key));
         _mouseIsDown = false; //Quick click — no blend started, reset immediately
       }
-      //If hold fired, _onBlendEnd resets _mouseIsDown via setTimeout after render
-      document.removeEventListener('mouseup', cancelHold);
-    }, { once: true });
+      //If hold fired, _onBlendEnd handles cleanup and resets _mouseIsDown
+      document.removeEventListener('mouseup', cancelHold, true);
+    }
+    document.addEventListener('mouseup', cancelHold, true);
   }, true); //capture=true: fires before any element can stop it
 
   //Suppress native drag on dots
@@ -1014,7 +1015,7 @@ function initDotDelegation() {
     }
   }, true);
 
-  //  Touch
+  // Touch
   document.addEventListener('touchstart', e => {
     const dot = e.target.closest('.dot');
     if (!isDot(dot)) return;
