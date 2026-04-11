@@ -923,6 +923,8 @@ function _onBlendEnd() {
   } else {
     console.log(DBTAG, 'onDragEnd — no target change, blend not committed');
   }
+  //Reset after render() has finished rebuilding DOM, so re-entrant mousedown on new nodes is blocked
+  setTimeout(() => { _mouseIsDown = false; }, 0);
 }
 
 function _startBlendDrag(dot) {
@@ -943,6 +945,8 @@ function _startBlendDrag(dot) {
   console.log(DBTAG, 'startBlendDrag — blendMode=true, listeners attached');
 }
 
+let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild after blend commit
+
 function initDotDelegation() {
   //Track per-dot hold timers keyed by dataset identity
   const _pressTimers = new Map();
@@ -957,10 +961,6 @@ function initDotDelegation() {
   }
 
   // Mouse
-  let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild
-
-  document.addEventListener('mouseup', () => { _mouseIsDown = false; }, true);
-
   document.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
     //Ignore re-entrant mousedown while button is still physically held (e.g. after render() rebuilds DOM)
@@ -986,7 +986,9 @@ function initDotDelegation() {
       if (!_holdFired.get(key)) {
         console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
         clearTimeout(_pressTimers.get(key));
+        _mouseIsDown = false; //Quick click — no blend started, reset immediately
       }
+      //If hold fired, _onBlendEnd resets _mouseIsDown via setTimeout after render
       document.removeEventListener('mouseup', cancelHold);
     }, { once: true });
   }, true); //capture=true: fires before any element can stop it
@@ -1012,7 +1014,7 @@ function initDotDelegation() {
     }
   }, true);
 
-  // Touch
+  //  Touch
   document.addEventListener('touchstart', e => {
     const dot = e.target.closest('.dot');
     if (!isDot(dot)) return;
