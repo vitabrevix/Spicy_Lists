@@ -872,7 +872,7 @@ function _updatePreviewPill(dotsDiv, idxA, idxB) {
 
 function _onBlendMove(e) {
   if (!_blendState) return;
-  const { dotsDiv, originLi, DBTAG } = _blendState;
+  const { dotsDiv, originLi } = _blendState;
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const allDots = Array.from(dotsDiv.querySelectorAll('.dot'));
   allDots.forEach(d => d.classList.remove('blend-candidate'));
@@ -883,7 +883,6 @@ function _onBlendMove(e) {
     if (clientX >= rect.left - 4 && clientX <= rect.right + 4) hovered = idx;
   });
 
-  console.log(DBTAG, `onDragMove clientX=${clientX} hovered=${hovered} originLi=${originLi} dotsCount=${allDots.length}`);
 
   if (hovered !== null && hovered !== originLi) {
     _blendState.currentTarget = hovered;
@@ -892,7 +891,6 @@ function _onBlendMove(e) {
     if (allDots[a]) allDots[a].classList.add('blend-candidate');
     if (b !== a && allDots[b]) allDots[b].classList.add('blend-candidate');
     _updatePreviewPill(dotsDiv, originLi, hovered);
-    console.log(DBTAG, `updatePreviewPill a=${a} b=${b}`);
   } else {
     _blendState.currentTarget = originLi;
     _removePreviewPill(dotsDiv);
@@ -906,8 +904,7 @@ function _onBlendTouchMove(e) {
 
 function _onBlendEnd() {
   if (!_blendState) return;
-  const { dotsDiv, originLi, currentTarget, lid, iid, ci, DBTAG } = _blendState;
-  console.log(DBTAG, `onDragEnd — currentBlendTarget=${currentTarget} originLi=${originLi}`);
+  const { dotsDiv, originLi, currentTarget, lid, iid, ci } = _blendState;
   _blendState = null;
 
   _removePreviewPill(dotsDiv);
@@ -918,10 +915,8 @@ function _onBlendEnd() {
   document.removeEventListener('touchend',   _onBlendEnd,        true);
 
   if (currentTarget !== originLi) {
-    console.log(DBTAG, `Committing blend between ${originLi} and ${currentTarget}`);
     setDotBlend(lid, iid, ci, originLi, currentTarget);
   } else {
-    console.log(DBTAG, 'onDragEnd — no target change, blend not committed');
   }
   //Reset after render() has finished rebuilding DOM, so re-entrant mousedown on new nodes is blocked
   setTimeout(() => { _mouseIsDown = false; }, 0);
@@ -934,15 +929,13 @@ function _startBlendDrag(dot) {
   const lid = parseInt(dot.dataset.lid, 10);
   const iid = parseInt(dot.dataset.iid, 10);
   const ci  = parseInt(dot.dataset.ci,  10);
-  const DBTAG = `[Blend dot=${li} ci=${ci} iid=${iid}]`;
 
-  _blendState = { dotsDiv, originLi: li, currentTarget: li, lid, iid, ci, DBTAG };
+  _blendState = { dotsDiv, originLi: li, currentTarget: li, lid, iid, ci };
   dotsDiv.classList.add('dragging-blend');
   document.addEventListener('mousemove',  _onBlendMove,       true);
   document.addEventListener('mouseup',    _onBlendEnd,        true);
   document.addEventListener('touchmove',  _onBlendTouchMove, { passive: false, capture: true });
   document.addEventListener('touchend',   _onBlendEnd,        true);
-  console.log(DBTAG, 'startBlendDrag — blendMode=true, listeners attached');
 }
 
 let _mouseIsDown = false; //True from mousedown until mouseup — blocks re-entry on DOM rebuild after blend commit
@@ -973,20 +966,16 @@ function initDotDelegation() {
     if (!dot.closest('#lists-grid')) return;
     _mouseIsDown = true;
     const key = dotKey(dot);
-    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
-    console.log(DBTAG, 'mousedown — starting 300ms hold timer');
     _holdFired.set(key, false);
 
     const timer = setTimeout(() => {
       _holdFired.set(key, true);
-      console.log(DBTAG, '300ms hold elapsed — calling startBlendDrag');
       _startBlendDrag(dot);
     }, 300);
     _pressTimers.set(key, timer);
 
     function cancelHold() {
       if (!_holdFired.get(key)) {
-        console.log(DBTAG, 'mouseup before 300ms — cancelling hold timer');
         clearTimeout(_pressTimers.get(key));
         _mouseIsDown = false; //Quick click — no blend started, reset immediately
       }
@@ -1023,13 +1012,10 @@ function initDotDelegation() {
     if (!isDot(dot)) return;
     if (!dot.closest('#lists-grid')) return;
     const key = dotKey(dot);
-    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
-    console.log(DBTAG, 'touchstart — starting 300ms hold timer');
 
     _holdFired.set(key, false);
     const timer = setTimeout(() => {
       _holdFired.set(key, true);
-      console.log(DBTAG, '300ms hold elapsed (touch) — calling startBlendDrag');
       _startBlendDrag(dot);
     }, 300);
     _pressTimers.set(key, timer);
@@ -1040,9 +1026,7 @@ function initDotDelegation() {
     if (!isDot(dot)) return;
     if (!dot.closest('#lists-grid')) return;
     const key = dotKey(dot);
-    const DBTAG = `[Blend dot=${dot.dataset.li} ci=${dot.dataset.ci} iid=${dot.dataset.iid}]`;
     if (!_holdFired.get(key)) {
-      console.log(DBTAG, 'touchend — clearing hold timer');
       clearTimeout(_pressTimers.get(key));
     }
   }, { capture: true });
