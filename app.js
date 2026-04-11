@@ -15,6 +15,9 @@ let dragSrcList = null;
 let darkMode = false;
 let dropdownOpen = false;
 
+//URL Share State
+let activePresetNames = [];
+
 const loadedPresetFingerprints = new Set();
 
 const fileMap = {};
@@ -97,7 +100,7 @@ function showPresetPopover(msg) {
   pop._fadeTimer = setTimeout(() => { pop.style.opacity = '0'; }, 2500);
 }
 
-function applyPresetData(data, mode) {
+function applyPresetData(data, mode, presetName) {
   const parsed = parseLists(data);
   if (mode === 'replace') {
     lists = parsed;
@@ -105,6 +108,7 @@ function applyPresetData(data, mode) {
     if (parsedLegend) legend = parsedLegend;
     loadedPresetFingerprints.clear();
     loadedPresetFingerprints.add(presetFingerprint(data));
+    activePresetNames = presetName ? [presetName] : [];
   } else {
     if (parsed.length === 0) return;
     const existingNames = new Set(lists.map(l => l.name.trim().toLowerCase()));
@@ -121,6 +125,9 @@ function applyPresetData(data, mode) {
     }
     loadedPresetFingerprints.add(presetFingerprint(data));
     lists = lists.concat(toAdd);
+    if (presetName && !activePresetNames.includes(presetName)) {
+      activePresetNames.push(presetName);
+    }
   }
   render();
 }
@@ -204,13 +211,49 @@ async function fetchPresetData(filename) {
 
 async function initPremade() {
   if (location.protocol === 'file:') return;
-  try {
-    const defData = await fetchPresetData('_Default.json');
-    const parsedLegend = parseLegend(defData);
-    if (parsedLegend) legend = parsedLegend;
-    applyPresetData(defData, 'replace');
-  } catch (e) {
+
+  //URL Preset Loading
+  // If ?p=Name1,Name2 is in the URL, load them in order (first = replace, rest = add).
+  const urlParams = new URLSearchParams(location.search);
+  const pParam = urlParams.get('p');
+  const urlPresetNames = pParam
+    ? pParam.split(',').map(s => s.trim()).filter(Boolean)
+    : [];
+
+  if (urlPresetNames.length > 0) {
+    //Load presets specified by URL, skip _Default
+    for (let i = 0; i < urlPresetNames.length; i++) {
+      const name = urlPresetNames[i];
+      //Try both plain name and _-prefixed variant as filenames
+      const candidates = [`_${name}.json`, `${name}.json`];
+      let loaded = false;
+      for (const filename of candidates) {
+        try {
+          const data = await fetchPresetData(filename);
+          applyPresetData(data, i === 0 ? 'replace' : 'add', name);
+          loaded = true;
+          break;
+        } catch (e) {
+          //Try next candidate
+        }
+      }
+      if (!loaded) {
+        showPresetPopover(`Could not load preset "${name}" from URL`);
+      }
+    }
+  } else {
+    //Default: load _Default.json
+    try {
+      const defData = await fetchPresetData('_Default.json');
+      const parsedLegend = parseLegend(defData);
+      if (parsedLegend) legend = parsedLegend;
+      applyPresetData(defData, 'replace', '_Default');
+      //Remove _Default from activePresetNames — it's the implicit baseline, not shareable
+      activePresetNames = [];
+    } catch (e) {
+    }
   }
+
   try {
     const res = await fetch('./premade/index.json');
     if (!res.ok) return;
@@ -239,7 +282,9 @@ async function onFolderPicked(input) {
       const data = JSON.parse(await defaultFile.text());
       const parsedLegend = parseLegend(data);
       if (parsedLegend) legend = parsedLegend;
-      applyPresetData(data, 'replace');
+      applyPresetData(data, 'replace', '_Default');
+      //Do not expose _Default in activePresetNames since it is the implicit baseline
+      activePresetNames = [];
     } catch (e) {
       console.warn('Could not parse _Default.json:', e);
     }
@@ -252,7 +297,8 @@ async function loadPremadeAdd(filename) {
   if (!filename) return;
   try {
     const data = await fetchPresetData(filename);
-    applyPresetData(data, 'add');
+    const name = filename.replace(/\.json$/i, '').replace(/^_/, '');
+    applyPresetData(data, 'add', name);
   } catch (e) {
     alert(`Could not load preset "${filename}".`);
   }
@@ -262,7 +308,8 @@ async function loadPremadeReplace(filename) {
   if (!filename) return;
   try {
     const data = await fetchPresetData(filename);
-    applyPresetData(data, 'replace');
+    const name = filename.replace(/\.json$/i, '').replace(/^_/, '');
+    applyPresetData(data, 'replace', name);
   } catch (e) {
     alert(`Could not load preset "${filename}".`);
   }
@@ -393,6 +440,10 @@ function addList() {
   if (!name) return;
   lists.push({ id: id(), name, columns: [], items: [] });
   inp.value = '';
+  //Track manually created list names in the share URL state
+  if (!activePresetNames.includes(name)) {
+    activePresetNames.push(name);
+  }
   render();
 }
 
@@ -1111,6 +1162,41 @@ function exportJson() {
   link.href = URL.createObjectURL(blob);
   link.click();
   setTimeout(() => URL.revokeObjectURL(link.href), 10000);
+}
+
+// Share URL
+function buildShareUrl() {
+  const base = location.origin + location.pathname;
+  if (activePresetNames.length === 0) return base;
+  const param = activePresetNames.map(n => encodeURIComponent(n)).join(',');
+  return `${base}?p=${param}`;
+}
+
+async function copyShareUrl() {
+  const url = buildShareUrl();
+  try {
+    await navigator.clipboard.writeText(url);
+    showShareCopied();
+  } catch (e) {
+    //Fallback: prompt with the URL so the user can copy manually
+    prompt('Copy this share URL:', url);
+  }
+}
+
+function showShareCopied() {
+  const btn = document.getElementById('share-btn');
+  if (!btn) return;
+  const prev = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.style.background = '#ddeeff';
+  btn.style.color = '#1a5fa8';
+  btn.style.borderColor = '#7ab4e8';
+  setTimeout(() => {
+    btn.textContent = prev;
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.style.borderColor = '';
+  }, 1800);
 }
 
 function initDropImport() {

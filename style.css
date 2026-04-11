@@ -240,6 +240,15 @@ button:hover { background: var(--bg-hover); }
   border-color: var(--text);
 }
 
+.btn-share {
+  font-size: 13px;
+  padding: 5px 13px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
 .btn-export:hover { opacity: 0.82; background: var(--text); }
 
 .btn-darkmode {
