@@ -1789,7 +1789,7 @@ async function exportJpg() {
 
   const pillsRow = document.createElement('div');
   pillsRow.style.cssText = 'display:flex;gap:14px;flex-wrap:wrap;align-items:center;';
-  legend.forEach(item => {
+  legend.forEach((item, li) => {
     const pill = document.createElement('div');
     pill.style.cssText = [
       'display:flex', 'align-items:center', 'gap:5px',
@@ -1826,28 +1826,56 @@ async function exportJpg() {
   });
   gridClone.querySelectorAll('.list-table tbody td.label-td').forEach(td => { td.style.color = t.text; });
 
-  //blend-pill pseudo-elements don't survive cloneNode, replace with real divs
-  const liveDots  = Array.from(document.getElementById('lists-grid').querySelectorAll('.dots.blend-pill'));
-  const cloneDots = Array.from(gridClone.querySelectorAll('.dots.blend-pill'));
-  liveDots.forEach((live, i) => {
-    const clone = cloneDots[i];
-    if (!clone) return;
-    const left  = live.style.getPropertyValue('--pill-left');
-    const width = live.style.getPropertyValue('--pill-width');
-    const colA  = live.style.getPropertyValue('--blend-col-a');
-    const colB  = live.style.getPropertyValue('--blend-col-b');
-    const pill = document.createElement('div');
-    pill.style.cssText = [
-      'position:absolute', `left:${left}`, `width:${width}`,
-      'top:0', 'bottom:0', 'border-radius:999px', 'pointer-events:none',
-      `background:linear-gradient(to right,${colA},${colB})`, 'z-index:0',
-    ].join(';');
-    clone.style.position = 'relative';
-    clone.insertBefore(pill, clone.firstChild);
-    clone.querySelectorAll('.dot').forEach(d => {
-      d.style.position = 'relative';
-      d.style.zIndex = '1';
-    });
+  // Replace each .dots cell with only the selected dot(s) — single or blend pair
+  const DOT_SIZE = 20;
+  gridClone.querySelectorAll('.dots').forEach(dotsDiv => {
+    const isBlend = dotsDiv.classList.contains('blend-pill');
+
+    if (isBlend) {
+      const colA = dotsDiv.style.getPropertyValue('--blend-col-a');
+      const colB = dotsDiv.style.getPropertyValue('--blend-col-b');
+      const blendA = parseInt(dotsDiv.dataset.blendA, 10);
+      const blendB = parseInt(dotsDiv.dataset.blendB, 10);
+      const legA = legend[Math.min(blendA, blendB)];
+      const legB = legend[Math.max(blendA, blendB)];
+
+      dotsDiv.innerHTML = '';
+      dotsDiv.style.cssText = 'position:relative;display:inline-flex;align-items:center;gap:5px;';
+      dotsDiv.classList.remove('blend-pill');
+
+      const gradPill = document.createElement('div');
+      gradPill.style.cssText = [
+        'position:absolute', 'top:0', 'bottom:0', 'left:0', 'right:0',
+        'border-radius:999px', 'pointer-events:none', 'z-index:0',
+        `background:linear-gradient(to right,${colA || legA.color},${colB || legB.color})`,
+      ].join(';');
+      dotsDiv.appendChild(gradPill);
+
+      [legA, legB].forEach(leg => {
+        if (!leg) return;
+        const d = document.createElement('div');
+        d.style.cssText = [
+          `width:${DOT_SIZE}px`, `height:${DOT_SIZE}px`, 'border-radius:50%',
+          `background:${leg.color}`, 'position:relative', 'z-index:1',
+        ].join(';');
+        dotsDiv.appendChild(d);
+      });
+    } else {
+      const selectedDot = dotsDiv.querySelector('.dot.selected');
+      const color = selectedDot ? selectedDot.style.background : (legend[0] ? legend[0].color : '#888');
+      const title = selectedDot ? selectedDot.title : '';
+
+      dotsDiv.innerHTML = '';
+      dotsDiv.style.cssText = 'display:inline-flex;align-items:center;';
+
+      const d = document.createElement('div');
+      d.title = title;
+      d.style.cssText = [
+        `width:${DOT_SIZE}px`, `height:${DOT_SIZE}px`, 'border-radius:50%',
+        `background:${color}`,
+      ].join(';');
+      dotsDiv.appendChild(d);
+    }
   });
 
   wrap.appendChild(gridClone);
