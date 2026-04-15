@@ -809,16 +809,27 @@ function buildLabelCell(item) {
     //Delay timer shared between this dot and the popover so neither closes it prematurely
     let hideTimer = null;
     const cancelHide = () => { clearTimeout(hideTimer); hideTimer = null; };
+
+    //Fully remove popover from hit-testing when hidden
+    const reallyHide = (pop) => {
+      pop.style.opacity = '0';
+      pop.style.pointerEvents = 'none';
+      pop.style.display = 'none';
+      pop._pinned = false;
+    };
+
     const scheduleHide = () => {
+      //Never auto-hide a click-pinned popover
+      const pop = document.getElementById('desc-popover');
+      if (pop && pop._pinned) return;
       cancelHide();
-      //Small delay lets the mouse travel across the gap between dot and popover
       hideTimer = setTimeout(() => {
-        const pop = document.getElementById('desc-popover');
-        if (pop) pop.style.opacity = '0';
+        const p = document.getElementById('desc-popover');
+        if (p && !p._pinned) reallyHide(p);
       }, 120);
     };
 
-    const showPop = () => {
+    const showPop = (pinned) => {
       cancelHide();
       let pop = document.getElementById('desc-popover');
       if (!pop) {
@@ -831,20 +842,22 @@ function buildLabelCell(item) {
           'padding:7px 12px', 'font-size:12px', 'max-width:min(260px,80vw)',
           'white-space:normal', 'line-height:1.5',
           'box-shadow:0 4px 16px rgba(0,0,0,0.35)',
-          'pointer-events:auto', 'opacity:0',
+          'pointer-events:auto', 'display:none', 'opacity:0',
           'transition:opacity 0.2s ease',
         ].join(';');
         document.body.appendChild(pop);
       }
 
-      //Re-bind every time so the popover always uses the current dot's cancel/schedule closures
-      pop.onmouseenter = cancelHide;
-      pop.onmouseleave = scheduleHide;
+      pop._pinned = !!pinned;
+      //Re-bind hover so mouse-travel across gap still works for non-pinned
+      pop.onmouseenter = () => { if (!pop._pinned) cancelHide(); };
+      pop.onmouseleave = () => { if (!pop._pinned) scheduleHide(); };
 
       pop.innerHTML = '';
       pop.appendChild(renderDesc(item.desc));
+      pop.style.display = 'block';
+      pop.style.pointerEvents = 'auto';
       positionPop(pop, dot);
-      //Re-position once images have loaded so the box fits the content
       pop.querySelectorAll('img').forEach(img => {
         if (!img.complete) img.addEventListener('load', () => positionPop(pop, dot), { once: true });
       });
@@ -853,17 +866,22 @@ function buildLabelCell(item) {
     const hidePop = () => {
       cancelHide();
       const pop = document.getElementById('desc-popover');
-      if (pop) pop.style.opacity = '0';
+      if (pop) reallyHide(pop);
     };
 
-    dot.addEventListener('mouseenter', showPop);
+    dot.addEventListener('mouseenter', () => showPop(false));
     dot.addEventListener('mouseleave', scheduleHide);
-    dot.addEventListener('focus', showPop);
+    dot.addEventListener('focus', () => showPop(false));
     dot.addEventListener('blur', scheduleHide);
     dot.addEventListener('click', e => {
       e.stopPropagation();
       const pop = document.getElementById('desc-popover');
-      if (pop && pop.style.opacity === '1') hidePop(); else showPop();
+      //If this dot's popover is already pinned open, close it
+      if (pop && pop._pinned && pop.style.display !== 'none') {
+        hidePop();
+      } else {
+        showPop(true);
+      }
     });
 
     wrap.appendChild(dot);
@@ -1243,6 +1261,7 @@ function render() {
   renderLists();
   if (openColorPicker !== null) positionColorPicker();
   applyPinState();
+  if (indexOpen) buildIndexPanel();
 }
 
 document.addEventListener('click', e => {
@@ -1261,6 +1280,19 @@ document.addEventListener('click', e => {
   if (importDropdownOpen && !e.target.closest('#import-json-wrapper')) {
     closeImportDropdown();
   }
+  if (indexOpen && !e.target.closest('#index-panel') && !e.target.closest('#index-btn')) {
+    indexOpen = false;
+    const btn = document.getElementById('index-btn');
+    if (btn) btn.classList.remove('active');
+    removeIndexPanel();
+  }
+  const pop = document.getElementById('desc-popover');
+  if (pop && pop._pinned && !e.target.closest('#desc-popover') && !e.target.closest('.info-dot')) {
+    pop.style.opacity = '0';
+    pop.style.pointerEvents = 'none';
+    pop.style.display = 'none';
+    pop._pinned = false;
+  }
 });
 
 window.addEventListener('scroll', () => {
@@ -1270,6 +1302,7 @@ window.addEventListener('scroll', () => {
     const header = document.getElementById('pinnable-header');
     if (spacer && header) spacer.style.height = header.offsetHeight + 'px';
   }
+  updateMobileIndexBtn();
 }, true);
 window.addEventListener('resize', () => { positionColorPicker(); applyPinState(); });
 
@@ -1278,6 +1311,119 @@ function toggleDark() {
   document.body.classList.toggle('dark', darkMode);
   document.getElementById('darkmode-btn').textContent = darkMode ? 'Light' : 'Dark';
   try { localStorage.setItem('darkMode', darkMode ? '1' : '0'); } catch (e) {}
+}
+
+let indexOpen = false;
+
+function toggleIndex() {
+  indexOpen = !indexOpen;
+  const btn = document.getElementById('index-btn');
+  if (btn) btn.classList.toggle('active', indexOpen);
+  if (indexOpen) {
+    buildIndexPanel();
+  } else {
+    removeIndexPanel();
+  }
+}
+
+function buildIndexPanel() {
+  removeIndexPanel();
+  const panel = document.createElement('div');
+  panel.id = 'index-panel';
+  panel.className = 'index-panel';
+
+  if (lists.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'index-panel-empty';
+    empty.textContent = 'No lists yet';
+    panel.appendChild(empty);
+  } else {
+    lists.forEach((list, i) => {
+      const item = document.createElement('div');
+      item.className = 'index-panel-item';
+
+      const num = document.createElement('span');
+      num.className = 'index-panel-item-num';
+      num.textContent = (i + 1) + '.';
+
+      const label = document.createElement('span');
+      label.textContent = list.name;
+      label.style.overflow = 'hidden';
+      label.style.textOverflow = 'ellipsis';
+
+      item.appendChild(num);
+      item.appendChild(label);
+
+      item.addEventListener('click', () => {
+        const block = document.querySelector(`.list-block[data-lid="${list.id}"]`);
+        if (block) {
+          block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          block.style.outline = '2px solid var(--border-soft)';
+          setTimeout(() => { block.style.outline = ''; }, 1200);
+        }
+        indexOpen = false;
+        const btn = document.getElementById('index-btn');
+        if (btn) btn.classList.remove('active');
+        removeIndexPanel();
+      });
+
+      panel.appendChild(item);
+    });
+  }
+
+  positionIndexPanel(panel);
+  document.body.appendChild(panel);
+}
+
+function positionIndexPanel(panel) {
+  const isMobile = window.innerWidth <= 600;
+  const btn = document.getElementById('index-btn');
+
+  if (isMobile) {
+    const scrolled = window.scrollY > (document.getElementById('pinnable-header').offsetHeight || 80);
+    if (scrolled) {
+      panel.classList.add('mobile-float');
+      return;
+    }
+  }
+
+  if (!btn) return;
+  const r = btn.getBoundingClientRect();
+  panel.style.position = 'fixed';
+  panel.style.top = (r.bottom + 6) + 'px';
+  const panelW = 200;
+  let left = r.right - panelW;
+  if (left < 8) left = 8;
+  panel.style.left = left + 'px';
+  panel.style.right = 'auto';
+}
+
+function removeIndexPanel() {
+  const p = document.getElementById('index-panel');
+  if (p) p.remove();
+}
+
+function updateMobileIndexBtn() {
+  if (window.innerWidth > 600) return;
+  const btn = document.getElementById('index-btn');
+  if (!btn) return;
+  const header = document.getElementById('pinnable-header');
+  const headerH = header ? header.offsetHeight : 80;
+  const scrolled = window.scrollY > headerH;
+  btn.classList.toggle('mobile-pinned', scrolled);
+
+  const panel = document.getElementById('index-panel');
+  if (panel) {
+    if (scrolled) {
+      panel.classList.add('mobile-float');
+      panel.style.position = '';
+      panel.style.top = '';
+      panel.style.left = '';
+    } else {
+      panel.classList.remove('mobile-float');
+      positionIndexPanel(panel);
+    }
+  }
 }
 
 function applyPinState() {

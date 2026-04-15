@@ -813,3 +813,89 @@ body.dark .custom-dropdown-import-label {
   color: #1a5fa8;
   border-color: #7ab4e8;
 }
+
+.btn-index {
+  font-size: 13px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-index.active {
+  background: #ddeeff;
+  color: #1a5fa8;
+  border-color: #7ab4e8;
+}
+
+/* Floating index panel */
+.index-panel {
+  position: absolute;
+  z-index: 950;
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-soft);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  padding: 8px 0;
+  min-width: 160px;
+  max-width: 240px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.index-panel-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.index-panel-item:hover {
+  background: var(--bg-item-hover);
+  color: var(--text);
+}
+
+.index-panel-item-num {
+  font-size: 11px;
+  color: var(--text-hint);
+  flex-shrink: 0;
+  min-width: 16px;
+  text-align: right;
+}
+
+.index-panel-empty {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text-hint);
+  font-style: italic;
+}
+
+/* Mobile: floating index button when scrolled past header */
+@media (max-width: 600px) {
+  .index-panel.mobile-float {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    max-height: 70vh;
+  }
+
+  #index-btn.mobile-pinned {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 940;
+    box-shadow: 0 2px 10px var(--shadow);
+    background: var(--bg-card);
+  }
+
+  #index-btn.mobile-pinned.active {
+    background: #ddeeff;
+  }
+}
