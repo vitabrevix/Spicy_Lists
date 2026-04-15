@@ -9,7 +9,19 @@
   ],
   "lists": [
     {
-      "name": "Roleplay",
+      "name": "Scene Types",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Romantic",   "dots": [0, 0] },
+        { "label": "Wholesome",   "dots": [0, 0] },
+        { "label": "Public",  "dots": [0, 0] },
+        { "label": "Grim/Dark",  "dots": [0, 0] },
+        { "label": "Extreme",  "dots": [0, 0] },
+        { "label": "Group",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Fantasy",
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "Furry",   "dots": [0, 0] },

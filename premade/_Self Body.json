@@ -82,6 +82,22 @@
         { "label": "Ankles",  "dots": [0, 0] },
         { "label": "Feet",  "dots": [0, 0] }
       ]
+    },
+    {
+      "name": "Body Parts",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Crow Feet",   "dots": [0, 0], "desc":"[https://draxe.com/wp-content/uploads/2024/03/shutterstock_1642402627-1.jpg]" },
+        { "label": "Gray Hair",   "dots": [0, 0], "desc":"[https://nickyoliver.com/wp-content/uploads/Grey-Hair-.jpg]" },
+        { "label": "Smile Lines",  "dots": [0, 0], "desc":"[https://cdn.shopify.com/s/files/1/0251/2184/9419/files/Colorescience_Blog_Refresh_1_graphic_1_1024x1024.jpg?v=1703020460]" },
+        { "label": "Freckles",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/FrecklesAfterSummertime.jpg/960px-FrecklesAfterSummertime.jpg]" },
+        { "label": "Under-eye Circles",   "dots": [0, 0], "desc":"[https://www.oxygenetix.com/cdn/shop/articles/Dark_Circles_Eyes.jpg]" },
+        { "label": "Stretch Marks",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/c/ce/Female_Torso_with_Tiger_Stripes_%28Stretch_Marks%29_from_Pregnancy.JPG]" },
+        { "label": "Scars",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scar_%28xndr%29.jpg/1280px-Scar_%28xndr%29.jpg]" },
+        { "label": "Veiny Hands/Arms",   "dots": [0, 0], "desc":"[https://i.imgflip.com/1tzd77.jpg]" },
+        { "label": "Hip Dips",   "dots": [0, 0], "desc":"[https://cdn.prod.website-files.com/5cdb1a9543c13e4de6193985/66364ca4cb57fb317b5b5f9f_What%20are%20Hip%20Dips%20and%20How%20to%20Fix.webp]" },
+        { "label": "Body Hair",   "dots": [0, 0] }
+      ]
     }
   ]
 }

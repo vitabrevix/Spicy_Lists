@@ -23,6 +23,22 @@
       ]
     },
     {
+      "name": "Body type",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
+        { "label": "Short", "dots": [0, 0] },
+        { "label": "Skinny",  "dots": [0, 0] },
+        { "label": "Lean",  "dots": [0, 0] },
+        { "label": "Fit",  "dots": [0, 0] },
+        { "label": "Athletic",  "dots": [0, 0] },
+        { "label": "Muscular",  "dots": [0, 0] },
+        { "label": "Chubby",  "dots": [0, 0] },
+        { "label": "Curvy",  "dots": [0, 0] },
+        { "label": "Overweight",  "dots": [0, 0] }
+      ]
+    },
+    {
       "name": "Sexuality",
       "columns": ["Self"],
       "items": [
@@ -41,22 +57,6 @@
         { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" },
         { "label": "Glory Hole User",   "dots": [0, 0] },
         { "label": "Glory Hole Receiver",   "dots": [0, 0], "desc": "It wont suck itself" }
-      ]
-    },
-    {
-      "name": "Body type",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
-        { "label": "Short", "dots": [0, 0] },
-        { "label": "Skinny",  "dots": [0, 0] },
-        { "label": "Lean",  "dots": [0, 0] },
-        { "label": "Fit",  "dots": [0, 0] },
-        { "label": "Athletic",  "dots": [0, 0] },
-        { "label": "Muscular",  "dots": [0, 0] },
-        { "label": "Chubby",  "dots": [0, 0] },
-        { "label": "Curvy",  "dots": [0, 0] },
-        { "label": "Overweight",  "dots": [0, 0] }
       ]
     },
     {
@@ -83,20 +83,20 @@
       "name": "Body Parts",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Crow Feet",   "dots": [0, 0] },
-        { "label": "Gray Hair",   "dots": [0, 0] },
-        { "label": "Smile Lines",  "dots": [0, 0] },
-        { "label": "Freckless",   "dots": [0, 0] },
-        { "label": "Under-eye Circles",   "dots": [0, 0] },
-        { "label": "Stretch Marks",   "dots": [0, 0] },
-        { "label": "Scars",   "dots": [0, 0] },
-        { "label": "Veiny Hands/Arms",   "dots": [0, 0] },
+        { "label": "Crow Feet",   "dots": [0, 0], "desc":"[https://draxe.com/wp-content/uploads/2024/03/shutterstock_1642402627-1.jpg]" },
+        { "label": "Gray Hair",   "dots": [0, 0], "desc":"[https://nickyoliver.com/wp-content/uploads/Grey-Hair-.jpg]" },
+        { "label": "Smile Lines",  "dots": [0, 0], "desc":"[https://cdn.shopify.com/s/files/1/0251/2184/9419/files/Colorescience_Blog_Refresh_1_graphic_1_1024x1024.jpg?v=1703020460]" },
+        { "label": "Freckles",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/FrecklesAfterSummertime.jpg/960px-FrecklesAfterSummertime.jpg]" },
+        { "label": "Under-eye Circles",   "dots": [0, 0], "desc":"[https://www.oxygenetix.com/cdn/shop/articles/Dark_Circles_Eyes.jpg]" },
+        { "label": "Stretch Marks",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/c/ce/Female_Torso_with_Tiger_Stripes_%28Stretch_Marks%29_from_Pregnancy.JPG]" },
+        { "label": "Scars",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scar_%28xndr%29.jpg/1280px-Scar_%28xndr%29.jpg]" },
+        { "label": "Veiny Hands/Arms",   "dots": [0, 0], "desc":"[https://i.imgflip.com/1tzd77.jpg]" },
         { "label": "Collarbones",   "dots": [0, 0] },
-        { "label": "Hip Dips",   "dots": [0, 0] },
+        { "label": "Hip Dips",   "dots": [0, 0], "desc":"[https://cdn.prod.website-files.com/5cdb1a9543c13e4de6193985/66364ca4cb57fb317b5b5f9f_What%20are%20Hip%20Dips%20and%20How%20to%20Fix.webp]" },
         { "label": "Wrists",   "dots": [0, 0] },
         { "label": "Ankles",   "dots": [0, 0] },
         { "label": "Fingers",   "dots": [0, 0] },
-        { "label": "Feet",   "dots": [0, 0] },
+        { "label": "Feet",   "dots": [0, 0], "desc":"What were you expecting? A pic? You gooner" },
         { "label": "Armpits",   "dots": [0, 0] },
         { "label": "Body Hair",   "dots": [0, 0] }
       ]
