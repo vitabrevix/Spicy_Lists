@@ -9,8 +9,22 @@
   ],
   "lists": [
     {
+      "name": "Gender",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Male",   "dots": [0, 0], "desc":"[https://i.kym-cdn.com/photos/images/newsfeed/003/072/174/6fd.jpg]" },
+        { "label": "Female", "dots": [0, 0] },
+        { "label": "Trans Female",  "dots": [0, 0] },
+        { "label": "Trans Male",  "dots": [0, 0] },
+        { "label": "Non-Binary",  "dots": [0, 0] },
+        { "label": "Femboy/Twink",  "dots": [0, 0] },
+        { "label": "Tomboy",  "dots": [0, 0] },
+        { "label": "Bear",  "dots": [0, 0] }
+      ]
+    },
+    {
       "name": "Body type",
-      "columns": ["Self", "Partner"],
+      "columns": ["Self"],
       "items": [
         { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
         { "label": "Short", "dots": [0, 0] },
@@ -26,7 +40,7 @@
     },
     {
       "name": "Erogenous Zones",
-      "columns": ["Self", "Partner"],
+      "columns": ["Self"],
       "items": [
         { "label": "Big Ass",   "dots": [0, 0] },
         { "label": "Average Ass",   "dots": [0, 0] },
@@ -45,36 +59,28 @@
       ]
     },
     {
-      "name": "Body Parts",
-      "columns": ["Self", "Partner"],
+      "name": "Sensitive Body Parts",
+      "columns": ["Self"],
       "items": [
-        { "label": "Crow Feet",   "dots": [0, 0] },
-        { "label": "Gray Hair",   "dots": [0, 0] },
-        { "label": "Smile Lines",  "dots": [0, 0] },
-        { "label": "Freckless",   "dots": [0, 0] },
-        { "label": "Under-eye Circles",   "dots": [0, 0] },
-        { "label": "Stretch Marks",   "dots": [0, 0] },
-        { "label": "Scars",   "dots": [0, 0] },
-        { "label": "Veiny Hands/Arms",   "dots": [0, 0] },
-        { "label": "Collarbones",   "dots": [0, 0] },
-        { "label": "Hip Dips",   "dots": [0, 0] },
-        { "label": "Wrists",   "dots": [0, 0] },
-        { "label": "Ankles",   "dots": [0, 0] },
-        { "label": "Fingers",   "dots": [0, 0] },
-        { "label": "Feet",   "dots": [0, 0] },
-        { "label": "Armpits",   "dots": [0, 0] },
-        { "label": "Body Hair",   "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Body Modification",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Piercings",   "dots": [0, 0] },
-        { "label": "Tatoos",   "dots": [0, 0] },
-        { "label": "Shaving",  "dots": [0, 0] },
-        { "label": "3D Implants",  "dots": [0, 0], "desc":"More professionally named {subdermal implants}[https://en.wikipedia.org/wiki/Subdermal_implant], a type of implant placed under the skin to modify its shape, like for example {making a dick bumpy}[https://en.wikipedia.org/wiki/Pearling_(body_modification)]" },
-        { "label": "Tongue splitting",  "dots": [0, 0] }
+        { "label": "Face",   "dots": [0, 0] },
+        { "label": "Lips",   "dots": [0, 0] },
+        { "label": "Nose",   "dots": [0, 0] },
+        { "label": "Ears",   "dots": [0, 0] },
+        { "label": "Neck", "dots": [0, 0] },
+        { "label": "Chest/s",  "dots": [0, 0] },
+        { "label": "Nipples",  "dots": [0, 0] },
+        { "label": "Shoulders",  "dots": [0, 0] },
+        { "label": "Arms",  "dots": [0, 0] },
+        { "label": "Wrists",  "dots": [0, 0] },
+        { "label": "Hands",  "dots": [0, 0] },
+        { "label": "Stomach",  "dots": [0, 0] },
+        { "label": "Hips",  "dots": [0, 0] },
+        { "label": "Crotch",  "dots": [0, 0] },
+        { "label": "Buttocks",  "dots": [0, 0] },
+        { "label": "Thighs",  "dots": [0, 0] },
+        { "label": "Legs",  "dots": [0, 0] },
+        { "label": "Ankles",  "dots": [0, 0] },
+        { "label": "Feet",  "dots": [0, 0] }
       ]
     }
   ]

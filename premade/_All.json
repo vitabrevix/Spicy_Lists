@@ -18,7 +18,8 @@
         { "label": "Trans Male",  "dots": [0, 0] },
         { "label": "Non-Binary",  "dots": [0, 0] },
         { "label": "Femboy/Twink",  "dots": [0, 0] },
-        { "label": "Tomboy",  "dots": [0, 0] }
+        { "label": "Tomboy",  "dots": [0, 0] },
+        { "label": "Bear",  "dots": [0, 0] }
       ]
     },
     {
@@ -29,22 +30,24 @@
         { "label": "Polygamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with multiple partner" },
         { "label": "Polyamorous",  "dots": [0, 0], "desc": "Maintaing a romantic relationship with multiple partner" },
         { "label": "Swinging",   "dots": [0, 0], "desc": "A couple commited to each other romantically, who allow each other to find sexual satisfaction otuside the relationship too" },
-        { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to relationship partner, but during a sexul act" },
-        { "label": "3 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to relationship partner, but during a sexul act" },
-        { "label": "4 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to relationship partner, but during a sexul act" },
+        { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "3 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "4 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
         { "label": "Male & Female Parteners",   "dots": [0, 0] },
         { "label": "Multiple Males",   "dots": [0, 0] },
         { "label": "Multiple Females",   "dots": [0, 0] },
         { "label": "Orgy",   "dots": [0, 0], "desc": "A groupal sexual scenario where all participants can interact with each other in any way" },
         { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" },
-        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" }
+        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" },
+        { "label": "Glory Hole User",   "dots": [0, 0] },
+        { "label": "Glory Hole Receiver",   "dots": [0, 0], "desc": "It wont suck itself" }
       ]
     },
     {
       "name": "Body type",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Tall",   "dots": [0, 0] },
+        { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
         { "label": "Short", "dots": [0, 0] },
         { "label": "Skinny",  "dots": [0, 0] },
         { "label": "Lean",  "dots": [0, 0] },
@@ -94,6 +97,7 @@
         { "label": "Ankles",   "dots": [0, 0] },
         { "label": "Fingers",   "dots": [0, 0] },
         { "label": "Feet",   "dots": [0, 0] },
+        { "label": "Armpits",   "dots": [0, 0] },
         { "label": "Body Hair",   "dots": [0, 0] }
       ]
     },
@@ -110,31 +114,19 @@
         { "label": "Latex",  "dots": [0, 0] },
         { "label": "Leather",  "dots": [0, 0] },
         { "label": "Fishnets",  "dots": [0, 0] },
-        { "label": "",  "dots": [0, 0] }
+        { "label": "Uniform",  "dots": [0, 0] }
       ]
     },
     {
-      "name": "Intimate clothes",
+      "name": "Spicy clothes",
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "Lingerie",   "dots": [0, 0] },
         { "label": "Boxers",   "dots": [0, 0] },
         { "label": "Stockings",  "dots": [0, 0] },
         { "label": "Transparent Underware",   "dots": [0, 0] },
-        { "label": "Opaque Underware",   "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Accessories",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Lipstick",   "dots": [0, 0] },
-        { "label": "Lipstick Marks",   "dots": [0, 0] },
-        { "label": "Long nails",   "dots": [0, 0] },
-        { "label": "Short nails",  "dots": [0, 0] },
-        { "label": "Painted nails",   "dots": [0, 0] },
-        { "label": "Jewlery",   "dots": [0, 0] },
-        { "label": "Glasses",   "dots": [0, 0] }
+        { "label": "Opaque Underware",   "dots": [0, 0] },
+        { "label": "Latex Bodysuit",   "dots": [0, 0] }
       ]
     },
     {
@@ -151,109 +143,30 @@
         { "label": "Pinning",  "dots": [0, 0] },
         { "label": "Undressing Partner",  "dots": [0, 0] },
         { "label": "Strip Tease",  "dots": [0, 0] },
+        { "label": "Licking",  "dots": [0, 0] },
         { "label": "Biting",  "dots": [0, 0] },
         { "label": "Scratching",  "dots": [0, 0] },
-        { "label": "Play Fight",  "dots": [0, 0] }
+        { "label": "Play Fight",  "dots": [0, 0] },
+        { "label": "Groping",  "dots": [0, 0] },
+        { "label": "Hotdogging",  "dots": [0, 0] }
       ]
     },
     {
-      "name": "Dynamic",
+      "name": "Holes",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Dominant",   "dots": [0, 0] },
-        { "label": "Submissive", "dots": [0, 0] },
-        { "label": "Switching Role", "dots": [0, 0] },
-        { "label": "Role Reversal", "dots": [0, 0] },
-        { "label": "Role Uncertainity", "dots": [0, 0], "desc": "Before it becomes clear who will be the Dom and who will be the Sub, the excitement brought by the competition" },
-        { "label": "Romance / Affection",  "dots": [0, 0] },
-        { "label": "DD/lg or MD/lb",  "dots": [0, 0] },
-        { "label": "Petplay",  "dots": [0, 0] },
-        { "label": "Domestic Servitude",  "dots": [0, 0] },
-        { "label": "Slavery",  "dots": [0, 0] },
-        { "label": "Power Exchange",  "dots": [0, 0] },
-        { "label": "Gentle Dominant",  "dots": [0, 0] },
-        { "label": "Brat Submissive",  "dots": [0, 0] },
-        { "label": "Brat Taming",  "dots": [0, 0] },
-        { "label": "Older Domiannt",  "dots": [0, 0] },
-        { "label": "Older Submissive",  "dots": [0, 0] },
-        { "label": "Full Ownership",  "dots": [0, 0] },
-        { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },
-        { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
-        { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
-        { "label": "Trainer Submissive",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" }
-      ]
-    },
-    {
-      "name": "Domination",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Disciplining",   "dots": [0, 0] },
-        { "label": "Tasks", "dots": [0, 0] },
-        { "label": "Rules", "dots": [0, 0] },
-        { "label": "Inmobilization",  "dots": [0, 0] },
-        { "label": "Orgasm Control",  "dots": [0, 0] },
-        { "label": "Forced Orgasm",  "dots": [0, 0] },
-        { "label": "Orgasm Denial",  "dots": [0, 0] },
-        { "label": "Begging",  "dots": [0, 0] },
-        { "label": "Body Worship",  "dots": [0, 0] },
-        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
-        
-        { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
-        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" }
-      ]
-    },
-    {
-      "name": "Degradation",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
-        { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },
-        { "label": "Exhibitionism", "dots": [0, 0] },
-        { "label": "Voyeourism", "dots": [0, 0] },
-        { "label": "Cuckquean", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Bull", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Cuckold", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Small Penis Humiliation", "dots": [0, 0] },
-        { "label": "Penis Size Difference", "dots": [0, 0] },
-        { "label": "Small Breasts Humiliation", "dots": [0, 0] },
-        { "label": "Name Calling", "dots": [0, 0] },
-        { "label": "Censored Porn", "dots": [0, 0] },
-        { "label": "Sissification", "dots": [0, 0] },
-        { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" }
-      ]
-    },
-    {
-      "name": "Consensual Non Consensual",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "CNC / Play Rape",   "dots": [0, 0] },
-        { "label": "Blackmail", "dots": [0, 0] },
-        { "label": "Drugging", "dots": [0, 0] },
-        { "label": "Alcohol",  "dots": [0, 0] },
-        { "label": "Kidnapping",  "dots": [0, 0] },
-        { "label": "Somnophilia",  "dots": [0, 0], "desc": "A sexual interaction where one of the partners is asleep while it happens" },
-        { "label": "Forced Feminaztion",  "dots": [0, 0] },
-        { "label": "Forced Masculinization",  "dots": [0, 0] },
-        { "label": "Forced Transitioning",  "dots": [0, 0] },
-        { "label": "Forced De-Transitioning",  "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Pain",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Sadism",   "dots": [0, 0], "desc": "Deriving pleasure from causing pain" },
-        { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
-        { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
-        { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
-        { "label": "Spanking", "dots": [0, 0] },
-        { "label": "Slapping",  "dots": [0, 0] },
-        { "label": "Caning",  "dots": [0, 0] },
-        { "label": "Flogging",  "dots": [0, 0] },
-        { "label": "Choking",  "dots": [0, 0] },
-        { "label": "Genital Torture",  "dots": [0, 0], "desc": "Regardless of gender, all genitals have the right to be tortured, althought the most known is, of course, {Cock and Ball Torture}[https://en.wikipedia.org/wiki/Cock_and_ball_torture]" },
-        { "label": "Abrasions",  "dots": [0, 0] },
-        { "label": "Cutting",  "dots": [0, 0], "desc": "The use of a blade or sharp object to cut into the skin, provoking bleeding" }
+        { "label": "Anal Teasing", "dots": [0, 0] },
+        { "label": "Anal Fingering",  "dots": [0, 0] },
+        { "label": "Anal Toys",  "dots": [0, 0] },
+        { "label": "Anal Sex/Pegging",  "dots": [0, 0] },
+        { "label": "Anal Fisting",  "dots": [0, 0] },
+        { "label": "Rimming",  "dots": [0, 0] },
+        { "label": "Vaginal Teasing",  "dots": [0, 0] },
+        { "label": "Vaginal Fingering",  "dots": [0, 0] },
+        { "label": "Vaginal Toys",  "dots": [0, 0] },
+        { "label": "Vaginal Sex",  "dots": [0, 0] },
+        { "label": "Vaginal Fisting",  "dots": [0, 0] },
+        { "label": "Cunnilingus",  "dots": [0, 0] }
       ]
     },
     {
@@ -274,6 +187,86 @@
       ]
     },
     {
+      "name": "General",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Edging",   "dots": [0, 0] },
+        { "label": "Handjob",   "dots": [0, 0] },
+        { "label": "Scissoring",   "dots": [0, 0] },
+        { "label": "Footjob",   "dots": [0, 0] },
+        { "label": "Outercourse",   "dots": [0, 0] },
+        { "label": "Face Sitting",   "dots": [0, 0] },
+        { "label": "Breeding",   "dots": [0, 0], "desc":"A clouded judgement with a single minded focus, does not neccessarily entail impregnation" },
+        { "label": "Impregnation",   "dots": [0, 0], "desc":"The act of inseminating a partner" },
+        { "label": "Condoms",   "dots": [0, 0] },
+        { "label": "Raw",   "dots": [0, 0] },
+        { "label": "Armpit Musk",   "dots": [0, 0] },
+        { "label": "Genital Musk",   "dots": [0, 0] },
+        { "label": "Anal Musk",   "dots": [0, 0] },
+        { "label": "Feet Musk",   "dots": [0, 0] },
+        { "label": "Ass Worship",   "dots": [0, 0] },
+        { "label": "Cock Worship",   "dots": [0, 0] },
+        { "label": "Vaginal Worship",   "dots": [0, 0] },
+        { "label": "Frotting",   "dots": [0, 0] },
+        { "label": "Docking",   "dots": [0, 0], "desc":"Inserting the tip of a phallus in another's foreskin" },
+        { "label": "Mutual Masturbation",   "dots": [0, 0] },
+        { "label": "Hair Pulling",   "dots": [0, 0] },
+        { "label": "Triple Penetration",   "dots": [0, 0] },
+        { "label": "Photographing/Recording",   "dots": [0, 0] },
+        { "label": "Virginity Loss",   "dots": [0, 0] },
+        { "label": "Queefing",   "dots": [0, 0] },
+        { "label": "Hypnosis/Mind Control",   "dots": [0, 0] },
+        { "label": "Cheating",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Dynamic",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Dominant",   "dots": [0, 0] },
+        { "label": "Submissive", "dots": [0, 0] },
+        { "label": "Switching Role", "dots": [0, 0] },
+        { "label": "Role Reversal", "dots": [0, 0] },
+        { "label": "Role Uncertainity", "dots": [0, 0], "desc": "Before it becomes clear who will be the Dom and who will be the Sub, the excitement brought by the competition" },
+        { "label": "Romance / Affection",  "dots": [0, 0] },
+        { "label": "DD/lg or MD/lb",  "dots": [0, 0] },
+        { "label": "Petplay",  "dots": [0, 0] },
+        { "label": "Domestic Servitude",  "dots": [0, 0] },
+        { "label": "Slavery",  "dots": [0, 0] },
+        { "label": "Power Exchange",  "dots": [0, 0] },
+        { "label": "Gentle Dominant",  "dots": [0, 0] },
+        { "label": "Brat Submissive",  "dots": [0, 0] },
+        { "label": "Brat Taming",  "dots": [0, 0] },
+        { "label": "Older Dominant",  "dots": [0, 0] },
+        { "label": "Older Submissive",  "dots": [0, 0] },
+        { "label": "Full Ownership",  "dots": [0, 0], "desc": "For the better or worse, some pesky laws prohibit the full ownership of another human being in the day of now, but the closer we get to that reality through the dynamic, the better, no?" },
+        { "label": "Public Display of Ownership",  "dots": [0, 0], "desc": "It may be hidden/coded message for only those that understand, or easily redable message, but a symbol of the Dom's ownership over the Sub will never not be extremely alluring for all involved" },
+        { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },
+        { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
+        { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
+        { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
+        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
+      ]
+    },
+    {
+      "name": "Domination",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Disciplining",   "dots": [0, 0] },
+        { "label": "Tasks", "dots": [0, 0] },
+        { "label": "Rules", "dots": [0, 0] },
+        { "label": "Orgasm Control",  "dots": [0, 0] },
+        { "label": "Forced Orgasm",  "dots": [0, 0] },
+        { "label": "Orgasm Denial",  "dots": [0, 0] },
+        { "label": "Begging",  "dots": [0, 0] },
+        { "label": "Body Worship",  "dots": [0, 0] },
+        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
+        
+        { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
+        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" }
+      ]
+    },
+    {
       "name": "BDSM",
       "columns": ["Self", "Partner"],
       "items": [
@@ -284,15 +277,88 @@
         { "label": "Collaring",  "dots": [0, 0] },
         { "label": "Leash and Collar",  "dots": [0, 0] },
         { "label": "Light Bondage",  "dots": [0, 0] },
-        { "label": "Heavy Bondage",  "dots": [0, 0] }
-        
+        { "label": "Heavy Bondage",  "dots": [0, 0] },
+        { "label": "Breath Play",  "dots": [0, 0], "desc":"One of the few dangerous kinks, where the submissive surrenders control over their oxygen intake to the dominat will" }
+      ]
+    },
+    {
+      "name": "Pain",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Sadism",   "dots": [0, 0], "desc": "Deriving pleasure from causing pain" },
+        { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
+        { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
+        { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
+        { "label": "Spanking", "dots": [0, 0] },
+        { "label": "Slapping",  "dots": [0, 0] },
+        { "label": "Caning",  "dots": [0, 0] },
+        { "label": "Flogging",  "dots": [0, 0] },
+        { "label": "Choking",  "dots": [0, 0] },
+        { "label": "Genital Torture",  "dots": [0, 0], "desc": "Regardless of gender, all genitals have the right to be tortured, althought the most known is, of course, {Cock and Ball Torture}[https://en.wikipedia.org/wiki/Cock_and_ball_torture]" },
+        { "label": "Abrasions",  "dots": [0, 0] },
+        { "label": "Cutting",  "dots": [0, 0], "desc": "The use of a blade or sharp object to cut into the skin, provoking bleeding" }
+      ]
+    },
+        {
+      "name": "Consensual Non Consensual",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "CNC / Play Rape",   "dots": [0, 0] },
+        { "label": "Blackmail", "dots": [0, 0] },
+        { "label": "Drugging", "dots": [0, 0] },
+        { "label": "Alcohol",  "dots": [0, 0] },
+        { "label": "Kidnapping",  "dots": [0, 0] },
+        { "label": "Somnophilia",  "dots": [0, 0], "desc": "A sexual interaction where one of the partners is asleep while it happens" },
+        { "label": "Forced Feminaztion",  "dots": [0, 0] },
+        { "label": "Forced Masculinization",  "dots": [0, 0] },
+        { "label": "Forced Transitioning",  "dots": [0, 0] },
+        { "label": "Forced De-Transitioning",  "dots": [0, 0] }
+      ]
+    },
+        {
+      "name": "Degradation",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
+        { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },
+        { "label": "Exhibitionism", "dots": [0, 0] },
+        { "label": "Voyeourism", "dots": [0, 0] },
+        { "label": "Cuckquean", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Bull", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Cuckold", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
+        { "label": "Small Penis Humiliation", "dots": [0, 0] },
+        { "label": "Penis Size Difference", "dots": [0, 0] },
+        { "label": "Small Breasts Humiliation", "dots": [0, 0] },
+        { "label": "Name Calling", "dots": [0, 0] },
+        { "label": "Censored Porn", "dots": [0, 0] },
+        { "label": "Sissification", "dots": [0, 0] },
+        { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" },
+        { "label": "Raceplay", "dots": [0, 0]},
+        { "label": "Polical Play", "dots": [0, 0]}
+      ]
+    },
+    {
+      "name": "Identity Loss",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Ego Death",  "dots": [0, 0], "desc": "The death of a previous self, for a greater future self. Using tools such as hypnosis to rebuild anew oneself bit by bit" },
+        { "label": "Feminization",   "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
+        { "label": "Masculinization", "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
+        { "label": "Himbo/Bimboficiation",  "dots": [0, 0], "desc": "Sometimes being a little dummy in bed is just what you need" },
+        { "label": "Corruption",  "dots": [0, 0] },
+        { "label": "Ideology Play", "dots": [0, 0], "desc": "Similar to Political Play, however this kink is rather centered around changing/converting the subject's view of topics like feminism, mysoginy, etc" },
+        { "label": "Dumbification", "dots": [0, 0] }
       ]
     },
     {
       "name": "Fluids",
       "columns": ["Self", "Partner"],
       "items": [
+        { "label": "Sweat",   "dots": [0, 0] },
+        { "label": "Saliva",   "dots": [0, 0] },
         { "label": "Cum play",   "dots": [0, 0] },
+        { "label": "Facial",   "dots": [0, 0] },
+        { "label": "Swallowing",   "dots": [0, 0] },
         { "label": "Snowballing",   "dots": [0, 0], "desc": "Sharing some of the tasty essence with someone else from your mouth to theirs" },
         { "label": "Sloppy Second",   "dots": [0, 0], "desc": "Licking the tasty essence out of someone's used holes" },
         { "label": "Lactation",   "dots": [0, 0] },
@@ -312,6 +378,7 @@
         { "label": "Ears",   "dots": [0, 0] },
         { "label": "Neck", "dots": [0, 0] },
         { "label": "Chest/s",  "dots": [0, 0] },
+        { "label": "Nipples",  "dots": [0, 0] },
         { "label": "Shoulders",  "dots": [0, 0] },
         { "label": "Arms",  "dots": [0, 0] },
         { "label": "Wrists",  "dots": [0, 0] },
@@ -337,14 +404,22 @@
       ]
     },
     {
-      "name": "Identity Loss",
+      "name": "Other Philias",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Ego Death",  "dots": [0, 0], "desc": "The death of a previous self, for a greater future self. Using tools such as hypnosis to rebuild anew oneself bit by bit" },
-        { "label": "Feminization",   "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
-        { "label": "Masculinization", "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
-        { "label": "Himbo/Bimboficiation",  "dots": [0, 0], "desc": "Sometimes being a little dummy in bed is just what you need" },
-        { "label": "Corruption",  "dots": [0, 0] }
+        { "label": "Dacryphilia",   "dots": [0, 0], "desc": "Being turned on by seeing someone cry" },
+        { "label": "Objectophilia",   "dots": [0, 0], "desc": "Being turned on by innanimated objects" },
+        { "label": "Mechanophilia",   "dots": [0, 0], "desc": "Being turned on by machines" },
+        { "label": "Retifism",   "dots": [0, 0], "desc": "Being turned on by shoes or shoewear" },
+        { "label": "Autogynephilia",   "dots": [0, 0], "desc": "Is this really a philia? Idk, I'm putting it in anyways. Being turned on by imagining oneself as a different gender" },
+        { "label": "Frotteurism",   "dots": [0, 0], "desc": "Being turned on by rubbing against others (in a crows, not the other kind of frotting)" },
+        { "label": "Teratophilia",   "dots": [0, 0], "desc": "Being turned on by monsters" },
+        { "label": "Spectrophilia",   "dots": [0, 0], "desc": "Being turned on by ghosts/spirits" },
+        { "label": "Dendrophilia",   "dots": [0, 0], "desc": "Being turned on by trees and plants" },
+        { "label": "Plushophilia",   "dots": [0, 0], "desc": "Being turned on by stuffed animals" },
+        { "label": "Vorephilia",   "dots": [0, 0], "desc": "Being turned on by the idea of being consumed / swallowed whole" },
+        { "label": "Macro/Microphilia",   "dots": [0, 0], "desc": "Being turned on by giant size differences" },
+        { "label": "Necrophilia",   "dots": [0, 0], "desc": "Being turned on by dead stuff" }
       ]
     }
   ]

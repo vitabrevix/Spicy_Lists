@@ -18,7 +18,8 @@
         { "label": "Trans Male",  "dots": [0, 0] },
         { "label": "Non-Binary",  "dots": [0, 0] },
         { "label": "Femboy/Twink",  "dots": [0, 0] },
-        { "label": "Tomboy",  "dots": [0, 0] }
+        { "label": "Tomboy",  "dots": [0, 0] },
+        { "label": "Bear",  "dots": [0, 0] }
       ]
     },
     {
@@ -37,7 +38,9 @@
         { "label": "Multiple Females",   "dots": [0, 0] },
         { "label": "Orgy",   "dots": [0, 0], "desc": "A groupal sexual scenario where all participants can interact with each other in any way" },
         { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" },
-        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" }
+        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" },
+        { "label": "Glory Hole User",   "dots": [0, 0] },
+        { "label": "Glory Hole Receiver",   "dots": [0, 0], "desc": "It wont suck itself" }
       ]
     }
   ]

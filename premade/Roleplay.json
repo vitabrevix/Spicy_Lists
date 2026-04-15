@@ -1,0 +1,25 @@
+{
+  "legend": [
+    { "name": "Not set",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Roleplay",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Furry",   "dots": [0, 0] },
+        { "label": "Vore",  "dots": [0, 0] },
+        { "label": "Male Pregnancy",  "dots": [0, 0] },
+        { "label": "Giant/Small",  "dots": [0, 0] },
+        { "label": "Monster Play",  "dots": [0, 0] },
+        { "label": "Tentacles",  "dots": [0, 0] },
+        { "label": "Inflation",  "dots": [0, 0] }
+      ]
+    }
+  ]
+}

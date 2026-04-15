@@ -18,6 +18,7 @@
         { "label": "Ears",   "dots": [0, 0] },
         { "label": "Neck", "dots": [0, 0] },
         { "label": "Chest/s",  "dots": [0, 0] },
+        { "label": "Nipples",  "dots": [0, 0] },
         { "label": "Shoulders",  "dots": [0, 0] },
         { "label": "Arms",  "dots": [0, 0] },
         { "label": "Wrists",  "dots": [0, 0] },
