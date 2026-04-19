@@ -1817,7 +1817,7 @@ async function exportJpg() {
   gridClone.querySelectorAll('.delete-btn,.col-del-btn,.edit-actions').forEach(el => el.remove());
 
   // Position:relative container; blocks will be placed absolute by our masonry pass
-  gridClone.style.cssText = 'position:relative;width:100%;';
+  gridClone.style.cssText = 'position:relative;width:100%;overflow:hidden;';
 
   // Override every mobile-affected element with explicit inline styles so the
   // @media (max-width:600px) stylesheet rules (which fire based on viewport
@@ -1932,67 +1932,182 @@ async function exportJpg() {
     wrap.offsetHeight;
 
     const containerW = appW - PAD * 2;
-    const naturalW = blocks.map(b => Math.round(b.getBoundingClientRect().width));
-    const naturalH = blocks.map(b => Math.round(b.getBoundingClientRect().height));
 
-    // Greedy row assignment
-    const rows = [];
-    let currentRow = [], currentRowW = 0;
-    for (let i = 0; i < blocks.length; i++) {
-      const bw = naturalW[i];
-      const needed = currentRow.length === 0 ? bw : currentRowW + GAP + bw;
-      if (needed > containerW && currentRow.length > 0) {
-        rows.push(currentRow);
-        currentRow = [i];
-        currentRowW = bw;
-      } else {
-        currentRow.push(i);
-        currentRowW = needed;
+    // Clamp blocks wider than containerW (same as live masonryLayout)
+    blocks.forEach(b => {
+      if (b.offsetWidth > containerW) {
+        b.style.width = containerW + 'px';
       }
-    }
-    if (currentRow.length > 0) rows.push(currentRow);
-
-    // X positions
-    const blockX = new Array(blocks.length);
-    rows.forEach(row => {
-      let x = 0;
-      row.forEach(i => { blockX[i] = x; x += naturalW[i] + GAP; });
     });
+    wrap.offsetHeight;
 
-    // Skyline Y placement
-    const placed = [];
-    const skylineTop = (x0, x1) => {
+    const naturalW = blocks.map(b => Math.min(b.offsetWidth, containerW));
+    const naturalH = blocks.map(b => b.offsetHeight);
+
+    // Layout: greedy placement + iterative compaction (same as live masonryLayout)
+    const skyAt = (placed, x0, x1) => {
       let max = 0;
       for (const p of placed) {
         if (p.x1 > x0 && p.x0 < x1 && p.bottom > max) max = p.bottom;
       }
       return max;
     };
+    const bestPos = (nW, nH, containerW, GAP, placed) => {
+      const xSet = new Set([0]);
+      for (const p of placed) { xSet.add(p.x0); xSet.add(p.x1 + GAP); }
+      const cands = [...xSet].filter(x => x >= 0 && x + nW <= containerW);
+      if (cands.length === 0) cands.push(0);
+      let bx = 0, bt = Infinity;
+      for (const cx of cands) {
+        const sky = skyAt(placed, cx, cx + nW);
+        const top = sky === 0 ? 0 : sky + GAP;
+        if (top < bt || (top === bt && cx < bx)) { bt = top; bx = cx; }
+      }
+      return { x: bx, top: bt };
+    };
+
+    const blockX   = new Array(blocks.length);
     const blockTop = new Array(blocks.length);
-    rows.forEach(row => {
-      const rowTop = Math.max(...row.map(i => {
-        const sky = skylineTop(blockX[i], blockX[i] + naturalW[i]);
-        return sky === 0 ? 0 : sky + GAP;
-      }));
-      row.forEach(i => {
-        blockTop[i] = rowTop;
-        placed.push({ x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: rowTop + naturalH[i] });
-      });
+    const placed   = new Array(blocks.length);
+
+    // Pass 1: greedy initial placement
+    for (let i = 0; i < blocks.length; i++) {
+      const others = placed.filter((_, j) => j < i);
+      const { x, top } = bestPos(naturalW[i], naturalH[i], containerW, GAP, others);
+      blockX[i]   = x;
+      blockTop[i] = top;
+      placed[i]   = { x0: x, x1: x + naturalW[i], bottom: top + naturalH[i] };
+    }
+
+    // Pass 2: global compaction — same algorithm as live masonryLayout
+    let improved = true, iters = 0;
+    while (improved && iters++ < 12) {
+      improved = false;
+      for (let i = 0; i < blocks.length; i++) {
+        const prefix = placed.slice(0, i);
+        // Candidates from ALL placed blocks so block i can slot beside later blocks too
+        const xSet = new Set([0]);
+        for (const p of placed) { if (p) { xSet.add(p.x0); xSet.add(p.x1 + GAP); } }
+        const cands = [...xSet].filter(x => x >= 0 && x + naturalW[i] <= containerW);
+
+        let bestMax = Infinity, bestSum = Infinity, bestX = blockX[i], bestTop = blockTop[i];
+        for (const cx of cands) {
+          const sky = skyAt(prefix, cx, cx + naturalW[i]);
+          const top = sky === 0 ? 0 : sky + GAP;
+          const simPlaced = prefix.slice();
+          simPlaced.push({ x0: cx, x1: cx + naturalW[i], bottom: top + naturalH[i] });
+          for (let k = i + 1; k < blocks.length; k++) {
+            const { x: kx, top: kt } = bestPos(naturalW[k], naturalH[k], containerW, GAP, simPlaced);
+            simPlaced.push({ x0: kx, x1: kx + naturalW[k], bottom: kt + naturalH[k] });
+          }
+          const maxB = Math.max(...simPlaced.map(p => p.bottom));
+          const sumB = simPlaced.reduce((s, p) => s + p.bottom, 0);
+          if (maxB < bestMax || (maxB === bestMax && sumB < bestSum) || (maxB === bestMax && sumB === bestSum && cx < bestX)) {
+            bestMax = maxB; bestSum = sumB; bestX = cx; bestTop = top;
+          }
+        }
+
+        if (bestX !== blockX[i] || bestTop !== blockTop[i]) {
+          blockX[i]   = bestX;
+          blockTop[i] = bestTop;
+          placed[i]   = { x0: bestX, x1: bestX + naturalW[i], bottom: bestTop + naturalH[i] };
+          for (let k = i + 1; k < blocks.length; k++) {
+            const { x, top } = bestPos(naturalW[k], naturalH[k], containerW, GAP, placed.slice(0, k));
+            blockX[k]   = x;
+            blockTop[k] = top;
+            placed[k]   = { x0: x, x1: x + naturalW[k], bottom: top + naturalH[k] };
+          }
+          improved = true;
+        }
+      }
+    }
+
+    // Pass 3: reverse compaction — same as live layout
+    let improved2 = true, iters2 = 0;
+    while (improved2 && iters2++ < 6) {
+      improved2 = false;
+      for (let i = blocks.length - 1; i >= 0; i--) {
+        const prefix = placed.slice(0, i);
+        const xSet = new Set([0]);
+        for (const p of placed) { if (p) { xSet.add(p.x0); xSet.add(p.x1 + GAP); } }
+        const cands = [...xSet].filter(x => x >= 0 && x + naturalW[i] <= containerW);
+
+        let bestMax = Infinity, bestSum = Infinity, bestX = blockX[i], bestTop = blockTop[i];
+        for (const cx of cands) {
+          const sky = skyAt(prefix, cx, cx + naturalW[i]);
+          const top = sky === 0 ? 0 : sky + GAP;
+          const simPlaced = prefix.slice();
+          simPlaced.push({ x0: cx, x1: cx + naturalW[i], bottom: top + naturalH[i] });
+          for (let k = i + 1; k < blocks.length; k++) {
+            const { x: kx, top: kt } = bestPos(naturalW[k], naturalH[k], containerW, GAP, simPlaced);
+            simPlaced.push({ x0: kx, x1: kx + naturalW[k], bottom: kt + naturalH[k] });
+          }
+          const maxB = Math.max(...simPlaced.map(p => p.bottom));
+          const sumB = simPlaced.reduce((s, p) => s + p.bottom, 0);
+          if (maxB < bestMax || (maxB === bestMax && sumB < bestSum) || (maxB === bestMax && sumB === bestSum && cx < bestX)) {
+            bestMax = maxB; bestSum = sumB; bestX = cx; bestTop = top;
+          }
+        }
+
+        if (bestX !== blockX[i] || bestTop !== blockTop[i]) {
+          blockX[i]   = bestX;
+          blockTop[i] = bestTop;
+          placed[i]   = { x0: bestX, x1: bestX + naturalW[i], bottom: bestTop + naturalH[i] };
+          for (let k = i + 1; k < blocks.length; k++) {
+            const { x, top } = bestPos(naturalW[k], naturalH[k], containerW, GAP, placed.slice(0, k));
+            blockX[k]   = x;
+            blockTop[k] = top;
+            placed[k]   = { x0: x, x1: x + naturalW[k], bottom: top + naturalH[k] };
+          }
+          improved2 = true;
+        }
+      }
+    }
+
+
+    // Pass 4: horizontal centering nudge (same as live layout)
+    blocks.forEach((_, i) => {
+      const p = placed[i];
+      let leftBound = 0;
+      let rightBound = containerW;
+      for (let j = 0; j < blocks.length; j++) {
+        if (j === i) continue;
+        const q = placed[j];
+        const topI = p.bottom - naturalH[i];
+        const topJ = q.bottom - naturalH[j];
+        if (q.bottom <= topI || topJ >= p.bottom) continue;
+        if (q.x1 <= p.x0 && q.x1 > leftBound)  leftBound  = q.x1;
+        if (q.x0 >= p.x1 && q.x0 < rightBound) rightBound = q.x0;
+      }
+      const gapLeft  = p.x0 - leftBound;
+      const gapRight = rightBound - p.x1;
+      const totalFree = gapLeft + gapRight;
+      if (totalFree <= 0) return;
+      const targetGap = Math.min(GAP, totalFree / 2);
+      const idealX = leftBound + targetGap;
+      const newX = Math.max(leftBound, Math.min(rightBound - naturalW[i], idealX));
+      if (Math.abs(newX - blockX[i]) >= 1) {
+        blockX[i] = Math.round(newX);
+        placed[i] = { x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: p.bottom };
+      }
     });
 
-    // Apply absolute positions — these are inline styles, immune to media queries
+    // Apply — inline styles immune to media queries
     blocks.forEach((b, i) => {
-      b.style.position = 'absolute';
-      b.style.left     = blockX[i] + 'px';
-      b.style.top      = blockTop[i] + 'px';
-      b.style.width    = naturalW[i] + 'px';
+      b.style.position  = 'absolute';
+      b.style.left      = blockX[i] + 'px';
+      b.style.top       = blockTop[i] + 'px';
+      b.style.width     = naturalW[i] + 'px';
+      b.style.maxWidth  = naturalW[i] + 'px';
+      b.style.overflow  = 'hidden';
+      b.style.boxSizing = 'border-box';
     });
 
     const gridH = placed.length > 0 ? Math.max(...placed.map(p => p.bottom)) : 0;
     gridClone.style.height = gridH + 'px';
 
     const contentW = blocks.length > 0
-      ? Math.ceil(Math.max(...blocks.map((b, i) => blockX[i] + naturalW[i])) + PAD)
+      ? Math.ceil(Math.max(...placed.map(p => p.x1)) + PAD * 2)
       : appW;
     const contentH = wrap.scrollHeight;
 
@@ -2230,72 +2345,186 @@ function masonryLayout() {
   const naturalW = blocks.map(b => Math.round(b.offsetWidth));
   const naturalH = blocks.map(b => Math.round(b.offsetHeight));
 
-  // Skyline packing:
-  //   Flow blocks into rows left-to-right (flex-wrap order).
-  //   Each block's top snaps to the bottom of whatever is directly
-  //   above it (same x-range), not the tallest block in its row.
-  //   Short blocks leave a shelf; the next row rises into that shelf.
 
-  // Step 1: assign blocks to rows (greedy left-to-right wrap)
-  const rows = [];
-  let currentRow = [];
-  let currentRowW = 0;
+  // Layout engine:
+  // 1. Initial greedy placement: each block tries all skyline-change x-positions,
+  //    picks lowest top then leftmost x.
+  // 2. Compaction pass: repeatedly scan all blocks; for each, temporarily remove
+  //    it from placed[], re-run placement, accept if top improves. Loop until
+  //    no block moves. This lets early blocks shift right to make room below.
 
-  for (let i = 0; i < blocks.length; i++) {
-    const bw = naturalW[i];
-    const needed = currentRow.length === 0 ? bw : currentRowW + GAP + bw;
-    if (needed > containerW && currentRow.length > 0) {
-      rows.push(currentRow);
-      currentRow = [i];
-      currentRowW = bw;
-    } else {
-      currentRow.push(i);
-      currentRowW = needed;
-    }
-  }
-  if (currentRow.length > 0) rows.push(currentRow);
-
-  // Step 2: x positions within each row
-  const blockX = new Array(blocks.length);
-  rows.forEach(row => {
-    let x = 0;
-    row.forEach(i => { blockX[i] = x; x += naturalW[i] + GAP; });
-  });
-
-  // Step 3: skyline query: max bottom of all placed blocks overlapping [x0,x1)
-  const placed = [];
-  function skylineTop(x0, x1) {
+  const skyAt = (placed, x0, x1) => {
     let max = 0;
     for (const p of placed) {
       if (p.x1 > x0 && p.x0 < x1 && p.bottom > max) max = p.bottom;
     }
     return max;
-  }
+  };
 
-  // Step 4: place row by row, each block snaps to its local skyline.
-  //   Within a row all blocks share the same top (max of their local skylines)
-  //   so they stay horizontally aligned to each other.
+  const bestPos = (nW, nH, containerW, GAP, placed) => {
+    const xSet = new Set([0]);
+    for (const p of placed) { xSet.add(p.x0); xSet.add(p.x1 + GAP); }
+    const cands = [...xSet].filter(x => x >= 0 && x + nW <= containerW);
+    if (cands.length === 0) cands.push(0);
+    let bx = 0, bt = Infinity;
+    for (const cx of cands) {
+      const sky = skyAt(placed, cx, cx + nW);
+      const top = sky === 0 ? 0 : sky + GAP;
+      if (top < bt || (top === bt && cx < bx)) { bt = top; bx = cx; }
+    }
+    return { x: bx, top: bt };
+  };
+
+  const blockX   = new Array(blocks.length);
+  const blockTop = new Array(blocks.length);
+  const placed   = new Array(blocks.length);
+
   grid.classList.add('masonry-active');
 
-  const blockTop = new Array(blocks.length);
-  rows.forEach(row => {
-    const rowTop = Math.max(...row.map(i => {
-      const sky = skylineTop(blockX[i], blockX[i] + naturalW[i]);
-      return sky === 0 ? 0 : sky + GAP;
-    }));
-    row.forEach(i => {
-      blockTop[i] = rowTop;
-      placed.push({ x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: rowTop + naturalH[i] });
-    });
+  // Pass 1: greedy initial placement
+  for (let i = 0; i < blocks.length; i++) {
+    const others = placed.filter((_, j) => j < i);
+    const { x, top } = bestPos(naturalW[i], naturalH[i], containerW, GAP, others);
+    blockX[i]   = x;
+    blockTop[i] = top;
+    placed[i]   = { x0: x, x1: x + naturalW[i], bottom: top + naturalH[i] };
+  }
+
+  // Pass 2: global compaction
+  // For each block i, try every candidate x. For each candidate, re-place
+  // all blocks after i greedily and score by total layout height.
+  // Accept x that minimises total height (ties broken leftmost).
+  // Repeat until no block moves.
+  let improved = true;
+  let iters = 0;
+  while (improved && iters++ < 12) {
+    improved = false;
+    for (let i = 0; i < blocks.length; i++) {
+      const prefix = placed.slice(0, i);
+      // Candidates from ALL placed blocks so block i can slot beside later blocks too
+      const xSet = new Set([0]);
+      for (const p of placed) { if (p) { xSet.add(p.x0); xSet.add(p.x1 + GAP); } }
+      const cands = [...xSet].filter(x => x >= 0 && x + naturalW[i] <= containerW);
+
+      let bestMax = Infinity, bestSum = Infinity, bestX = blockX[i], bestTop = blockTop[i];
+      for (const cx of cands) {
+        const sky = skyAt(prefix, cx, cx + naturalW[i]);
+        const top = sky === 0 ? 0 : sky + GAP;
+        const simPlaced = prefix.slice();
+        simPlaced.push({ x0: cx, x1: cx + naturalW[i], bottom: top + naturalH[i] });
+        for (let k = i + 1; k < blocks.length; k++) {
+          const { x: kx, top: kt } = bestPos(naturalW[k], naturalH[k], containerW, GAP, simPlaced);
+          simPlaced.push({ x0: kx, x1: kx + naturalW[k], bottom: kt + naturalH[k] });
+        }
+        const maxB = Math.max(...simPlaced.map(p => p.bottom));
+        const sumB = simPlaced.reduce((s, p) => s + p.bottom, 0);
+        if (maxB < bestMax || (maxB === bestMax && sumB < bestSum) || (maxB === bestMax && sumB === bestSum && cx < bestX)) {
+          bestMax = maxB; bestSum = sumB; bestX = cx; bestTop = top;
+        }
+      }
+
+      if (bestX !== blockX[i] || bestTop !== blockTop[i]) {
+        blockX[i]   = bestX;
+        blockTop[i] = bestTop;
+        placed[i]   = { x0: bestX, x1: bestX + naturalW[i], bottom: bestTop + naturalH[i] };
+        for (let k = i + 1; k < blocks.length; k++) {
+          const { x, top } = bestPos(naturalW[k], naturalH[k], containerW, GAP, placed.slice(0, k));
+          blockX[k]   = x;
+          blockTop[k] = top;
+          placed[k]   = { x0: x, x1: x + naturalW[k], bottom: top + naturalH[k] };
+        }
+        improved = true;
+      }
+    }
+  }
+
+  // Pass 3: reverse compaction — scan last to first so wide early blocks can shift left
+  let improved2 = true;
+  let iters2 = 0;
+  while (improved2 && iters2++ < 6) {
+    improved2 = false;
+    for (let i = blocks.length - 1; i >= 0; i--) {
+      const prefix = placed.slice(0, i);
+      const xSet = new Set([0]);
+      for (const p of placed) { if (p) { xSet.add(p.x0); xSet.add(p.x1 + GAP); } }
+      const cands = [...xSet].filter(x => x >= 0 && x + naturalW[i] <= containerW);
+
+      let bestMax = Infinity, bestSum = Infinity, bestX = blockX[i], bestTop = blockTop[i];
+      for (const cx of cands) {
+        const sky = skyAt(prefix, cx, cx + naturalW[i]);
+        const top = sky === 0 ? 0 : sky + GAP;
+        const simPlaced = prefix.slice();
+        simPlaced.push({ x0: cx, x1: cx + naturalW[i], bottom: top + naturalH[i] });
+        for (let k = i + 1; k < blocks.length; k++) {
+          const { x: kx, top: kt } = bestPos(naturalW[k], naturalH[k], containerW, GAP, simPlaced);
+          simPlaced.push({ x0: kx, x1: kx + naturalW[k], bottom: kt + naturalH[k] });
+        }
+        const maxB = Math.max(...simPlaced.map(p => p.bottom));
+        const sumB = simPlaced.reduce((s, p) => s + p.bottom, 0);
+        if (maxB < bestMax || (maxB === bestMax && sumB < bestSum) || (maxB === bestMax && sumB === bestSum && cx < bestX)) {
+          bestMax = maxB; bestSum = sumB; bestX = cx; bestTop = top;
+        }
+      }
+
+      if (bestX !== blockX[i] || bestTop !== blockTop[i]) {
+        blockX[i]   = bestX;
+        blockTop[i] = bestTop;
+        placed[i]   = { x0: bestX, x1: bestX + naturalW[i], bottom: bestTop + naturalH[i] };
+        for (let k = i + 1; k < blocks.length; k++) {
+          const { x, top } = bestPos(naturalW[k], naturalH[k], containerW, GAP, placed.slice(0, k));
+          blockX[k]   = x;
+          blockTop[k] = top;
+          placed[k]   = { x0: x, x1: x + naturalW[k], bottom: top + naturalH[k] };
+        }
+        improved2 = true;
+      }
+    }
+  }
+
+
+  // Pass 4: horizontal centering nudge
+  // For each block, find the free space on left and right within its horizontal band.
+  // Nudge x so both gaps are equal, capped at GAP. Never moves a block closer than
+  // GAP to a neighbour — only spreads it toward available empty space.
+  blocks.forEach((_, i) => {
+    const p = placed[i];
+    // Left bound: container edge or right edge of closest block to the left that overlaps vertically
+    let leftBound = 0;
+    let rightBound = containerW;
+    for (let j = 0; j < blocks.length; j++) {
+      if (j === i) continue;
+      const q = placed[j];
+      // Vertical overlap check
+      if (q.bottom <= p.bottom - naturalH[i] || q.x0 >= p.x1 + naturalW[i]) continue;
+      const topI = p.bottom - naturalH[i];
+      const topJ = q.bottom - naturalH[j];
+      if (q.bottom <= topI || topJ >= p.bottom) continue;
+      if (q.x1 <= p.x0 && q.x1 > leftBound)  leftBound  = q.x1;
+      if (q.x0 >= p.x1 && q.x0 < rightBound) rightBound = q.x0;
+    }
+    const gapLeft  = p.x0 - leftBound;
+    const gapRight = rightBound - p.x1;
+    const totalFree = gapLeft + gapRight;
+    if (totalFree <= 0) return;
+    // Target: equal gaps on both sides, but each capped at GAP
+    const targetGap = Math.min(GAP, totalFree / 2);
+    const idealX = leftBound + targetGap;
+    // Only move if it improves balance — never make one side worse than GAP
+    const newX = Math.max(leftBound, Math.min(rightBound - naturalW[i], idealX));
+    if (Math.abs(newX - blockX[i]) >= 1) {
+      blockX[i] = Math.round(newX);
+      placed[i] = { x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: p.bottom };
+    }
   });
 
-  // Step 5: apply
+  // Apply
   blocks.forEach((block, i) => {
     block.style.left = blockX[i] + 'px';
     block.style.top  = blockTop[i] + 'px';
   });
 
   grid.style.height = Math.max(...placed.map(p => p.bottom)) + 'px';
+
 }
 
 function scheduleMasonry() {
