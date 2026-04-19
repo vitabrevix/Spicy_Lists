@@ -19,6 +19,8 @@ let headerPinned = false;
 // URL Share State
 let activePresetNames = [];
 
+let _masonryRafId = null;
+
 const loadedPresetFingerprints = new Set();
 
 const fileMap = {};
@@ -1262,6 +1264,7 @@ function render() {
   if (openColorPicker !== null) positionColorPicker();
   applyPinState();
   if (indexOpen) buildIndexPanel();
+  scheduleMasonry();
 }
 
 document.addEventListener('click', e => {
@@ -1763,7 +1766,9 @@ async function exportJpg() {
     textFaint: cs.getPropertyValue('--text-faint').trim(),
   };
 
-  const appW = document.getElementById('app').getBoundingClientRect().width;
+  const MOBILE_EXPORT_MIN_W = 900;
+  const rawAppW = document.getElementById('app').getBoundingClientRect().width;
+  const appW = Math.max(rawAppW, MOBILE_EXPORT_MIN_W);
 
   const wrap = document.createElement('div');
   wrap.style.cssText = [
@@ -1815,6 +1820,13 @@ async function exportJpg() {
   gridClone.querySelectorAll('.list-block').forEach(b => {
     b.style.background = t.bgCard;
     b.style.border = `0.5px solid ${t.border}`;
+    // Strip any 100% width from mobile layout so blocks wrap into columns
+    if (b.style.width === '100%' || b.style.width === '') {
+      b.style.width = '';
+      b.style.minWidth = '260px';
+      b.style.maxWidth = '420px';
+      b.style.flex = '1 1 260px';
+    }
   });
   gridClone.querySelectorAll('.list-title-row h2').forEach(h => { h.style.color = t.text; });
   gridClone.querySelectorAll('.list-table thead th').forEach(th => {
@@ -2083,3 +2095,134 @@ setTimeout(() => {
   }
   const grid = document.getElementById('lists-grid');
 }, 2000);
+
+function masonryLayout() {
+  const grid = document.getElementById('lists-grid');
+  if (!grid) return;
+
+  const resetBlocks = (blks) => {
+    blks.forEach(b => {
+      b.style.position = '';
+      b.style.left = '';
+      b.style.top = '';
+      b.style.width = '';
+    });
+  };
+
+  if (window.innerWidth <= 600) {
+    grid.classList.remove('masonry-active');
+    grid.style.height = '';
+    resetBlocks(Array.from(grid.querySelectorAll('.list-block')));
+    return;
+  }
+
+  const GAP = 16;
+  const blocks = Array.from(grid.querySelectorAll('.list-block'));
+  if (blocks.length === 0) return;
+
+  // Measure natural sizes with no masonry interference
+  grid.classList.remove('masonry-active');
+  resetBlocks(blocks);
+  grid.offsetHeight;
+
+  const containerW = grid.offsetWidth;
+
+  // Clamp blocks that are wider than the container
+  blocks.forEach(b => {
+    if (b.offsetWidth > containerW) b.style.width = containerW + 'px';
+  });
+  grid.offsetHeight;
+
+  const naturalW = blocks.map(b => Math.round(b.offsetWidth));
+  const naturalH = blocks.map(b => Math.round(b.offsetHeight));
+
+  // Skyline packing:
+  //   Flow blocks into rows left-to-right (flex-wrap order).
+  //   Each block's top snaps to the bottom of whatever is directly
+  //   above it (same x-range), not the tallest block in its row.
+  //   Short blocks leave a shelf; the next row rises into that shelf.
+
+  // Step 1: assign blocks to rows (greedy left-to-right wrap)
+  const rows = [];
+  let currentRow = [];
+  let currentRowW = 0;
+
+  for (let i = 0; i < blocks.length; i++) {
+    const bw = naturalW[i];
+    const needed = currentRow.length === 0 ? bw : currentRowW + GAP + bw;
+    if (needed > containerW && currentRow.length > 0) {
+      rows.push(currentRow);
+      currentRow = [i];
+      currentRowW = bw;
+    } else {
+      currentRow.push(i);
+      currentRowW = needed;
+    }
+  }
+  if (currentRow.length > 0) rows.push(currentRow);
+
+  // Step 2: x positions within each row
+  const blockX = new Array(blocks.length);
+  rows.forEach(row => {
+    let x = 0;
+    row.forEach(i => { blockX[i] = x; x += naturalW[i] + GAP; });
+  });
+
+  // Step 3: skyline query: max bottom of all placed blocks overlapping [x0,x1)
+  const placed = [];
+  function skylineTop(x0, x1) {
+    let max = 0;
+    for (const p of placed) {
+      if (p.x1 > x0 && p.x0 < x1 && p.bottom > max) max = p.bottom;
+    }
+    return max;
+  }
+
+  // Step 4: place row by row, each block snaps to its local skyline.
+  //   Within a row all blocks share the same top (max of their local skylines)
+  //   so they stay horizontally aligned to each other.
+  grid.classList.add('masonry-active');
+
+  const blockTop = new Array(blocks.length);
+  rows.forEach(row => {
+    const rowTop = Math.max(...row.map(i => {
+      const sky = skylineTop(blockX[i], blockX[i] + naturalW[i]);
+      return sky === 0 ? 0 : sky + GAP;
+    }));
+    row.forEach(i => {
+      blockTop[i] = rowTop;
+      placed.push({ x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: rowTop + naturalH[i] });
+    });
+  });
+
+  // Step 5: apply
+  blocks.forEach((block, i) => {
+    block.style.left = blockX[i] + 'px';
+    block.style.top  = blockTop[i] + 'px';
+  });
+
+  grid.style.height = Math.max(...placed.map(p => p.bottom)) + 'px';
+}
+
+function scheduleMasonry() {
+  if (_masonryRafId) cancelAnimationFrame(_masonryRafId);
+  _masonryRafId = requestAnimationFrame(() => {
+    _masonryRafId = requestAnimationFrame(masonryLayout);
+  });
+}
+
+window.addEventListener('resize', scheduleMasonry);
+
+window.addEventListener('load', scheduleMasonry);
+document.fonts && document.fonts.ready.then(scheduleMasonry);
+
+if (typeof ResizeObserver !== 'undefined') {
+  const _masonryRO = new ResizeObserver(scheduleMasonry);
+  const _observeMasonryGrid = () => {
+    const grid = document.getElementById('lists-grid');
+    if (!grid) return;
+    _masonryRO.observe(grid);
+    Array.from(grid.querySelectorAll('.list-block')).forEach(b => _masonryRO.observe(b));
+  };
+  requestAnimationFrame(_observeMasonryGrid);
+}

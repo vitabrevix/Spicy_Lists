@@ -446,6 +446,12 @@ button:hover { background: var(--bg-hover); }
   align-items: flex-start;
 }
 
+.lists-grid.masonry-active {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
 .list-block {
   display: inline-block;
   background: var(--bg-card);
@@ -454,6 +460,12 @@ button:hover { background: var(--bg-hover); }
   padding: 1rem 1.25rem;
   width: max-content;
   max-width: calc(100vw - 3rem);
+  box-sizing: border-box;
+}
+
+.lists-grid.masonry-active .list-block {
+  position: absolute;
+  box-sizing: border-box;
 }
 
 .list-title-row {
@@ -686,6 +698,14 @@ button:hover { background: var(--bg-hover); }
 @media (max-width: 600px) {
   .lists-grid {
     flex-direction: column;
+  }
+
+  .lists-grid.masonry-active {
+    display: flex;
+  }
+
+  .lists-grid.masonry-active .list-block {
+    position: static;
   }
 
   .list-block {
