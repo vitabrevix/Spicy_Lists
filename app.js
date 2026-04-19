@@ -1766,7 +1766,7 @@ async function exportJpg() {
     textFaint: cs.getPropertyValue('--text-faint').trim(),
   };
 
-  const MOBILE_EXPORT_MIN_W = 900;
+  const MOBILE_EXPORT_MIN_W = 1200;
   const rawAppW = document.getElementById('app').getBoundingClientRect().width;
   const appW = Math.max(rawAppW, MOBILE_EXPORT_MIN_W);
 
@@ -1814,53 +1814,42 @@ async function exportJpg() {
   wrap.appendChild(legendWrap);
 
   const gridClone = document.getElementById('lists-grid').cloneNode(true);
-  gridClone.style.cssText = 'display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;width:100%;';
   gridClone.querySelectorAll('.delete-btn,.col-del-btn,.edit-actions').forEach(el => el.remove());
 
-  gridClone.querySelectorAll('.list-block').forEach(b => {
-    b.style.cssText = [
-      `background:${t.bgCard}`,
-      `border:0.5px solid ${t.border}`,
-      'border-radius:12px',
-      'padding:14px',
-      'width:auto',
-      'min-width:220px',
-      'max-width:420px',
-      'flex:1 1 220px',
-      'box-sizing:border-box',
-      'position:static',
-    ].join(';');
-  });
+  // Position:relative container; blocks will be placed absolute by our masonry pass
+  gridClone.style.cssText = 'position:relative;width:100%;';
 
+  // Override every mobile-affected element with explicit inline styles so the
+  // @media (max-width:600px) stylesheet rules (which fire based on viewport
+  // width, not element width) cannot affect the off-screen export render.
   gridClone.querySelectorAll('.list-title-row h2').forEach(h => { h.style.color = t.text; });
-
-  // Undo mobile table rewrite: restore thead, reset tr/td to desktop display
   gridClone.querySelectorAll('.list-table').forEach(tbl => {
-    tbl.style.cssText = 'border-collapse:collapse;width:max-content;';
+    tbl.style.cssText = 'border-collapse:collapse;width:max-content;display:table;';
   });
   gridClone.querySelectorAll('.list-table thead').forEach(thead => {
     thead.style.display = 'table-header-group';
   });
   gridClone.querySelectorAll('.list-table thead th').forEach(th => {
-    th.style.display = 'table-cell';
-    th.style.color = t.textFaint;
-    th.style.borderBottom = `0.5px solid ${t.borderHead}`;
+    th.style.cssText = `display:table-cell;color:${t.textFaint};border-bottom:0.5px solid ${t.borderHead};font-size:11px;font-weight:500;text-align:center;padding:0 10px 4px;white-space:nowrap;`;
+  });
+  gridClone.querySelectorAll('.list-table thead th.label-th').forEach(th => {
+    th.style.textAlign = 'left';
+    th.style.minWidth = '80px';
   });
   gridClone.querySelectorAll('.list-table tbody tr').forEach(tr => {
-    tr.style.cssText = `display:table-row;border-bottom:0.5px solid ${t.borderRow};flex-direction:unset;padding:0;`;
+    tr.style.cssText = `display:table-row;border-bottom:0.5px solid ${t.borderRow};`;
+  });
+  gridClone.querySelectorAll('.list-table tbody tr:last-child').forEach(tr => {
+    tr.style.borderBottom = 'none';
   });
   gridClone.querySelectorAll('.list-table tbody td').forEach(td => {
     td.style.cssText = 'display:table-cell;padding:5px 10px;vertical-align:middle;white-space:nowrap;';
   });
   gridClone.querySelectorAll('.list-table tbody td.label-td').forEach(td => {
-    td.style.color = t.text;
-    td.style.fontSize = '14px';
-    td.style.paddingRight = '12px';
+    td.style.cssText = `display:table-cell;padding:5px 12px 5px 10px;vertical-align:middle;white-space:nowrap;font-size:14px;color:${t.text};`;
   });
-  // Remove data-col pseudo-content injected by mobile CSS
-  gridClone.querySelectorAll('.list-table tbody td[data-col]').forEach(td => {
-    td.removeAttribute('data-col');
-  });
+  // Remove data-col attr so mobile ::before pseudo doesn't inject column labels
+  gridClone.querySelectorAll('[data-col]').forEach(el => el.removeAttribute('data-col'));
 
   // Replace each .dots cell with only the selected dot(s) — single or blend pair
   const DOT_SIZE = 20;
@@ -1918,12 +1907,93 @@ async function exportJpg() {
   document.body.appendChild(wrap);
 
   try {
-      const blocks   = Array.from(wrap.querySelectorAll('.list-block'));
-    const wrapRect = wrap.getBoundingClientRect();
-    const padding  = 20;
+    const GAP    = 16;
+    const PAD    = 20; // wrap padding on each side
+    const blocks = Array.from(wrap.querySelectorAll('.list-block'));
+
+    // Give each block desktop-style inline sizing so the browser can measure
+    // its natural content width before we lock it in with absolute positioning.
+    blocks.forEach(b => {
+      b.style.cssText = [
+        `background:${t.bgCard}`,
+        `border:0.5px solid ${t.border}`,
+        'border-radius:12px',
+        'padding:14px',
+        'box-sizing:border-box',
+        'display:inline-block',
+        'position:static',
+        'width:auto',
+        'min-width:0',
+        'max-width:none',
+      ].join(';');
+    });
+
+    // Force reflow so getBoundingClientRect returns content-sized values
+    wrap.offsetHeight;
+
+    const containerW = appW - PAD * 2;
+    const naturalW = blocks.map(b => Math.round(b.getBoundingClientRect().width));
+    const naturalH = blocks.map(b => Math.round(b.getBoundingClientRect().height));
+
+    // Greedy row assignment
+    const rows = [];
+    let currentRow = [], currentRowW = 0;
+    for (let i = 0; i < blocks.length; i++) {
+      const bw = naturalW[i];
+      const needed = currentRow.length === 0 ? bw : currentRowW + GAP + bw;
+      if (needed > containerW && currentRow.length > 0) {
+        rows.push(currentRow);
+        currentRow = [i];
+        currentRowW = bw;
+      } else {
+        currentRow.push(i);
+        currentRowW = needed;
+      }
+    }
+    if (currentRow.length > 0) rows.push(currentRow);
+
+    // X positions
+    const blockX = new Array(blocks.length);
+    rows.forEach(row => {
+      let x = 0;
+      row.forEach(i => { blockX[i] = x; x += naturalW[i] + GAP; });
+    });
+
+    // Skyline Y placement
+    const placed = [];
+    const skylineTop = (x0, x1) => {
+      let max = 0;
+      for (const p of placed) {
+        if (p.x1 > x0 && p.x0 < x1 && p.bottom > max) max = p.bottom;
+      }
+      return max;
+    };
+    const blockTop = new Array(blocks.length);
+    rows.forEach(row => {
+      const rowTop = Math.max(...row.map(i => {
+        const sky = skylineTop(blockX[i], blockX[i] + naturalW[i]);
+        return sky === 0 ? 0 : sky + GAP;
+      }));
+      row.forEach(i => {
+        blockTop[i] = rowTop;
+        placed.push({ x0: blockX[i], x1: blockX[i] + naturalW[i], bottom: rowTop + naturalH[i] });
+      });
+    });
+
+    // Apply absolute positions — these are inline styles, immune to media queries
+    blocks.forEach((b, i) => {
+      b.style.position = 'absolute';
+      b.style.left     = blockX[i] + 'px';
+      b.style.top      = blockTop[i] + 'px';
+      b.style.width    = naturalW[i] + 'px';
+    });
+
+    const gridH = placed.length > 0 ? Math.max(...placed.map(p => p.bottom)) : 0;
+    gridClone.style.height = gridH + 'px';
+
     const contentW = blocks.length > 0
-      ? Math.ceil(Math.max(...blocks.map(b => b.getBoundingClientRect().right - wrapRect.left)) + padding)
-      : wrap.scrollWidth;
+      ? Math.ceil(Math.max(...blocks.map((b, i) => blockX[i] + naturalW[i])) + PAD)
+      : appW;
     const contentH = wrap.scrollHeight;
 
     wrap.style.width  = contentW + 'px';
