@@ -1818,25 +1818,49 @@ async function exportJpg() {
   gridClone.querySelectorAll('.delete-btn,.col-del-btn,.edit-actions').forEach(el => el.remove());
 
   gridClone.querySelectorAll('.list-block').forEach(b => {
-    b.style.background = t.bgCard;
-    b.style.border = `0.5px solid ${t.border}`;
-    // Strip any 100% width from mobile layout so blocks wrap into columns
-    if (b.style.width === '100%' || b.style.width === '') {
-      b.style.width = '';
-      b.style.minWidth = '260px';
-      b.style.maxWidth = '420px';
-      b.style.flex = '1 1 260px';
-    }
+    b.style.cssText = [
+      `background:${t.bgCard}`,
+      `border:0.5px solid ${t.border}`,
+      'border-radius:12px',
+      'padding:14px',
+      'width:auto',
+      'min-width:220px',
+      'max-width:420px',
+      'flex:1 1 220px',
+      'box-sizing:border-box',
+      'position:static',
+    ].join(';');
   });
+
   gridClone.querySelectorAll('.list-title-row h2').forEach(h => { h.style.color = t.text; });
+
+  // Undo mobile table rewrite: restore thead, reset tr/td to desktop display
+  gridClone.querySelectorAll('.list-table').forEach(tbl => {
+    tbl.style.cssText = 'border-collapse:collapse;width:max-content;';
+  });
+  gridClone.querySelectorAll('.list-table thead').forEach(thead => {
+    thead.style.display = 'table-header-group';
+  });
   gridClone.querySelectorAll('.list-table thead th').forEach(th => {
+    th.style.display = 'table-cell';
     th.style.color = t.textFaint;
     th.style.borderBottom = `0.5px solid ${t.borderHead}`;
   });
   gridClone.querySelectorAll('.list-table tbody tr').forEach(tr => {
-    tr.style.borderBottom = `0.5px solid ${t.borderRow}`;
+    tr.style.cssText = `display:table-row;border-bottom:0.5px solid ${t.borderRow};flex-direction:unset;padding:0;`;
   });
-  gridClone.querySelectorAll('.list-table tbody td.label-td').forEach(td => { td.style.color = t.text; });
+  gridClone.querySelectorAll('.list-table tbody td').forEach(td => {
+    td.style.cssText = 'display:table-cell;padding:5px 10px;vertical-align:middle;white-space:nowrap;';
+  });
+  gridClone.querySelectorAll('.list-table tbody td.label-td').forEach(td => {
+    td.style.color = t.text;
+    td.style.fontSize = '14px';
+    td.style.paddingRight = '12px';
+  });
+  // Remove data-col pseudo-content injected by mobile CSS
+  gridClone.querySelectorAll('.list-table tbody td[data-col]').forEach(td => {
+    td.removeAttribute('data-col');
+  });
 
   // Replace each .dots cell with only the selected dot(s) — single or blend pair
   const DOT_SIZE = 20;
