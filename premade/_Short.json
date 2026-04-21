@@ -26,12 +26,8 @@
       "name": "Body type",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
-        { "label": "Short", "dots": [0, 0] },
-        { "label": "Skinny",  "dots": [0, 0] },
-        { "label": "Lean",  "dots": [0, 0] },
-        { "label": "Fit",  "dots": [0, 0] },
-        { "label": "Athletic",  "dots": [0, 0] },
+        { "label": "Height Difference",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
+        { "label": "Thin",  "dots": [0, 0] },
         { "label": "Muscular",  "dots": [0, 0] },
         { "label": "Chubby",  "dots": [0, 0] },
         { "label": "Curvy",  "dots": [0, 0] },
@@ -46,17 +42,12 @@
         { "label": "Polygamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with multiple partner" },
         { "label": "Polyamorous",  "dots": [0, 0], "desc": "Maintaing a romantic relationship with multiple partner" },
         { "label": "Swinging",   "dots": [0, 0], "desc": "A couple commited to each other romantically, who allow each other to find sexual satisfaction otuside the relationship too" },
-        { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
-        { "label": "3 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
-        { "label": "4 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "Multiple Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
         { "label": "Male & Female Parteners",   "dots": [0, 0] },
         { "label": "Multiple Males",   "dots": [0, 0] },
         { "label": "Multiple Females",   "dots": [0, 0] },
         { "label": "Orgy",   "dots": [0, 0], "desc": "A groupal sexual scenario where all participants can interact with each other in any way" },
-        { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" },
-        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" },
-        { "label": "Glory Hole User",   "dots": [0, 0] },
-        { "label": "Glory Hole Receiver",   "dots": [0, 0], "desc": "It wont suck itself" }
+        { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" }
       ]
     },
     {
@@ -64,85 +55,26 @@
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "Big Ass",   "dots": [0, 0] },
-        { "label": "Average Ass",   "dots": [0, 0] },
         { "label": "Small Ass",  "dots": [0, 0] },
         { "label": "Big Cock",   "dots": [0, 0] },
-        { "label": "Average Cock",   "dots": [0, 0] },
         { "label": "Small Cock",   "dots": [0, 0] },
         { "label": "Circumcised Cock",   "dots": [0, 0] },
         { "label": "Un-Circumcised Cock",   "dots": [0, 0] },
         { "label": "Big Testicles",   "dots": [0, 0] },
-        { "label": "Average Testicles",   "dots": [0, 0] },
         { "label": "Small Testicles",   "dots": [0, 0] },
         { "label": "Big Breasts",   "dots": [0, 0] },
-        { "label": "Average Breasts",   "dots": [0, 0] },
         { "label": "Small Breasts",   "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Body Parts",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Crow Feet",   "dots": [0, 0], "desc":"[https://draxe.com/wp-content/uploads/2024/03/shutterstock_1642402627-1.jpg]" },
-        { "label": "Gray Hair",   "dots": [0, 0], "desc":"[https://nickyoliver.com/wp-content/uploads/Grey-Hair-.jpg]" },
-        { "label": "Smile Lines",  "dots": [0, 0], "desc":"[https://cdn.shopify.com/s/files/1/0251/2184/9419/files/Colorescience_Blog_Refresh_1_graphic_1_1024x1024.jpg?v=1703020460]" },
-        { "label": "Freckles",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/FrecklesAfterSummertime.jpg/960px-FrecklesAfterSummertime.jpg]" },
-        { "label": "Under-eye Circles",   "dots": [0, 0], "desc":"[https://www.oxygenetix.com/cdn/shop/articles/Dark_Circles_Eyes.jpg]" },
-        { "label": "Stretch Marks",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/c/ce/Female_Torso_with_Tiger_Stripes_%28Stretch_Marks%29_from_Pregnancy.JPG]" },
-        { "label": "Scars",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scar_%28xndr%29.jpg/1280px-Scar_%28xndr%29.jpg]" },
-        { "label": "Veiny Hands/Arms",   "dots": [0, 0], "desc":"[https://i.imgflip.com/1tzd77.jpg]" },
-        { "label": "Collarbones",   "dots": [0, 0] },
-        { "label": "Hip Dips",   "dots": [0, 0], "desc":"[https://cdn.prod.website-files.com/5cdb1a9543c13e4de6193985/66364ca4cb57fb317b5b5f9f_What%20are%20Hip%20Dips%20and%20How%20to%20Fix.webp]" },
-        { "label": "Wrists",   "dots": [0, 0] },
-        { "label": "Ankles",   "dots": [0, 0] },
-        { "label": "Fingers",   "dots": [0, 0] },
-        { "label": "Feet",   "dots": [0, 0], "desc":"What were you expecting? A pic? You gooner" },
-        { "label": "Armpits",   "dots": [0, 0] },
-        { "label": "Body Hair",   "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Usual Clothes",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Cross-dressing",   "dots": [0, 0] },
-        { "label": "Masculine Clothes", "dots": [0, 0] },
-        { "label": "Feminine Clothes",  "dots": [0, 0] },
-        { "label": "Heels",  "dots": [0, 0] },
-        { "label": "Sport Shoes",  "dots": [0, 0] },
-        { "label": "Suit",  "dots": [0, 0] },
-        { "label": "Latex",  "dots": [0, 0] },
-        { "label": "Leather",  "dots": [0, 0] },
-        { "label": "Fishnets",  "dots": [0, 0] },
-        { "label": "Uniform",  "dots": [0, 0] }
-      ]
-    },
-    {
-      "name": "Spicy clothes",
-      "columns": ["Self", "Partner"],
-      "items": [
-        { "label": "Lingerie",   "dots": [0, 0] },
-        { "label": "Boxers",   "dots": [0, 0] },
-        { "label": "Stockings",  "dots": [0, 0] },
-        { "label": "Transparent Underware",   "dots": [0, 0] },
-        { "label": "Opaque Underware",   "dots": [0, 0] },
-        { "label": "Latex Bodysuit",   "dots": [0, 0] }
       ]
     },
     {
       "name": "Foreplay",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Kissing Body",   "dots": [0, 0] },
-        { "label": "Making Out", "dots": [0, 0] },
+        { "label": "Kissing",   "dots": [0, 0] },
         { "label": "Dirty Talk", "dots": [0, 0] },
         { "label": "Teasing",  "dots": [0, 0] },
         { "label": "Taunting",  "dots": [0, 0] },
         { "label": "Flirting",  "dots": [0, 0] },
-        { "label": "Touching",  "dots": [0, 0] },
-        { "label": "Pinning",  "dots": [0, 0] },
-        { "label": "Undressing Partner",  "dots": [0, 0] },
-        { "label": "Strip Tease",  "dots": [0, 0] },
         { "label": "Licking",  "dots": [0, 0] },
         { "label": "Biting",  "dots": [0, 0] },
         { "label": "Scratching",  "dots": [0, 0] },
@@ -155,17 +87,9 @@
       "name": "Holes",
       "columns": ["Self", "Partner"],
       "items": [
-        { "label": "Anal Teasing", "dots": [0, 0] },
-        { "label": "Anal Fingering",  "dots": [0, 0] },
-        { "label": "Anal Toys",  "dots": [0, 0] },
-        { "label": "Anal Sex/Pegging",  "dots": [0, 0] },
-        { "label": "Anal Fisting",  "dots": [0, 0] },
+        { "label": "Anal", "dots": [0, 0] },
         { "label": "Rimming",  "dots": [0, 0] },
-        { "label": "Vaginal Teasing",  "dots": [0, 0] },
-        { "label": "Vaginal Fingering",  "dots": [0, 0] },
-        { "label": "Vaginal Toys",  "dots": [0, 0] },
-        { "label": "Vaginal Sex",  "dots": [0, 0] },
-        { "label": "Vaginal Fisting",  "dots": [0, 0] },
+        { "label": "Vaginal",  "dots": [0, 0] },
         { "label": "Cunnilingus",  "dots": [0, 0] },
         { "label": "Blowjob",  "dots": [0, 0] },
         { "label": "Facefucking",  "dots": [0, 0] }
@@ -198,19 +122,13 @@
         { "label": "Scissoring",   "dots": [0, 0] },
         { "label": "Boobjob",   "dots": [0, 0] },
         { "label": "Footjob",   "dots": [0, 0] },
-        { "label": "Outercourse",   "dots": [0, 0] },
         { "label": "Face Sitting",   "dots": [0, 0] },
         { "label": "Breeding",   "dots": [0, 0], "desc":"A clouded judgement with a single minded focus, does not neccessarily entail impregnation" },
         { "label": "Impregnation",   "dots": [0, 0], "desc":"The act of inseminating a partner" },
         { "label": "Condoms",   "dots": [0, 0] },
         { "label": "Raw",   "dots": [0, 0] },
-        { "label": "Armpit Musk",   "dots": [0, 0] },
-        { "label": "Genital Musk",   "dots": [0, 0] },
-        { "label": "Anal Musk",   "dots": [0, 0] },
-        { "label": "Feet Musk",   "dots": [0, 0] },
-        { "label": "Ass Worship",   "dots": [0, 0] },
-        { "label": "Cock Worship",   "dots": [0, 0] },
-        { "label": "Vaginal Worship",   "dots": [0, 0] },
+        { "label": "Musk / Sniffing",   "dots": [0, 0] },
+        { "label": "Body Worship",   "dots": [0, 0] },
         { "label": "Frotting",   "dots": [0, 0] },
         { "label": "Docking",   "dots": [0, 0], "desc":"Inserting the tip of a phallus in another's foreskin" },
         { "label": "Mutual Masturbation",   "dots": [0, 0] },
@@ -218,7 +136,6 @@
         { "label": "Triple Penetration",   "dots": [0, 0] },
         { "label": "Photographing/Recording",   "dots": [0, 0] },
         { "label": "Virginity Loss",   "dots": [0, 0] },
-        { "label": "Queefing",   "dots": [0, 0] },
         { "label": "Hypnosis/Mind Control",   "dots": [0, 0] },
         { "label": "Cheating",  "dots": [0, 0] }
       ]
@@ -230,8 +147,6 @@
         { "label": "Dominant",   "dots": [0, 0] },
         { "label": "Submissive", "dots": [0, 0] },
         { "label": "Switching Role", "dots": [0, 0] },
-        { "label": "Role Reversal", "dots": [0, 0] },
-        { "label": "Role Uncertainity", "dots": [0, 0], "desc": "Before it becomes clear who will be the Dom and who will be the Sub, the excitement brought by the competition" },
         { "label": "Romance / Affection",  "dots": [0, 0] },
         { "label": "DD/lg or MD/lb",  "dots": [0, 0] },
         { "label": "Petplay",  "dots": [0, 0] },
@@ -240,16 +155,7 @@
         { "label": "Power Exchange",  "dots": [0, 0] },
         { "label": "Gentle Dominant",  "dots": [0, 0] },
         { "label": "Brat Submissive",  "dots": [0, 0] },
-        { "label": "Brat Taming",  "dots": [0, 0] },
-        { "label": "Older Dominant",  "dots": [0, 0] },
-        { "label": "Older Submissive",  "dots": [0, 0] },
-        { "label": "Full Ownership",  "dots": [0, 0], "desc": "For the better or worse, some pesky laws prohibit the full ownership of another human being in the day of now, but the closer we get to that reality through the dynamic, the better, no?" },
-        { "label": "Public Display of Ownership",  "dots": [0, 0], "desc": "It may be hidden/coded message for only those that understand, or easily redable message, but a symbol of the Dom's ownership over the Sub will never not be extremely alluring for all involved" },
-        { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },
-        { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
-        { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
-        { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
-        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
+        { "label": "Brat Taming",  "dots": [0, 0] }
       ]
     },
     {
@@ -263,11 +169,7 @@
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
         { "label": "Begging",  "dots": [0, 0] },
-        { "label": "Body Worship",  "dots": [0, 0] },
-        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
-        
-        { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
-        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" }
+        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" }
       ]
     },
     {
@@ -293,11 +195,6 @@
         { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
         { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
         { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
-        { "label": "Spanking", "dots": [0, 0] },
-        { "label": "Slapping",  "dots": [0, 0] },
-        { "label": "Caning",  "dots": [0, 0] },
-        { "label": "Flogging",  "dots": [0, 0] },
-        { "label": "Choking",  "dots": [0, 0] },
         { "label": "Genital Torture",  "dots": [0, 0], "desc": "Regardless of gender, all genitals have the right to be tortured, althought the most known is, of course, {Cock and Ball Torture}[https://en.wikipedia.org/wiki/Cock_and_ball_torture]" },
         { "label": "Abrasions",  "dots": [0, 0] },
         { "label": "Cutting",  "dots": [0, 0], "desc": "The use of a blade or sharp object to cut into the skin, provoking bleeding" }
@@ -313,10 +210,7 @@
         { "label": "Alcohol",  "dots": [0, 0] },
         { "label": "Kidnapping",  "dots": [0, 0] },
         { "label": "Somnophilia",  "dots": [0, 0], "desc": "A sexual interaction where one of the partners is asleep while it happens" },
-        { "label": "Forced Feminaztion",  "dots": [0, 0] },
-        { "label": "Forced Masculinization",  "dots": [0, 0] },
-        { "label": "Forced Transitioning",  "dots": [0, 0] },
-        { "label": "Forced De-Transitioning",  "dots": [0, 0] }
+        { "label": "Forced Gender",  "dots": [0, 0] }
       ]
     },
         {
@@ -327,18 +221,10 @@
         { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },
         { "label": "Exhibitionism", "dots": [0, 0] },
         { "label": "Voyeourism", "dots": [0, 0] },
-        { "label": "Cuckquean", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Bull", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Cuckold", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
-        { "label": "Small Penis Humiliation", "dots": [0, 0] },
+        { "label": "Cuck Stuff", "dots": [0, 0], "desc": "An act where the {cuck or wittol}[https://en.wikipedia.org/wiki/Cuckold] is aware that their partner (the cuckquean) is having sex with another (the bull), and is sometimes made to watch their partner having sex, while they are not allowed to interact with them sexually, sometimes not even allowed to satisfy themselves sexually" },
         { "label": "Penis Size Difference", "dots": [0, 0] },
-        { "label": "Small Breasts Humiliation", "dots": [0, 0] },
         { "label": "Name Calling", "dots": [0, 0] },
-        { "label": "Censored Porn", "dots": [0, 0] },
-        { "label": "Sissification", "dots": [0, 0] },
-        { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" },
-        { "label": "Raceplay", "dots": [0, 0]},
-        { "label": "Polical Play", "dots": [0, 0]}
+        { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" }
       ]
     },
     {
@@ -355,8 +241,7 @@
         { "label": "Lactation",   "dots": [0, 0] },
         { "label": "Blood / Bleeding",   "dots": [0, 0] },
         { "label": "Watersports", "dots": [0, 0] },
-        { "label": "Scat", "dots": [0, 0] },
-        { "label": "Diaper",  "dots": [0, 0] }
+        { "label": "Scat", "dots": [0, 0] }
       ]
     }
   ]
