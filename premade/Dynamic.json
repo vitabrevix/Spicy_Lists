@@ -10,12 +10,10 @@
   "lists": [
     {
       "name": "Dynamic",
-      "columns": ["Partner -> You", "You -> Partner"],
+      "columns": ["As Sub", "As Dom"],
       "items": [
-        { "label": "Dominant",   "dots": [0, 0] },
-        { "label": "Submissive", "dots": [0, 0] },
-        { "label": "Switching Role", "dots": [0, 0] },
-        { "label": "Role Reversal", "dots": [0, 0] },
+        { "label": "Switching Role", "dots": [0, 0], "desc": "Organically switching between the roles of Dom and Sub, either in the same session or in different sessions" },
+        { "label": "Role Reversal", "dots": [0, 0], "desc": "Switching between the roles of Dom and Sub, by having the Sub overpower the Dom and take control of the session, or the relationship all-together" },
         { "label": "Role Uncertainity", "dots": [0, 0], "desc": "Before it becomes clear who will be the Dom and who will be the Sub, the excitement brought by the competition" },
         { "label": "Romance / Affection",  "dots": [0, 0] },
         { "label": "DD/lg or MD/lb",  "dots": [0, 0] },
