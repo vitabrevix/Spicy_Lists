@@ -248,7 +248,7 @@
     },
     {
       "name": "Pain",
-      "columns": ["As Sadist", "As Masochist"],
+      "columns": ["As Masochist", "As Sadist"],
       "items": [
         { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
         { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
