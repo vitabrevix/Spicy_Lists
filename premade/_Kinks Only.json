@@ -80,7 +80,7 @@
     },
     {
       "name": "Foreplay",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Kissing Body",   "dots": [0, 0] },
         { "label": "Making Out", "dots": [0, 0] },
@@ -102,7 +102,7 @@
     },
     {
       "name": "Holes",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Anal Teasing", "dots": [0, 0] },
         { "label": "Anal Fingering",  "dots": [0, 0] },
@@ -122,7 +122,7 @@
     },
     {
       "name": "General",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Aftercare",   "dots": [0, 0] },
         { "label": "Praise",   "dots": [0, 0] },
@@ -159,7 +159,7 @@
     },
     {
       "name": "Dynamic",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Dominant",   "dots": [0, 0] },
         { "label": "Submissive", "dots": [0, 0] },
@@ -207,7 +207,7 @@
     },
     {
       "name": "BDSM",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Blinding", "dots": [0, 0] },
         { "label": "Deafening",  "dots": [0, 0] },
@@ -240,7 +240,7 @@
     },
     {
       "name": "Consensual Non Consensual",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "CNC / Play Rape",   "dots": [0, 0] },
         { "label": "Blackmail", "dots": [0, 0] },
@@ -256,7 +256,7 @@
     },
     {
       "name": "Degradation",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
         { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },

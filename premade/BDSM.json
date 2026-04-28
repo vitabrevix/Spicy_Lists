@@ -10,7 +10,7 @@
   "lists": [
     {
       "name": "BDSM",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Blinding", "dots": [0, 0] },
         { "label": "Deafening",  "dots": [0, 0] },

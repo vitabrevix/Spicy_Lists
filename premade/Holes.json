@@ -10,7 +10,7 @@
   "lists": [
     {
       "name": "Holes",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Blowjob", "dots": [0, 0] },
         { "label": "Deepthroat", "dots": [0, 0] },

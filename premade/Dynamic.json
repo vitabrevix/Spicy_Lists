@@ -10,7 +10,7 @@
   "lists": [
     {
       "name": "Dynamic",
-      "columns": ["Self", "Partner"],
+      "columns": ["Partner -> You", "You -> Partner"],
       "items": [
         { "label": "Dominant",   "dots": [0, 0] },
         { "label": "Submissive", "dots": [0, 0] },
