@@ -215,7 +215,7 @@
     },
     {
       "name": "Degradation",
-      "columns": ["Self", "Partner"],
+      "columns": ["As Degradee", "As Degrader"],
       "items": [
         { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
         { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },

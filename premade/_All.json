@@ -325,7 +325,7 @@
         { "label": "Alcohol",  "dots": [0, 0] },
         { "label": "Kidnapping",  "dots": [0, 0] },
         { "label": "Somnophilia",  "dots": [0, 0], "desc": "A sexual interaction where one of the partners is asleep while it happens" },
-        { "label": "Forced Feminaztion",  "dots": [0, 0] },
+        { "label": "Forced Feminization",  "dots": [0, 0] },
         { "label": "Forced Masculinization",  "dots": [0, 0] },
         { "label": "Forced Transitioning",  "dots": [0, 0] },
         { "label": "Forced De-Transitioning",  "dots": [0, 0] }
@@ -333,7 +333,7 @@
     },
         {
       "name": "Degradation",
-      "columns": ["Self", "Partner"],
+      "columns": ["As Degradee", "As Degrader"],
       "items": [
         { "label": "Light Humiliation",   "dots": [0, 0], "desc": "Light banter, making the subject of the humiliation feeling exposed and vulnerable, but not harsh enough to make them cry" },
         { "label": "Heavy Humiliation", "dots": [0, 0], "desc": "Reaching the point where subject of the humiliation is in tears" },
