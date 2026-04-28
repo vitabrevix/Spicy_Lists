@@ -186,7 +186,7 @@
     },
     {
       "name": "Domination",
-      "columns": ["Self", "Partner"],
+      "columns": ["As Sub", "As Dom"],
       "items": [
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
