@@ -10,10 +10,8 @@
   "lists": [
     {
       "name": "Pain",
-      "columns": ["Self", "Partner"],
+      "columns": ["As Sadist", "As Masochist"],
       "items": [
-        { "label": "Sadism",   "dots": [0, 0], "desc": "Deriving pleasure from causing pain" },
-        { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
         { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
         { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
         { "label": "Spanking", "dots": [0, 0] },

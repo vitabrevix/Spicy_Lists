@@ -191,10 +191,8 @@
     },
     {
       "name": "Pain",
-      "columns": ["Self", "Partner"],
+      "columns": ["As Sadist", "As Masochist"],
       "items": [
-        { "label": "Sadism",   "dots": [0, 0], "desc": "Deriving pleasure from causing pain" },
-        { "label": "Masochism", "dots": [0, 0], "desc": "Deriving pleasure from receiving pain" },
         { "label": "Light Pain",   "dots": [0, 0], "desc": "Small painful acts, like slapping, light spanking, etc" },
         { "label": "Heavy Pain", "dots": [0, 0], "desc": "Heavy painful acts, like punching, kicking, etc" },
         { "label": "Genital Torture",  "dots": [0, 0], "desc": "Regardless of gender, all genitals have the right to be tortured, althought the most known is, of course, {Cock and Ball Torture}[https://en.wikipedia.org/wiki/Cock_and_ball_torture]" },
