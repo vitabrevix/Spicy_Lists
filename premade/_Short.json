@@ -80,19 +80,19 @@
         { "label": "Scratching",  "dots": [0, 0] },
         { "label": "Play Fight",  "dots": [0, 0] },
         { "label": "Groping",  "dots": [0, 0] },
-        { "label": "Hotdogging",  "dots": [0, 0] }
+        { "label": "Hotdogging",  "dots": [0, 0], "desc": "Teasing a penis between the butt's buns without penetration" }
       ]
     },
     {
       "name": "Holes",
       "columns": ["Partner -> You", "You -> Partner"],
       "items": [
+        { "label": "Blowjob",  "dots": [0, 0] },
+        { "label": "Facefucking",  "dots": [0, 0] },
         { "label": "Anal", "dots": [0, 0] },
         { "label": "Rimming",  "dots": [0, 0] },
         { "label": "Vaginal",  "dots": [0, 0] },
-        { "label": "Cunnilingus",  "dots": [0, 0] },
-        { "label": "Blowjob",  "dots": [0, 0] },
-        { "label": "Facefucking",  "dots": [0, 0] }
+        { "label": "Cunnilingus",  "dots": [0, 0] }
       ]
     },
     {
@@ -137,7 +137,8 @@
         { "label": "Hair Pulling",   "dots": [0, 0] },
         { "label": "Triple Penetration",   "dots": [0, 0] },
         { "label": "Photographing/Recording",   "dots": [0, 0] },
-        { "label": "Virginity Loss",   "dots": [0, 0] },
+        { "label": "Body Writing", "dots": [0, 0] },
+        { "label": "Virginity Loss", "dots": [0, 0], "desc": "The loss of virginity, whether vaginal, anal or penile" },
         { "label": "Hypnosis/Mind Control",   "dots": [0, 0] },
         { "label": "Cheating",  "dots": [0, 0] }
       ]
@@ -166,13 +167,16 @@
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
         { "label": "Rules", "dots": [0, 0] },
+        { "label": "Speech Restriction", "dots": [0, 0], "desc": "Restricting how the submissive is permitted to speak, ex: only answering with yes/no, only speaking when spoken to, etc" },
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
         { "label": "Begging",  "dots": [0, 0] },
-        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
+        { "label": "Marking",  "dots": [0, 0], "desc": "The Sub being marked as the Dom's property, there are many ways to do so, some permanent, like a tatto or branding, some less so, like a bracelet or a temporary tattoo, etc" },
         { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
-        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" }      ]
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
+        { "label": "Powerbottom",  "dots": [0, 0], "desc": "A Dom that enjoys being penetrated, while still maintaining control over the session" }
+      ]
     },
     {
       "name": "BDSM",
@@ -186,6 +190,7 @@
         { "label": "Leash and Collar",  "dots": [0, 0] },
         { "label": "Light Bondage",  "dots": [0, 0] },
         { "label": "Heavy Bondage",  "dots": [0, 0] },
+        { "label": "Hand Cuffs",  "dots": [0, 0] },
         { "label": "Breath Play",  "dots": [0, 0], "desc":"One of the few dangerous kinks, where the submissive surrenders control over their oxygen intake to the dominat will" }
       ]
     },

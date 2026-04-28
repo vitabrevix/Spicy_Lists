@@ -132,7 +132,7 @@
         { "label": "Scissoring",   "dots": [0, 0] },
         { "label": "Boobjob",   "dots": [0, 0] },
         { "label": "Footjob",   "dots": [0, 0] },
-        { "label": "Outercourse",   "dots": [0, 0] },
+        { "label": "Intercrural",   "dots": [0, 0], "desc": "Masturbating a penis between the thighs without penetration" },
         { "label": "Face Sitting",   "dots": [0, 0] },
         { "label": "Breeding",   "dots": [0, 0], "desc":"A clouded judgement with a single minded focus, does not neccessarily entail impregnation" },
         { "label": "Impregnation",   "dots": [0, 0], "desc":"The act of inseminating a partner" },
@@ -151,7 +151,8 @@
         { "label": "Hair Pulling",   "dots": [0, 0] },
         { "label": "Triple Penetration",   "dots": [0, 0] },
         { "label": "Photographing/Recording",   "dots": [0, 0] },
-        { "label": "Virginity Loss",   "dots": [0, 0] },
+        { "label": "Body Writing", "dots": [0, 0] },
+        { "label": "Virginity Loss", "dots": [0, 0], "desc": "The loss of virginity, whether vaginal, anal or penile" },
         { "label": "Queefing",   "dots": [0, 0] },
         { "label": "Cheating",  "dots": [0, 0] }
       ]
@@ -219,16 +220,18 @@
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
         { "label": "Rules", "dots": [0, 0] },
+        { "label": "Speech Restriction", "dots": [0, 0], "desc": "Restricting how the submissive is permitted to speak, ex: only answering with yes/no, only speaking when spoken to, etc" },
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
         { "label": "Begging",  "dots": [0, 0] },
         { "label": "Body Worship",  "dots": [0, 0] },
-        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
+        { "label": "Marking",  "dots": [0, 0], "desc": "The Sub being marked as the Dom's property, there are many ways to do so, some permanent, like a tatto or branding, some less so, like a bracelet or a temporary tattoo, etc" },
         { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
         { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" },
         { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
-        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" }
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
+        { "label": "Powerbottom",  "dots": [0, 0], "desc": "A Dom that enjoys being penetrated, while still maintaining control over the session" }
       ]
     },
     {
@@ -243,6 +246,7 @@
         { "label": "Leash and Collar",  "dots": [0, 0] },
         { "label": "Light Bondage",  "dots": [0, 0] },
         { "label": "Heavy Bondage",  "dots": [0, 0] },
+        { "label": "Hand Cuffs",  "dots": [0, 0] },
         { "label": "Breath Play",  "dots": [0, 0], "desc":"One of the few dangerous kinks, where the submissive surrenders control over their oxygen intake to the dominat will" }
       ]
     },
@@ -275,7 +279,8 @@
         { "label": "Forced Feminization",  "dots": [0, 0] },
         { "label": "Forced Masculinization",  "dots": [0, 0] },
         { "label": "Forced Transitioning",  "dots": [0, 0] },
-        { "label": "Forced De-Transitioning",  "dots": [0, 0] }
+        { "label": "Forced De-Transitioning",  "dots": [0, 0] },
+        { "label": "Prostitution/Pimping",  "dots": [0, 0] }
       ]
     },
     {
