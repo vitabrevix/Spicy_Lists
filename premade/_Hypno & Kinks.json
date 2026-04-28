@@ -9,115 +9,115 @@
   ],
   "lists": [
     {
-      "name": "Erogenous Zones",
-      "columns": ["Self", "Partner"],
+      "name": "Goals",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Big Ass",   "dots": [0, 0] },
-        { "label": "Average Ass",   "dots": [0, 0] },
-        { "label": "Small Ass",  "dots": [0, 0] },
-        { "label": "Big Cock",   "dots": [0, 0] },
-        { "label": "Average Cock",   "dots": [0, 0] },
-        { "label": "Small Cock",   "dots": [0, 0] },
-        { "label": "Circumcised Cock",   "dots": [0, 0] },
-        { "label": "Un-Circumcised Cock",   "dots": [0, 0] },
-        { "label": "Big Testicles",   "dots": [0, 0] },
-        { "label": "Average Testicles",   "dots": [0, 0] },
-        { "label": "Small Testicles",   "dots": [0, 0] },
-        { "label": "Big Breasts",   "dots": [0, 0] },
-        { "label": "Average Breasts",   "dots": [0, 0] },
-        { "label": "Small Breasts",   "dots": [0, 0] }
+        { "label": "Utility Hypno", "dots": [0, 0], "desc":"Hypnosis that has a specific purpose or utility, like helping with sleep, anxiety, motivation, etc" },
+        { "label": "Purposeless Hypno", "dots": [0, 0], "desc":"Hypnosis that is just for fun, without a specific purpose or utility, useful for simple relaxation" },
+        { "label": "Erotic Hypnosis", "dots": [0, 0], "desc":"Hypnosis specifically aimed for sexual pleasure" },
+        { "label": "Stage Performance", "dots": [0, 0], "desc":"Hypnosis as a form of entertainment with spectators" }
       ]
     },
     {
-      "name": "Body Parts",
-      "columns": ["Self", "Partner"],
+      "name": "Hypnosis Type",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Crow Feet",   "dots": [0, 0], "desc":"[https://draxe.com/wp-content/uploads/2024/03/shutterstock_1642402627-1.jpg]" },
-        { "label": "Gray Hair",   "dots": [0, 0], "desc":"[https://nickyoliver.com/wp-content/uploads/Grey-Hair-.jpg]" },
-        { "label": "Smile Lines",  "dots": [0, 0], "desc":"[https://cdn.shopify.com/s/files/1/0251/2184/9419/files/Colorescience_Blog_Refresh_1_graphic_1_1024x1024.jpg?v=1703020460]" },
-        { "label": "Freckles",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/FrecklesAfterSummertime.jpg/960px-FrecklesAfterSummertime.jpg]" },
-        { "label": "Under-eye Circles",   "dots": [0, 0], "desc":"[https://www.oxygenetix.com/cdn/shop/articles/Dark_Circles_Eyes.jpg]" },
-        { "label": "Stretch Marks",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/c/ce/Female_Torso_with_Tiger_Stripes_%28Stretch_Marks%29_from_Pregnancy.JPG]" },
-        { "label": "Scars",   "dots": [0, 0], "desc":"[https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scar_%28xndr%29.jpg/1280px-Scar_%28xndr%29.jpg]" },
-        { "label": "Veiny Hands/Arms",   "dots": [0, 0], "desc":"[https://i.imgflip.com/1tzd77.jpg]" },
-        { "label": "Collarbones",   "dots": [0, 0] },
-        { "label": "Hip Dips",   "dots": [0, 0], "desc":"[https://cdn.prod.website-files.com/5cdb1a9543c13e4de6193985/66364ca4cb57fb317b5b5f9f_What%20are%20Hip%20Dips%20and%20How%20to%20Fix.webp]" },
-        { "label": "Wrists",   "dots": [0, 0] },
-        { "label": "Ankles",   "dots": [0, 0] },
-        { "label": "Fingers",   "dots": [0, 0] },
-        { "label": "Feet",   "dots": [0, 0], "desc":"What were you expecting? A pic? You gooner" },
-        { "label": "Armpits",   "dots": [0, 0] },
-        { "label": "Body Hair",   "dots": [0, 0] }
+        { "label": "Files", "dots": [0, 0], "desc":"Pre-recorded audio or video files, that can be listened to or watched alone" },
+        { "label": "1 on 1", "dots": [0, 0], "desc":"A live session with an hypnotist, where the hypnotist can adapt to the subject's reactions and needs" },
+        { "label": "Online", "dots": [0, 0], "desc":"A live session with an hypnotist, but through a text or call" },
+        { "label": "In Person", "dots": [0, 0], "desc":"A live session with an hypnotist, but in the physical presence of each other" },
+        { "label": "Visual", "dots": [0, 0], "desc":"Hypnosis that relies on visual stimuli, like flashing lights, patterns, pendulums, etc" },
+        { "label": "Auditory", "dots": [0, 0], "desc":"Hypnosis that relies on auditory stimuli, like voices, binaural beats, subliminal messages, etc" },
+        { "label": "Kinesthetics", "dots": [0, 0], "desc":"Hypnosis that relies on physical sensations, like touch, temperature, etc" },
+        { "label": "Olfactory", "dots": [0, 0], "desc":"Hypnosis that relies on olfactory stimuli, like certain scents, pheromones, etc" }
       ]
     },
     {
-      "name": "Usual Clothes",
-      "columns": ["Self", "Partner"],
+      "name": "Visual Hypnosis",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Cross-dressing",   "dots": [0, 0] },
-        { "label": "Masculine Clothes", "dots": [0, 0] },
-        { "label": "Feminine Clothes",  "dots": [0, 0] },
-        { "label": "Heels",  "dots": [0, 0] },
-        { "label": "Sport Shoes",  "dots": [0, 0] },
-        { "label": "Suit",  "dots": [0, 0] },
-        { "label": "Latex",  "dots": [0, 0] },
-        { "label": "Leather",  "dots": [0, 0] },
-        { "label": "Fishnets",  "dots": [0, 0] },
-        { "label": "Uniform",  "dots": [0, 0] }
+        { "label": "Text", "dots": [0, 0] },
+        { "label": "Video", "dots": [0, 0], "desc":"Hypnosis that relies on pre-recorded videos and gifs" },
+        { "label": "Flashing Lights", "dots": [0, 0] },
+        { "label": "Patterns/Spirals", "dots": [0, 0] },
+        { "label": "Pendulums", "dots": [0, 0] },
+        { "label": "Eye Contact", "dots": [0, 0] }
       ]
     },
     {
-      "name": "Spicy clothes",
-      "columns": ["Self", "Partner"],
+      "name": "Audio Hypnosis",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Lingerie",   "dots": [0, 0] },
-        { "label": "Boxers",   "dots": [0, 0] },
-        { "label": "Stockings",  "dots": [0, 0] },
-        { "label": "Transparent Underware",   "dots": [0, 0] },
-        { "label": "Opaque Underware",   "dots": [0, 0] },
-        { "label": "Latex Bodysuit",   "dots": [0, 0] }
+        { "label": "Masculine Voice", "dots": [0, 0] },
+        { "label": "Feminine Voice", "dots": [0, 0] },
+        { "label": "Robotic/AI Voice", "dots": [0, 0] },
+        { "label": "ASMR", "dots": [0, 0] },
+        { "label": "Sound Effects", "dots": [0, 0] },
+        { "label": "Binaural Beats", "dots": [0, 0] },
+        { "label": "Subliminal Messages", "dots": [0, 0] },
+        { "label": "Snaps/Clicker", "dots": [0, 0] }
       ]
     },
     {
-      "name": "Foreplay",
-      "columns": ["Self", "Partner"],
+      "name": "Kinesthetics Hypnosis",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Kissing Body",   "dots": [0, 0] },
-        { "label": "Making Out", "dots": [0, 0] },
-        { "label": "Dirty Talk", "dots": [0, 0] },
-        { "label": "Teasing",  "dots": [0, 0] },
-        { "label": "Taunting",  "dots": [0, 0] },
-        { "label": "Flirting",  "dots": [0, 0] },
-        { "label": "Touching",  "dots": [0, 0] },
-        { "label": "Pinning",  "dots": [0, 0] },
-        { "label": "Undressing Partner",  "dots": [0, 0] },
-        { "label": "Strip Tease",  "dots": [0, 0] },
-        { "label": "Licking",  "dots": [0, 0] },
-        { "label": "Biting",  "dots": [0, 0] },
-        { "label": "Scratching",  "dots": [0, 0] },
-        { "label": "Play Fight",  "dots": [0, 0] },
-        { "label": "Groping",  "dots": [0, 0] },
-        { "label": "Hotdogging",  "dots": [0, 0] }
+        { "label": "Human Touch", "dots": [0, 0] },
+        { "label": "Tools Touch", "dots": [0, 0] },
+        { "label": "Guided Movement", "dots": [0, 0] },
+        { "label": "Soft Brush", "dots": [0, 0] },
+        { "label": "Sudden Shake", "dots": [0, 0] },
+        { "label": "Heat Difference", "dots": [0, 0] }
       ]
     },
     {
-      "name": "Holes",
-      "columns": ["Self", "Partner"],
+      "name": "Olfactory Hypnosis",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Anal Teasing", "dots": [0, 0] },
-        { "label": "Anal Fingering",  "dots": [0, 0] },
-        { "label": "Anal Toys",  "dots": [0, 0] },
-        { "label": "Anal Sex/Pegging",  "dots": [0, 0] },
-        { "label": "Anal Fisting",  "dots": [0, 0] },
-        { "label": "Rimming",  "dots": [0, 0] },
-        { "label": "Vaginal Teasing",  "dots": [0, 0] },
-        { "label": "Vaginal Fingering",  "dots": [0, 0] },
-        { "label": "Vaginal Toys",  "dots": [0, 0] },
-        { "label": "Vaginal Sex",  "dots": [0, 0] },
-        { "label": "Vaginal Fisting",  "dots": [0, 0] },
-        { "label": "Cunnilingus",  "dots": [0, 0] },
-        { "label": "Blowjob",  "dots": [0, 0] },
-        { "label": "Facefucking",  "dots": [0, 0] }
+        { "label": "Strong Scents", "dots": [0, 0] },
+        { "label": "Soft Scents", "dots": [0, 0] },
+        { "label": "Pheronomes", "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Trance Process",
+      "columns": ["As Subject", "As Hypnotist"],
+      "items": [
+        { "label": "Relaxation Trance", "dots": [0, 0], "desc":"The subject is put in a calm and relaxed state" },
+        { "label": "Conversational", "dots": [0, 0], "desc":"The subject is put in a trance through a normal conversation, without the subject realizing it" },
+        { "label": "Overstimulation", "dots": [0, 0], "desc":"The subject is put in an overstimulated state, then dropped" },
+        { "label": "Confusion", "dots": [0, 0], "desc":"The subject is put in a confused state, then given clear non-confusing instructions" },
+        { "label": "Fractionation", "dots": [0, 0], "desc":"The subject is put in and out of trance multiple times, to deepen the trance and make it more effective" },
+        { "label": "Repetition", "dots": [0, 0], "desc":"The subject is given the same instructions multiple times, to make them more effective" },
+        { "label": "Fixation", "dots": [0, 0], "desc":"The subject is made to focus on a specific point, object or thought, to induce trance" }
+      ]
+    },
+    {
+      "name": "Trance Effects",
+      "columns": ["As Subject", "As Hypnotist"],
+      "items": [
+        { "label": "Muscle Relaxation", "dots": [0, 0], "desc":"The subject's muscles become relaxed and loose, softly sinking in one direction" },
+        { "label": "Blank Stare", "dots": [0, 0], "desc":"The subject's eyes are open, but they have a blank stare, not focusing on anything in particular" },
+        { "label": "Eye Roll", "dots": [0, 0], "desc":"The subject's eyes roll back in their head" },
+        { "label": "Drooling", "dots": [0, 0], "desc":"The subject drools uncontrollably" },
+        { "label": "Freezing/Catalepsy", "dots": [0, 0], "desc":"Certian parts of the subject's body become stiff and immobile, as if they were frozen in place" },
+        { "label": "Hypno Bondage", "dots": [0, 0], "desc":"The subject becomes hypnotically bound, unable to move or break free" },
+        { "label": "Amnesia", "dots": [0, 0], "desc":"The subject forgets parts of, or the entire, trance and its effects once awake" },
+        { "label": "Hallucinations", "dots": [0, 0], "desc":"The subject experiences hallucinations, like seeing, hearing, feeling or smelling things that are not there, etc" },
+        { "label": "Post-Hypno Suggestions", "dots": [0, 0], "desc":"The subject subconciously follows suggestions given during the trance, after the trance is over" },
+        { "label": "Un-awareness", "dots": [0, 0], "desc":"The subject is unaware of the effects of the hypnosis, during or after trance, no matter how evident they may be to other observers: being naked, subconciously following a command, etc" }
+      ]
+    },
+    {
+      "name": "Triggers",
+      "columns": ["As Subject", "As Hypnotist"],
+      "items": [
+        { "label": "Known Triggers", "dots": [0, 0], "desc":"Triggers that the subject is aware of" },
+        { "label": "Hidden Triggers", "dots": [0, 0], "desc":"Triggers that the subject is not aware of" },
+        { "label": "Public Triggers", "dots": [0, 0], "desc":"Triggers that can be used by other people, besides the hypnotist" },
+        { "label": "Self Triggers", "dots": [0, 0], "desc":"Triggers that the subject can use on themselves" },
+        { "label": "Simple Triggers", "dots": [0, 0], "desc":"Triggers that are simple and easy to use, like a word, a touch, etc" },
+        { "label": "Complex Triggers", "dots": [0, 0], "desc":"Triggers that are complex and require a specific sequence of actions, like a combination of words, numerical values, etc" }
       ]
     },
     {
@@ -158,6 +158,18 @@
       ]
     },
     {
+      "name": "Pleasure",
+      "columns": ["As Subject", "As Hypnotist"],
+      "items": [
+        { "label": "Hands Free Orgasm", "dots": [0, 0], "desc":"The subject experiences an orgasm without any physical stimulation, just through hypnosis" },
+        { "label": "Phantom Touch", "dots": [0, 0], "desc":"The subject feels physical sensations, like touch, temperature, etc, without any physical cause" },
+        { "label": "Phantom Toys", "dots": [0, 0], "desc":"The subject feels sensations that they associate with certain toys, like a vibrator, dildo, plug, etc, without any physical cause" },
+        { "label": "Enhanced Orgasms", "dots": [0, 0], "desc":"The subject experiences more intense and pleasurable orgasms than usual" },
+        { "label": "Orgasm Denial", "dots": [0, 0], "desc":"The subject is denied an orgasm, even if they are close to it" },
+        { "label": "Edge", "dots": [0, 0], "desc":"The subject is kept on the edge of orgasm, through hypnosis, for an extended period of time" }
+      ]
+    },
+    {
       "name": "Dynamic",
       "columns": ["Self", "Partner"],
       "items": [
@@ -184,6 +196,23 @@
         { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
         { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
         { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
+      ]
+    },
+    {
+      "name": "Mind Modification",
+      "columns": ["As Subject", "As Hypnotist"],
+      "items": [
+        { "label": "Ego Death", "dots": [0, 0], "desc":"The subject experiences a temporary loss of their sense of self and identity, feeling like they are one with the universe or that they have no existence at all" },
+        { "label": "Enhanced Emotions", "dots": [0, 0], "desc":"The subject experiences enhanced emotions, like more intense pleasure, pain, need, grief, fear, etc" },
+        { "label": "Emotion Manipulation", "dots": [0, 0], "desc":"The subject's emotions are manipulated, enhaced, supressed or changed to emotions unrelated to the current situation" },
+        { "label": "Dron/Dollification", "dots": [0, 0], "desc":"The subject becomes a drone, losing their free will and becoming completely obedient to the hypnotist" },
+        { "label": "Bimbobification", "dots": [0, 0], "desc":"The subject becomes a bimbo, losing their intelligence and becoming obsessed with their appearance and sexuality" },
+        { "label": "IQ Play", "dots": [0, 0], "desc":"The subject's intelligence is temporarily increased or decreased, depending on the hypnotist's wishes" },
+        { "label": "Animal Transformation", "dots": [0, 0], "desc":"The subject becomes convinced they are a non-sapien animal" },
+        { "label": "Body Transformation", "dots": [0, 0], "desc":"The subject becomes convinced they have a different body, like a different gender, a different size, etc" },
+        { "label": "Objectification", "dots": [0, 0], "desc":"The subject becomes an object, losing their sense of self and becoming a mere tool for the hypnotist's pleasure" },
+        { "label": "Personality Modification", "dots": [0, 0], "desc":"The subject's personality is altered, erased or implanted, depending on the hypnotist's wishes" },
+        { "label": "Tulpa", "dots": [0, 0], "desc":"(A bit dangerous) Forming a tulpa in the subject's subconciousness, a split personality that can take on a life of its own and take control over the subject's body, at the hypnotist's wishes" }
       ]
     },
     {
@@ -277,16 +306,15 @@
       ]
     },
     {
-      "name": "Identity Loss",
-      "columns": ["Self", "Partner"],
+      "name": "Hypno CNC",
+      "columns": ["As Subject", "As Hypnotist"],
       "items": [
-        { "label": "Ego Death",  "dots": [0, 0], "desc": "The death of a previous self, for a greater future self. Using tools such as hypnosis to rebuild anew oneself bit by bit" },
-        { "label": "Feminization",   "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
-        { "label": "Masculinization", "dots": [0, 0], "desc": "Sometimes you just want a little help into accepting who you really want to be, doing so through sexual means is a powerful way of fighting repressed traumas and opresing cultural views" },
-        { "label": "Himbo/Bimboficiation",  "dots": [0, 0], "desc": "Sometimes being a little dummy in bed is just what you need" },
-        { "label": "Corruption",  "dots": [0, 0] },
-        { "label": "Ideology Play", "dots": [0, 0], "desc": "Similar to Political Play, however this kink is rather centered around changing/converting the subject's view of topics like feminism, mysoginy, etc" },
-        { "label": "Dumbification", "dots": [0, 0] }
+        { "label": "Mandatory Safeword", "dots": [0, 0], "desc":"Both the subject and hypnotist have a code safeword either can use to stop the session" },
+        { "label": "Sudden Trance", "dots": [0, 0], "desc":"Suddenly and quickly putting the subject in trance without any warning" },
+        { "label": "Sudden Trigger", "dots": [0, 0], "desc":"Suddenly using a trigger anywhere and anytime, without asking for consent" },
+        { "label": "Ghaslighting", "dots": [0, 0], "desc":"The hypnotist makes the subject doubt their own perceptions and memories" },
+        { "label": "Corruption", "dots": [0, 0], "desc":"The hypnotist uses hypnosis to make the subject do things they expressed a dislike towards" },
+        { "label": "Permanent Effects", "dots": [0, 0], "desc":"Hypnotic suggestions that may have a semi-permanent/permanent effect on the subject" }
       ]
     },
     {

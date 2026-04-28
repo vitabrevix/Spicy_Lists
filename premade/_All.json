@@ -205,6 +205,8 @@
       "name": "General",
       "columns": ["Self", "Partner"],
       "items": [
+        { "label": "Aftercare",   "dots": [0, 0] },
+        { "label": "Praise",   "dots": [0, 0] },
         { "label": "Clothed Sex",   "dots": [0, 0] },
         { "label": "Edging",   "dots": [0, 0] },
         { "label": "Handjob",   "dots": [0, 0] },
@@ -278,9 +280,10 @@
         { "label": "Begging",  "dots": [0, 0] },
         { "label": "Body Worship",  "dots": [0, 0] },
         { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
-        
         { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
-        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" }
+        { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" },
+        { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" }
       ]
     },
     {
@@ -350,8 +353,8 @@
         { "label": "Censored Porn", "dots": [0, 0] },
         { "label": "Sissification", "dots": [0, 0] },
         { "label": "Groveling", "dots": [0, 0], "desc": "Begging to the next level, being on all four, or with your forehead on the floor, begging for something from someone, maybe clothed, maybe naked, maybe only the two, maybe in public, etc" },
-        { "label": "Raceplay", "dots": [0, 0]},
-        { "label": "Polical Play", "dots": [0, 0]}
+        { "label": "Raceplay", "dots": [0, 0], "desc": "Including the different in races between the dominant and submissive in the degradation, as if it mattered, ex: Blacked, Bleached, etc" },
+        { "label": "Polical Play", "dots": [0, 0], "desc": "Including the different in political view between the dominant and submissive in the degradation (sometime faking the political view for the play), as if it mattered, ex: Mysogyny vs Misandry, Maga vs Liberal, etc" }
       ]
     },
     {

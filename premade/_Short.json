@@ -116,6 +116,8 @@
       "name": "General",
       "columns": ["Self", "Partner"],
       "items": [
+        { "label": "Aftercare",   "dots": [0, 0] },
+        { "label": "Praise",   "dots": [0, 0] },
         { "label": "Clothed Sex",   "dots": [0, 0] },
         { "label": "Edging",   "dots": [0, 0] },
         { "label": "Handjob",   "dots": [0, 0] },
@@ -169,8 +171,9 @@
         { "label": "Forced Orgasm",  "dots": [0, 0] },
         { "label": "Orgasm Denial",  "dots": [0, 0] },
         { "label": "Begging",  "dots": [0, 0] },
-        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" }
-      ]
+        { "label": "Marking",  "dots": [0, 0], "desc": "A situation in which the Dom will mark the Sub as their property, there are many ways to do so, some permanent, like a tatto or branding, some less so like bracelet or a temporary tattoo, etc" },
+        { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" }      ]
     },
     {
       "name": "BDSM",
