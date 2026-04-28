@@ -342,7 +342,7 @@
     },
     {
       "name": "Fluids",
-      "columns": ["Self", "Partner"],
+      "columns": ["Recipient", "Donor"],
       "items": [
         { "label": "Sweat",   "dots": [0, 0] },
         { "label": "Saliva",   "dots": [0, 0] },
@@ -352,10 +352,10 @@
         { "label": "Snowballing",   "dots": [0, 0], "desc": "Sharing some of the tasty essence with someone else from your mouth to theirs" },
         { "label": "Sloppy Second",   "dots": [0, 0], "desc": "Licking the tasty essence out of someone's used holes" },
         { "label": "Lactation",   "dots": [0, 0] },
-        { "label": "Blood / Bleeding",   "dots": [0, 0] },
         { "label": "Watersports", "dots": [0, 0] },
         { "label": "Scat", "dots": [0, 0] },
-        { "label": "Diaper",  "dots": [0, 0] }
+        { "label": "Diaper",  "dots": [0, 0] },
+        { "label": "Blood / Bleeding",   "dots": [0, 0] }
       ]
     }
   ]
