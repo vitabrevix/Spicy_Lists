@@ -209,8 +209,10 @@ function setDotBlend(lid, iid, ci, a, b) {
 }
 
 document.addEventListener('click', e => {
+  if (definitionsOpen && !e.target.closest('#definitions-popover') && !e.target.closest('#definitions-btn')) {
+    closeDefinitionsPopover();
+  }
   if (
-    openColorPicker !== null &&
     !e.target.closest('#color-picker-portal') &&
     !e.target.classList.contains('pill-color-btn')
   ) {
@@ -475,6 +477,269 @@ function triggerImportJson(mode) {
   input.click();
 }
 
+let definitionsOpen = false;
+
+function removeDefinitionsPopover() {
+  const p = document.getElementById('definitions-popover');
+  if (p) p.remove();
+}
+
+function closeDefinitionsPopover() {
+  definitionsOpen = false;
+  const btn = document.getElementById('definitions-btn');
+  if (btn) btn.classList.remove('active');
+  removeDefinitionsPopover();
+}
+
+function openDefinitionsPopover() {
+  if (definitionsOpen) {
+    closeDefinitionsPopover();
+    return;
+  }
+  definitionsOpen = true;
+  const btn = document.getElementById('definitions-btn');
+  if (btn) btn.classList.add('active');
+  removeDefinitionsPopover();
+
+  const pop = document.createElement('div');
+  pop.id = 'definitions-popover';
+  pop.className = 'definitions-popover';
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'definitions-popover-header';
+
+  const title = document.createElement('span');
+  title.className = 'definitions-popover-title';
+  title.textContent = 'Definitions';
+
+  const actions = document.createElement('div');
+  actions.className = 'definitions-popover-actions';
+
+  const exportBtn = document.createElement('button');
+  exportBtn.className = 'definitions-export-btn';
+  exportBtn.textContent = 'Export JPG';
+  exportBtn.addEventListener('click', exportDefinitionsJpg);
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'definitions-close-btn';
+  closeBtn.innerHTML = '&#x2715;';
+  closeBtn.title = 'Close';
+  closeBtn.addEventListener('click', closeDefinitionsPopover);
+
+  actions.appendChild(exportBtn);
+  actions.appendChild(closeBtn);
+  header.appendChild(title);
+  header.appendChild(actions);
+  pop.appendChild(header);
+
+  // Body — collect all items with desc, in list load order
+  const body = document.createElement('div');
+  body.className = 'definitions-popover-body';
+  body.id = 'definitions-popover-body';
+
+  const defs = [];
+  lists.forEach(list => {
+    list.items.forEach(item => {
+      if (item.desc && item.desc.trim()) {
+        defs.push({ label: item.label, desc: item.desc, listName: list.name });
+      }
+    });
+  });
+
+  if (defs.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'definitions-empty';
+    empty.textContent = 'No definitions yet. Add descriptions to items via their \u24d8 button.';
+    body.appendChild(empty);
+  } else {
+    defs.forEach(def => {
+      const row = document.createElement('div');
+      row.className = 'definitions-row';
+
+      const rowLabel = document.createElement('div');
+      rowLabel.className = 'definitions-row-label';
+      rowLabel.textContent = def.label;
+
+      const rowListName = document.createElement('span');
+      rowListName.className = 'definitions-row-listname';
+      rowListName.textContent = def.listName;
+      rowLabel.appendChild(rowListName);
+
+      const rowDesc = document.createElement('div');
+      rowDesc.className = 'definitions-row-desc';
+      rowDesc.appendChild(renderDesc(def.desc));
+
+      row.appendChild(rowLabel);
+      row.appendChild(rowDesc);
+      body.appendChild(row);
+    });
+  }
+
+  pop.appendChild(body);
+
+  // Position below the Definitions button
+  document.body.appendChild(pop);
+  const refBtn = document.getElementById('definitions-btn');
+  if (refBtn) {
+    const r = refBtn.getBoundingClientRect();
+    pop.style.top  = (r.bottom + 6) + 'px';
+    const popW = pop.offsetWidth;
+    let left = r.right - popW;
+    if (left < 8) left = 8;
+    if (left + popW > window.innerWidth - 8) left = window.innerWidth - popW - 8;
+    pop.style.left = left + 'px';
+  }
+}
+
+async function exportDefinitionsJpg() {
+  const cs = getComputedStyle(document.body);
+  const t = {
+    bg:        cs.getPropertyValue('--bg').trim(),
+    bgCard:    cs.getPropertyValue('--bg-card').trim(),
+    border:    cs.getPropertyValue('--border').trim(),
+    text:      cs.getPropertyValue('--text').trim(),
+    textMuted: cs.getPropertyValue('--text-muted').trim(),
+    textFaint: cs.getPropertyValue('--text-faint').trim(),
+    borderRow: cs.getPropertyValue('--border-row').trim(),
+  };
+
+  const defs = [];
+  lists.forEach(list => {
+    list.items.forEach(item => {
+      if (item.desc && item.desc.trim()) {
+        defs.push({ label: item.label, desc: item.desc, listName: list.name });
+      }
+    });
+  });
+
+  const MOBILE_EXPORT_MIN_W = 1200;
+  const EXPORT_W = Math.max(document.getElementById('app').getBoundingClientRect().width, MOBILE_EXPORT_MIN_W);
+
+  const wrap = document.createElement('div');
+  wrap.style.cssText = [
+    'position:fixed', 'top:-9999px', 'left:-9999px',
+    `background:${t.bg}`,
+    `width:${EXPORT_W}px`,
+    'padding:24px',
+    'box-sizing:border-box',
+    'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+    `color:${t.text}`,
+  ].join(';');
+
+  // Title
+  const titleEl = document.createElement('div');
+  titleEl.textContent = 'Definitions';
+  titleEl.style.cssText = [
+    'font-size:17px', 'font-weight:600', `color:${t.text}`,
+    'margin-bottom:16px', 'padding-bottom:10px',
+    `border-bottom:0.5px solid ${t.border}`,
+  ].join(';');
+  wrap.appendChild(titleEl);
+
+  if (defs.length === 0) {
+    const empty = document.createElement('div');
+    empty.textContent = 'No definitions.';
+    empty.style.cssText = `font-size:13px;color:${t.textFaint};`;
+    wrap.appendChild(empty);
+  } else {
+    defs.forEach((def, idx) => {
+      const row = document.createElement('div');
+      row.style.cssText = [
+        'display:flex', 'flex-direction:column', 'gap:3px',
+        'padding:10px 0',
+        idx < defs.length - 1 ? `border-bottom:0.5px solid ${t.borderRow}` : '',
+      ].join(';');
+
+      const labelRow = document.createElement('div');
+      labelRow.style.cssText = 'display:flex;align-items:baseline;gap:8px;';
+
+      const labelEl = document.createElement('span');
+      labelEl.textContent = def.label;
+      labelEl.style.cssText = `font-size:14px;font-weight:600;color:${t.text};`;
+
+      const listNameEl = document.createElement('span');
+      listNameEl.textContent = def.listName;
+      listNameEl.style.cssText = `font-size:11px;color:${t.textFaint};`;
+
+      labelRow.appendChild(labelEl);
+      labelRow.appendChild(listNameEl);
+
+      const descEl = document.createElement('div');
+      descEl.style.cssText = `font-size:13px;color:${t.textMuted};line-height:1.5;white-space:pre-wrap;`;
+
+      // Render desc: {word}[url] = link text, [url] = inline image
+      const re = /\{([^}]+)\}\[([^\]]+)\]|\[([^\]]+)\]/g;
+      let last = 0, m;
+      while ((m = re.exec(def.desc)) !== null) {
+        if (m.index > last) {
+          descEl.appendChild(document.createTextNode(def.desc.slice(last, m.index)));
+        }
+        if (m[1] && m[2]) {
+          const a = document.createElement('a');
+          a.href = m[2];
+          a.textContent = m[1];
+          a.style.cssText = `color:${t.textMuted};text-decoration:underline;`;
+          descEl.appendChild(a);
+        } else if (m[3]) {
+          const img = document.createElement('img');
+          img.src = m[3];
+          img.crossOrigin = 'anonymous';
+          img.alt = '';
+          img.style.cssText = [
+            'display:block', 'margin-top:6px',
+            `max-width:${Math.round(EXPORT_W / 2)}px`, 'max-height:300px',
+            'width:auto', 'height:auto',
+            'border-radius:6px', 'object-fit:contain',
+          ].join(';');
+          descEl.appendChild(img);
+        }
+        last = re.lastIndex;
+      }
+      if (last < def.desc.length) {
+        descEl.appendChild(document.createTextNode(def.desc.slice(last)));
+      }
+
+      row.appendChild(labelRow);
+      row.appendChild(descEl);
+      wrap.appendChild(row);
+    });
+  }
+
+  document.body.appendChild(wrap);
+  try {
+    // Wait for all images in the export div to finish loading before measuring/capturing
+    const imgs = Array.from(wrap.querySelectorAll('img'));
+    await Promise.all(imgs.map(img =>
+      img.complete ? Promise.resolve() : new Promise(res => {
+        img.onload = res;
+        img.onerror = res;
+      })
+    ));
+
+    const contentH = wrap.scrollHeight;
+    const canvas = await html2canvas(wrap, {
+      backgroundColor: t.bg,
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      width:  EXPORT_W,
+      height: contentH,
+    });
+    const now = new Date();
+    const hh  = String(now.getHours()).padStart(2, '0');
+    const dd  = String(now.getDate()).padStart(2, '0');
+    const mm  = String(now.getMonth() + 1).padStart(2, '0');
+    const yy  = now.getFullYear();
+    const link = document.createElement('a');
+    link.download = `definitions_${hh}_${dd}_${mm}_${yy}.jpg`;
+    link.href = canvas.toDataURL('image/jpeg', 0.92);
+    link.click();
+  } finally {
+    document.body.removeChild(wrap);
+  }
+}
+
 (function injectStyles() {
   const style = document.createElement('style');
   style.textContent = `
@@ -617,6 +882,117 @@ function triggerImportJson(mode) {
     .list-block.list-drag-over {
       outline: 2px dashed var(--text-muted, #aaa);
       outline-offset: 3px;
+    }
+    .btn-definitions {
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 0.5px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-definitions:hover { background: var(--bg-hover); }
+    .btn-definitions.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .definitions-popover {
+      position: fixed;
+      z-index: 9000;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px var(--shadow);
+      width: min(480px, calc(100vw - 16px));
+      max-height: min(600px, 80vh);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .definitions-popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px 10px;
+      border-bottom: 0.5px solid var(--border);
+      flex-shrink: 0;
+    }
+    .definitions-popover-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .definitions-popover-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .definitions-export-btn {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 7px;
+      border: 0.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .definitions-export-btn:hover { background: var(--bg-hover); color: var(--text); }
+    .definitions-close-btn {
+      font-size: 13px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .definitions-close-btn:hover { background: var(--bg-hover); color: var(--text); }
+    .definitions-popover-body {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      flex: 1;
+      padding: 8px 16px 12px;
+    }
+    .definitions-empty {
+      font-size: 13px;
+      color: var(--text-faint);
+      padding: 16px 0;
+      text-align: center;
+    }
+    .definitions-row {
+      padding: 10px 0;
+      border-bottom: 0.5px solid var(--border-row);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .definitions-row:last-child { border-bottom: none; }
+    .definitions-row-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .definitions-row-listname {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-faint);
+    }
+    .definitions-row-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      white-space: pre-wrap;
     }
   `;
   document.head.appendChild(style);

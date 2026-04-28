@@ -74,6 +74,44 @@ function renderLegend() {
   }
 }
 
+// Shared desc renderer: {word}[url] = link, [url] = image, plain text = text
+function renderDesc(raw) {
+  const frag = document.createDocumentFragment();
+  const re = /\{([^}]+)\}\[([^\]]+)\]|\[([^\]]+)\]/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    if (m.index > last) {
+      frag.appendChild(document.createTextNode(raw.slice(last, m.index)));
+    }
+    if (m[1] && m[2]) {
+      const a = document.createElement('a');
+      a.href = m[2];
+      a.textContent = m[1];
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.style.cssText = 'color:var(--text,#eee);text-decoration:underline;pointer-events:auto;';
+      frag.appendChild(a);
+    } else if (m[3]) {
+      const img = document.createElement('img');
+      img.src = m[3];
+      img.alt = '';
+      img.style.cssText = [
+        'display:block', 'margin-top:6px',
+        'max-width:min(220px,70vw)', 'max-height:min(160px,40vh)',
+        'width:auto', 'height:auto',
+        'border-radius:6px', 'object-fit:contain',
+      ].join(';');
+      frag.appendChild(img);
+    }
+    last = re.lastIndex;
+  }
+  if (last < raw.length) {
+    frag.appendChild(document.createTextNode(raw.slice(last)));
+  }
+  return frag;
+}
+
 function buildLabelCell(item) {
   const wrap = document.createElement('div');
   wrap.className = 'label-cell';
@@ -87,44 +125,11 @@ function buildLabelCell(item) {
     dot.textContent = 'i';
     dot.setAttribute('tabindex', '0');
 
-    const renderDesc = (raw) => {
+    const renderDescLocal = (raw) => {
       //Parses {word}[url] as links and [url] alone as images
       const frag = document.createDocumentFragment();
-      const re = /\{([^}]+)\}\[([^\]]+)\]|\[([^\]]+)\]/g;
-      let last = 0;
-      let m;
-      while ((m = re.exec(raw)) !== null) {
-        if (m.index > last) {
-          frag.appendChild(document.createTextNode(raw.slice(last, m.index)));
-        }
-        if (m[1] && m[2]) {
-          //Named link: {word}[url]
-          const a = document.createElement('a');
-          a.href = m[2];
-          a.textContent = m[1];
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.style.cssText = 'color:var(--text,#eee);text-decoration:underline;pointer-events:auto;';
-          frag.appendChild(a);
-        } else if (m[3]) {
-          //Bare image: [url]
-          const img = document.createElement('img');
-          img.src = m[3];
-          img.alt = '';
-          img.style.cssText = [
-            'display:block', 'margin-top:6px',
-            'max-width:min(220px,70vw)', 'max-height:min(160px,40vh)',
-            'width:auto', 'height:auto',
-            'border-radius:6px', 'object-fit:contain',
-          ].join(';');
-          frag.appendChild(img);
-        }
-        last = re.lastIndex;
-      }
-      if (last < raw.length) {
-        frag.appendChild(document.createTextNode(raw.slice(last)));
-      }
-      return frag;
+      // renderDesc is defined at module level above buildLabelCell
+      return renderDesc(raw);
     };
 
     const positionPop = (pop, anchorEl) => {
@@ -193,7 +198,7 @@ function buildLabelCell(item) {
       pop.onmouseleave = () => { if (!pop._pinned) scheduleHide(); };
 
       pop.innerHTML = '';
-      pop.appendChild(renderDesc(item.desc));
+      pop.appendChild(renderDescLocal(item.desc));
       pop.style.display = 'block';
       pop.style.pointerEvents = 'auto';
       positionPop(pop, dot);
