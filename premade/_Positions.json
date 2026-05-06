@@ -1,0 +1,204 @@
+{
+  "legend": [
+    { "name": "Not set / Unsure",     "color": "#888888" },
+    { "name": "Favorite",    "color": "#4a90d9" },
+    { "name": "Like",        "color": "#3dba6f" },
+    { "name": "Indifferent", "color": "#b08030" },
+    { "name": "Maybe",       "color": "#cc6820" },
+    { "name": "Limit",       "color": "#c0392b" }
+  ],
+  "lists": [
+    {
+      "name": "Standing",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Fireman", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_46.png]" },
+        { "label": "Prison Guard", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/7_26_3.png]" },
+        { "label": "Dream", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_29.png]" },
+        { "label": "Catapult", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_43.png]" },
+        { "label": "Stickman", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_31.png]" },
+        { "label": "Legs In the Air", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/15_20.png]" },
+        { "label": "Screw", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_15.png]" },
+        { "label": "Pterodactyl", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/15_4.png]" },
+        { "label": "Cobra", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_68.png]" },
+        { "label": "Rear Admiral", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/4_17_4.png]" },
+        { "label": "Plow", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/7_38_3.png]" },
+        { "label": "Wheelbarrow", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/7_35.png]" },
+        { "label": "Column", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_44.png]" },
+        { "label": "Caliper", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_13_2.png]" },
+        { "label": "Workout", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_8_2.png]" },
+        { "label": "Eiffel Tower", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/7_30_2.png]" },
+        { "label": "Apollo", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/9_11_2.png]" },
+        { "label": "Victory", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_7_4.png]" },
+        { "label": "Chibi", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_33.png]" }
+      ]
+    },
+    {
+      "name": "Sitting",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Tentra Chair", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_1.png]" },
+        { "label": "Relaxation", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_15.png]" },
+        { "label": "Delicacy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_23.png]" },
+        { "label": "Backrest", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_18.png]" },
+        { "label": "Wedge", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_21.png]" },
+        { "label": "Fairy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_17.png]" },
+        { "label": "Courtesan", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_2.png]" },
+        { "label": "Snack", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/15_13.png]" },
+        { "label": "Spanish Guitar", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_7.png]" },
+        { "label": "French Kiss", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/14_12.png]" },
+        { "label": "Counter Blow", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_12.png]" },
+        { "label": "Mexican Style", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/14_19.png]" },
+        { "label": "Oasis", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/1_71.png]" },
+        { "label": "Close Breathing", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_4.png]" },
+        { "label": "Louise", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_63.png]" },
+        { "label": "Legs On Shoulders", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_58.png]" },
+        { "label": "Master", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/14_13.png]" },
+        { "label": "Lotus Flower", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_72_3.png]" },
+        { "label": "Basket", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/5_22.png]" },
+        { "label": "Moonlight", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_41_1.png]" }
+      ]
+    },
+    {
+      "name": "On 4",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Doggy Style", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/4_23.png]" },
+        { "label": "Downward Dog", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/8_29_3.png]" },
+        { "label": "Low Doggy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/8_29_4.png]" },
+        { "label": "Low Start", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/4_28_3.png]" },
+        { "label": "Bulldog", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/4_13_2.png]" },
+        { "label": "Passive Doggy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/2_59_6.png]" },
+        { "label": "Praying Mantis", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/4_18_4.png]" },
+        { "label": "Tight Squeeze", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/4_4_4.png]" },
+        { "label": "Bicycle", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/7_28_2.png]" },
+        { "label": "Cowboy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/8_25_3.png]" },
+        { "label": "Scorpion", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/8_16_4.png]" },
+        { "label": "Turtle", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/4_11.png]" },
+        { "label": "Backshot", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/4_5_2.png]" }
+      ]
+    },
+    {
+      "name": "Kneeling",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Lodon Bridge", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/3_62.png]" },
+        { "label": "Elephant", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/1_62_4.png]" },
+        { "label": "Jellyfish", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_23_2.png]" },
+        { "label": "Twins", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_21.png]" },
+        { "label": "Butterfly", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_19.png]" },
+        { "label": "Cocubine", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/8_32.png]" },
+        { "label": "Pretzel", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/5_24_4.png]" }
+      ]
+    },
+    {
+      "name": "On Top",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Missionary", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/3_8.png]" },
+        { "label": "Spread Eagel", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/3_7_3.png]" },
+        { "label": "Prone Bone", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/8_18_2.png]" },
+        { "label": "Piledriver", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/3_51_8.png]" },
+        { "label": "Bombo", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_24.png]" },
+        { "label": "Cowgirl", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/1_29.png]" },
+        { "label": "Backwards Cowgirl", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/2_50_3.png]" },
+        { "label": "Bent Cowgirl", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_52.png]" },
+        { "label": "Overturned", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/2_7_3.png]" },
+        { "label": "Bung", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_9.png]" },
+        { "label": "Star Wars", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/3_42_5.png]" },
+        { "label": "Full Nelson", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/2_4_5.png]" },
+        { "label": "Revelation", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_55.png]" },
+        { "label": "Titanic", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/2_41_4.png]" },
+        { "label": "Orgazm Generator", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/14_17.png]" },
+        { "label": "Coffe Table", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_60_2.png]" },
+        { "label": "Air Rider", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_53.png]" },
+        { "label": "Banana Split", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_14_4.png]" },
+        { "label": "Princess", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_11.png]" },
+        { "label": "Bridge", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/1_55_4.png]" },
+        { "label": "Amazon", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/1_51_4.png]" },
+        { "label": "Chair", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/2_21_2.png]" },
+        { "label": "Crab", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/1_22_2.png]" },
+        { "label": "Precipice", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/1_18_2.png]" },
+        { "label": "Nun", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/2_9_3.png]" },
+        { "label": "Side saddle", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_59.png]" },
+        { "label": "Rainbow", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/3_28_2.png]" },
+        { "label": "Aphrodite", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/6_6.png]" },
+        { "label": "Chamaleon", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_25.png]" },
+        { "label": "Flat Iron", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/8_5_5.png]" },
+        { "label": "Deck Chair", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/3_22_3.png]" },
+        { "label": "Merger", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_6.png]" },
+        { "label": "Lizard", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/1_11_1.png]" },
+        { "label": "Twix", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/3_33.png]" },
+        { "label": "Cat", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/02/3_2_3.png]" },
+        { "label": "Libido", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/2_17_3.png]" }
+      ]
+    },
+    {
+      "name": "Oral",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "69", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/12_15_4.png]" },
+        { "label": "Scorpio", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/10_10.png]" },
+        { "label": "Ying-Yang", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/10_9_2.png]" },
+        { "label": "Zombie", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/10_16_4.png]" },
+        { "label": "Hucklebuck", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/10_6_2.png]" },
+        { "label": "Curiosity", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_50.png]" },
+        { "label": "Deep Throat", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_87.png]" },
+        { "label": "Tea Bag", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_39.png]" },
+        { "label": "Guillotine", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/12_11_4.png]" },
+        { "label": "Plumber", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_48.png]" },
+        { "label": "Jackhammer", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/12_17_3.png]" },
+        { "label": "Anaconda", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/12_11_3.png]" },
+        { "label": "Marsh-mallow", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/12_4_2.png]" },
+        { "label": "Venus Flytrap", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_78.png]" },
+        { "label": "Forbidden Fruit", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_11.png]" },
+        { "label": "Insatiable Clitoris", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_76.png]" },
+        { "label": "Tiramisu", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_14_2.png]" },
+        { "label": "Pearl", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_81.png]" },
+        { "label": "Ghetto", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_74.png]" },
+        { "label": "Ladies' Man", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_70.png]" },
+        { "label": "Sweet Pussy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/14_20.png]" },
+        { "label": "Car Mechanic", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_18.png]" },
+        { "label": "Face Sitting", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_17.png]" },
+        { "label": "Hunger", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_16.png]" },
+        { "label": "Goddess", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_17_2.png]" },
+        { "label": "Licking Master", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/17_44.png]" },
+        { "label": "Special Breakfast", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/15_9.png]" },
+        { "label": "Superhero", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/11_22_5.png]" },
+        { "label": "Virgo", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/11_32_3.png]" },
+        { "label": "Dragon", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/11_22_4.png]" },
+        { "label": "Valedictorian", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_20_2.png]" },
+        { "label": "Eraser", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_15.png]" },
+        { "label": "Snail", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_13_3.png]" },
+        { "label": "Mast", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/11_9_3.png]" },
+        { "label": "Hood", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/11_33_5.png]" }
+      ]
+    },
+    {
+      "name": "Laying Down",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Scissor", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/13_28.png]" },
+        { "label": "Unicorn", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/13_27_3.png]" },
+        { "label": "Tango", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/13_7.png]" },
+        { "label": "Spoon", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/13_3.png]" },
+        { "label": "Helicopter", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/8_28_4.png]" }
+      ]
+    },
+    {
+      "name": "Experimental / Contortionism",
+      "columns": ["Giver", "Receiver"],
+      "items": [
+        { "label": "Flexible Beauty", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/04/3_51_4.png]" },
+        { "label": "Unique Styles", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/19_4.png]" },
+        { "label": "Reverse Doggy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/4_19_6.png]" },
+        { "label": "Barbell", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/9_6_4.png]" },
+        { "label": "Superwoman", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/3_51_9.png]" },
+        { "label": "Birthday Party", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/3_22_4.png]" },
+        { "label": "Crazy Doggy", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2019/06/18_34.png]" },
+        { "label": "Poplar", "dots": [0, 0], "desc":"[https://sexpositions.club/wp-content/uploads/2016/03/7_22_4.png]" }
+      ]
+    }
+    
+  ]
+}
