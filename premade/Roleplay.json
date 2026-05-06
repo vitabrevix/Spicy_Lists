@@ -1,6 +1,6 @@
 {
   "legend": [
-    { "name": "Not set",     "color": "#888888" },
+    { "name": "Not set / Unsure",     "color": "#888888" },
     { "name": "Favorite",    "color": "#4a90d9" },
     { "name": "Like",        "color": "#3dba6f" },
     { "name": "Indifferent", "color": "#b08030" },
@@ -9,7 +9,7 @@
   ],
   "lists": [
     {
-      "name": "Scene Types",
+      "name": "Roleplay Scenario Type",
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "Romantic",   "dots": [0, 0] },
@@ -25,12 +25,18 @@
       "columns": ["Self", "Partner"],
       "items": [
         { "label": "Furry",   "dots": [0, 0] },
+        { "label": "Tail",   "dots": [0, 0] },
+        { "label": "Animal Genitalia",   "dots": [0, 0] },
+        { "label": "Slime",   "dots": [0, 0] },
         { "label": "Vore",  "dots": [0, 0] },
         { "label": "Male Pregnancy",  "dots": [0, 0] },
         { "label": "Giant/Small",  "dots": [0, 0] },
         { "label": "Monster Play",  "dots": [0, 0] },
         { "label": "Tentacles",  "dots": [0, 0] },
-        { "label": "Inflation",  "dots": [0, 0] }
+        { "label": "Inflation",  "dots": [0, 0] },
+        { "label": "Clone",  "dots": [0, 0] },
+        { "label": "All the way through",  "dots": [0, 0] },
+        { "label": "Body Swap",  "dots": [0, 0] }
       ]
     }
   ]

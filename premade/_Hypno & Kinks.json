@@ -1,6 +1,6 @@
 {
   "legend": [
-    { "name": "Not set",     "color": "#888888" },
+    { "name": "Not set / Unsure",     "color": "#888888" },
     { "name": "Favorite",    "color": "#4a90d9" },
     { "name": "Like",        "color": "#3dba6f" },
     { "name": "Indifferent", "color": "#b08030" },
@@ -145,6 +145,8 @@
         { "label": "Ass Worship",   "dots": [0, 0] },
         { "label": "Cock Worship",   "dots": [0, 0] },
         { "label": "Vaginal Worship",   "dots": [0, 0] },
+        { "label": "Head Leglock",   "dots": [0, 0], "desc":"Wrapping your legs around your parnet's head while their face is on your crotch, preventing them from getting away (during blowjob, cunnilingus, etc)" },
+        { "label": "Waist Leglock",   "dots": [0, 0], "desc":"Wrapping your legs around your parnet's waist while they are on top of you, preventing them from getting away (during missionary)" },
         { "label": "Frotting",   "dots": [0, 0] },
         { "label": "Docking",   "dots": [0, 0], "desc":"Inserting the tip of a phallus in another's foreskin" },
         { "label": "Mutual Masturbation",   "dots": [0, 0] },
@@ -154,6 +156,7 @@
         { "label": "Body Writing", "dots": [0, 0] },
         { "label": "Virginity Loss", "dots": [0, 0], "desc": "The loss of virginity, whether vaginal, anal or penile" },
         { "label": "Queefing",   "dots": [0, 0] },
+        { "label": "Hypnosis/Mind Control",   "dots": [0, 0] },
         { "label": "Cheating",  "dots": [0, 0] }
       ]
     },
@@ -187,6 +190,7 @@
         { "label": "Brat Taming",  "dots": [0, 0] },
         { "label": "Older Dominant",  "dots": [0, 0] },
         { "label": "Older Submissive",  "dots": [0, 0] },
+        { "label": "Smaller Dom & Bugger Sub",  "dots": [0, 0], "desc":"A Dom that is smaller in height or more fragile in some way to the Sub" },
         { "label": "Full Ownership",  "dots": [0, 0], "desc": "For the better or worse, some pesky laws prohibit the full ownership of another human being in the day of now, but the closer we get to that reality through the dynamic, the better, no?" },
         { "label": "Public Display of Ownership",  "dots": [0, 0], "desc": "It may be hidden/coded message for only those that understand, or easily redable message, but a symbol of the Dom's ownership over the Sub will never not be extremely alluring for all involved" },
         { "label": "Multiple Submissives",  "dots": [0, 0], "desc": "Same Dom, multiple submissives, a harem"  },

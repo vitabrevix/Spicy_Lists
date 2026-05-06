@@ -9,6 +9,57 @@
   ],
   "lists": [
     {
+      "name": "Gender",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Male",   "dots": [0, 0], "desc":"[https://i.kym-cdn.com/photos/images/newsfeed/003/072/174/6fd.jpg]" },
+        { "label": "Female", "dots": [0, 0] },
+        { "label": "Trans Female",  "dots": [0, 0] },
+        { "label": "Trans Male",  "dots": [0, 0] },
+        { "label": "Non-Binary",  "dots": [0, 0] },
+        { "label": "Femboy/Twink",  "dots": [0, 0] },
+        { "label": "Tomboy",  "dots": [0, 0] },
+        { "label": "Bear",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sexuality",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Monogamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with one single partner" },
+        { "label": "Polygamy",   "dots": [0, 0], "desc": "Maintaing a romantic and sexual relationship with multiple partner" },
+        { "label": "Polyamorous",  "dots": [0, 0], "desc": "Maintaing a romantic relationship with multiple partner" },
+        { "label": "Swinging",   "dots": [0, 0], "desc": "A couple commited to each other romantically, who allow each other to find sexual satisfaction otuside the relationship too" },
+        { "label": "2 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "3 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "4 Sexual Partners", "dots": [0, 0], "desc": "Does not refer to normal every day partner, but during a sexual act" },
+        { "label": "Male & Female Parteners",   "dots": [0, 0] },
+        { "label": "Multiple Males",   "dots": [0, 0] },
+        { "label": "Multiple Females",   "dots": [0, 0] },
+        { "label": "Orgy",   "dots": [0, 0], "desc": "A groupal sexual scenario where all participants can interact with each other in any way" },
+        { "label": "Gangbang",   "dots": [0, 0], "desc": "A groupal sexual scenario where one single person engages with multiple partners sequentially or at once" },
+        { "label": "Bukake",   "dots": [0, 0], "desc": "A groupal sexual scenario where multiple people ejaculate on a single person" },
+        { "label": "Glory Hole User",   "dots": [0, 0] },
+        { "label": "Glory Hole Receiver",   "dots": [0, 0], "desc": "It wont suck itself" }
+      ]
+    },
+    {
+      "name": "Body type",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Tall",   "dots": [0, 0], "desc":"[https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F0jww3wtetrq91.jpg&f=1&nofb=1&ipt=801d0aa1dcb073a6314a3dca10a2ae4060b0089891a12e1e2240f4c7b5b9d596]" },
+        { "label": "Short", "dots": [0, 0] },
+        { "label": "Skinny",  "dots": [0, 0] },
+        { "label": "Lean",  "dots": [0, 0] },
+        { "label": "Fit",  "dots": [0, 0] },
+        { "label": "Athletic",  "dots": [0, 0] },
+        { "label": "Muscular",  "dots": [0, 0] },
+        { "label": "Chubby",  "dots": [0, 0] },
+        { "label": "Curvy",  "dots": [0, 0] },
+        { "label": "Overweight",  "dots": [0, 0] }
+      ]
+    },
+    {
       "name": "Erogenous Zones",
       "columns": ["Self", "Partner"],
       "items": [
@@ -51,6 +102,17 @@
       ]
     },
     {
+      "name": "Body Modification",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Piercings",   "dots": [0, 0] },
+        { "label": "Tatoos",   "dots": [0, 0] },
+        { "label": "Shaving",  "dots": [0, 0] },
+        { "label": "3D Implants",  "dots": [0, 0], "desc":"More professionally named {subdermal implants}[https://en.wikipedia.org/wiki/Subdermal_implant], a type of implant placed under the skin to modify its shape, like for example {making a dick bumpy}[https://en.wikipedia.org/wiki/Pearling_(body_modification)]" },
+        { "label": "Tongue splitting",  "dots": [0, 0] }
+      ]
+    },
+    {
       "name": "Usual Clothes",
       "columns": ["Self", "Partner"],
       "items": [
@@ -78,6 +140,19 @@
         { "label": "Opaque Underware",   "dots": [0, 0] },
         { "label": "Latex Bodysuit",   "dots": [0, 0] },
         { "label": "Mask",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Accessories",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Lipstick",   "dots": [0, 0] },
+        { "label": "Lipstick Marks",   "dots": [0, 0] },
+        { "label": "Long nails",   "dots": [0, 0] },
+        { "label": "Short nails",  "dots": [0, 0] },
+        { "label": "Painted nails",   "dots": [0, 0] },
+        { "label": "Jewlery",   "dots": [0, 0] },
+        { "label": "Glasses",   "dots": [0, 0] }
       ]
     },
     {
@@ -124,6 +199,23 @@
         { "label": "Vaginal Sex",  "dots": [0, 0] },
         { "label": "Vaginal Fisting",  "dots": [0, 0] },
         { "label": "Cunnilingus",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Toys",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Remote Toys",  "dots": [0, 0] },
+        { "label": "Dildos",   "dots": [0, 0] },
+        { "label": "Plugs", "dots": [0, 0] },
+        { "label": "Vibrators", "dots": [0, 0] },
+        { "label": "Fleshlights", "dots": [0, 0] },
+        { "label": "Sounding",  "dots": [0, 0] },
+        { "label": "Strap-on",  "dots": [0, 0] },
+        { "label": "Chastity",  "dots": [0, 0] },
+        { "label": "Nipple Clamps",  "dots": [0, 0] },
+        { "label": "Nipple Suckers",  "dots": [0, 0] },
+        { "label": "Double Headed Dildos",  "dots": [0, 0] }
       ]
     },
     {
@@ -247,7 +339,7 @@
         { "label": "Cutting",  "dots": [0, 0], "desc": "The use of a blade or sharp object to cut into the skin, provoking bleeding" }
       ]
     },
-    {
+        {
       "name": "Consensual Non Consensual",
       "columns": ["As Sub", "As Dom"],
       "items": [
@@ -264,7 +356,7 @@
         { "label": "Prostitution/Pimping",  "dots": [0, 0] }
       ]
     },
-    {
+        {
       "name": "Degradation",
       "columns": ["As Degradee", "As Degrader"],
       "items": [
@@ -315,6 +407,41 @@
         { "label": "Scat", "dots": [0, 0] },
         { "label": "Diaper",  "dots": [0, 0] },
         { "label": "Blood / Bleeding",   "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sensitive Body Parts",
+      "columns": ["Self"],
+      "items": [
+        { "label": "Face",   "dots": [0, 0] },
+        { "label": "Lips",   "dots": [0, 0] },
+        { "label": "Nose",   "dots": [0, 0] },
+        { "label": "Ears",   "dots": [0, 0] },
+        { "label": "Neck", "dots": [0, 0] },
+        { "label": "Chest/s",  "dots": [0, 0] },
+        { "label": "Nipples",  "dots": [0, 0] },
+        { "label": "Shoulders",  "dots": [0, 0] },
+        { "label": "Arms",  "dots": [0, 0] },
+        { "label": "Wrists",  "dots": [0, 0] },
+        { "label": "Hands",  "dots": [0, 0] },
+        { "label": "Stomach",  "dots": [0, 0] },
+        { "label": "Hips",  "dots": [0, 0] },
+        { "label": "Crotch",  "dots": [0, 0] },
+        { "label": "Buttocks",  "dots": [0, 0] },
+        { "label": "Thighs",  "dots": [0, 0] },
+        { "label": "Legs",  "dots": [0, 0] },
+        { "label": "Ankles",  "dots": [0, 0] },
+        { "label": "Feet",  "dots": [0, 0] }
+      ]
+    },
+    {
+      "name": "Sensitivity Tools",
+      "columns": ["Self", "Partner"],
+      "items": [
+        { "label": "Hot Wax",   "dots": [0, 0] },
+        { "label": "Ice",   "dots": [0, 0] },
+        { "label": "Electro Stimulation",  "dots": [0, 0] },
+        { "label": "Tickling",   "dots": [0, 0] }
       ]
     },
     {
