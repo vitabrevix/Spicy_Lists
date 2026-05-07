@@ -31,6 +31,7 @@
         { "label": "Lingerie",   "dots": [0, 0] },
         { "label": "Boxers",   "dots": [0, 0] },
         { "label": "Underwear Bulge",  "dots": [0, 0] },
+        { "label": "No underwear",  "dots": [0, 0] },
         { "label": "Stockings",  "dots": [0, 0] },
         { "label": "Transparent Underware",   "dots": [0, 0] },
         { "label": "Opaque Underware",   "dots": [0, 0] },

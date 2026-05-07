@@ -197,8 +197,9 @@
         { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
         { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
         { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
-        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
-      ]
+        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" },
+        { "label": "Findom",  "dots": [0, 0], "desc": "Financial Domination, where the submissive (also reffered as paypig) give the dominant money as an act of degradation, or just because they are told to" },
+        { "label": "Sugar Daddy/Mommy",  "dots": [0, 0], "desc": "Where the dominant gives the submissive money or assets (like toys) as an act of spoiling or rewards" }      ]
     },
     {
       "name": "Mind Modification",
@@ -224,6 +225,7 @@
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
         { "label": "Rules", "dots": [0, 0] },
+        { "label": "Rewards", "dots": [0, 0] },
         { "label": "Speech Restriction", "dots": [0, 0], "desc": "Restricting how the submissive is permitted to speak, ex: only answering with yes/no, only speaking when spoken to, etc" },
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
@@ -234,7 +236,7 @@
         { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
         { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" },
         { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
-        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to worsen the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
         { "label": "Powerbottom",  "dots": [0, 0], "desc": "A Dom that enjoys being penetrated, while still maintaining control over the session" }
       ]
     },
@@ -348,7 +350,7 @@
         { "label": "Mechanophilia",   "dots": [0, 0], "desc": "Being turned on by machines" },
         { "label": "Retifism",   "dots": [0, 0], "desc": "Being turned on by shoes or shoewear" },
         { "label": "Autogynephilia",   "dots": [0, 0], "desc": "Is this really a philia? Idk, I'm putting it in anyways. Being turned on by imagining oneself as a different gender" },
-        { "label": "Frotteurism",   "dots": [0, 0], "desc": "Being turned on by rubbing against others (in a crows, not the other kind of frotting)" },
+        { "label": "Frotteurism",   "dots": [0, 0], "desc": "Being turned on by rubbing against others (in crowds, shoulder to shoulder,, not the other kind of frotting)" },
         { "label": "Teratophilia",   "dots": [0, 0], "desc": "Being turned on by monsters" },
         { "label": "Spectrophilia",   "dots": [0, 0], "desc": "Being turned on by ghosts/spirits" },
         { "label": "Dendrophilia",   "dots": [0, 0], "desc": "Being turned on by trees and plants" },

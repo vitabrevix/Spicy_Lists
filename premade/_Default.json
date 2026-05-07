@@ -124,6 +124,7 @@
         { "label": "Lingerie",   "dots": [0, 0] },
         { "label": "Boxers",   "dots": [0, 0] },
         { "label": "Underwear Bulge",  "dots": [0, 0] },
+        { "label": "No underwear",  "dots": [0, 0] },
         { "label": "Stockings",  "dots": [0, 0] },
         { "label": "Transparent Underware",   "dots": [0, 0] },
         { "label": "Opaque Underware",   "dots": [0, 0] },
@@ -259,8 +260,9 @@
         { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
         { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
         { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
-        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
-      ]
+        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" },
+        { "label": "Findom",  "dots": [0, 0], "desc": "Financial Domination, where the submissive (also reffered as paypig) give the dominant money as an act of degradation, or just because they are told to" },
+        { "label": "Sugar Daddy/Mommy",  "dots": [0, 0], "desc": "Where the dominant gives the submissive money or assets (like toys) as an act of spoiling or rewards" }      ]
     },
     {
       "name": "Domination",
@@ -269,6 +271,7 @@
         { "label": "Disciplining",   "dots": [0, 0] },
         { "label": "Tasks", "dots": [0, 0] },
         { "label": "Rules", "dots": [0, 0] },
+        { "label": "Rewards", "dots": [0, 0] },
         { "label": "Speech Restriction", "dots": [0, 0], "desc": "Restricting how the submissive is permitted to speak, ex: only answering with yes/no, only speaking when spoken to, etc" },
         { "label": "Orgasm Control",  "dots": [0, 0] },
         { "label": "Forced Orgasm",  "dots": [0, 0] },
@@ -279,7 +282,7 @@
         { "label": "Account Control",  "dots": [0, 0], "desc": "Submissive giving control over their social media accounts to their Dom" },
         { "label": "Techdom",  "dots": [0, 0], "desc": "Submissive giving control over their devices to their Dom" },
         { "label": "Forced Betterment",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like punishment, ex: workout, forces social interaction, weight loss/gain, etc" },
-        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to improve the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
+        { "label": "Forced Worsening",  "dots": [0, 0], "desc": "The Dom finding ways to worsen the submissive's well-being through convincing or coercion, even if it feels like a reward, ex: kink training, forming addictions, etc" },
         { "label": "Powerbottom",  "dots": [0, 0], "desc": "A Dom that enjoys being penetrated, while still maintaining control over the session" }
       ]
     },

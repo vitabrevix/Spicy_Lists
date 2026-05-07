@@ -33,8 +33,9 @@
         { "label": "Multiple Dominants",  "dots": [0, 0], "desc": "Same submissive, multiple Doms"  },
         { "label": "Watchdog Submissive",  "dots": [0, 0], "desc": "A submissive that keeps other submissives in check for their Dom"  },
         { "label": "Beta Dominant",  "dots": [0, 0], "desc": "A submissive that trains other submissives for their Dom, may even search for new submissive for them too" },
-        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" }
-      ]
+        { "label": "Omega Submissive",  "dots": [0, 0], "desc": "The bottom of the line, even other submissives are more dominant" },
+        { "label": "Findom",  "dots": [0, 0], "desc": "Financial Domination, where the submissive (also reffered as paypig) give the dominant money as an act of degradation, or just because they are told to" },
+        { "label": "Sugar Daddy/Mommy",  "dots": [0, 0], "desc": "Where the dominant gives the submissive money or assets (like toys) as an act of spoiling or rewards" }      ]
     }
   ]
 }
