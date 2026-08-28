@@ -4,6 +4,13 @@ function toggleGlobalEdit() {
   render();
 }
 
+function setRoleSelection(key, val) {
+  roleSelections[key] = val;
+  // Visible columns change -> block widths change -> force a fresh masonry pass.
+  _masonryCache = null;
+  render();
+}
+
 function positionColorPicker() {
   const popup = document.getElementById('color-picker-portal');
   if (!popup || !openColorPickerPos) return;
@@ -743,6 +750,50 @@ async function exportDefinitionsJpg() {
 (function injectStyles() {
   const style = document.createElement('style');
   style.textContent = `
+    .role-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .role-selector {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-legend, #333);
+      border: 0.5px solid var(--border, #444);
+      border-radius: 10px;
+      padding: 5px 8px 5px 12px;
+    }
+    .role-selector-label {
+      font-size: 12px;
+      color: var(--text-muted, #aaa);
+      white-space: nowrap;
+    }
+    .role-seg {
+      display: inline-flex;
+      border: 0.5px solid var(--border, #444);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .role-seg-btn {
+      font-size: 12px;
+      padding: 4px 12px;
+      border: none;
+      border-right: 0.5px solid var(--border, #444);
+      background: var(--bg-card, #2a2a2a);
+      color: var(--text-muted, #aaa);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .role-seg-btn:last-child { border-right: none; }
+    .role-seg-btn:hover { background: var(--bg-hover, #3a3a3a); color: var(--text, #eee); }
+    .role-seg-btn.active {
+      background: var(--text, #eee);
+      color: var(--bg, #1a1a1a);
+      font-weight: 600;
+    }
     .label-cell {
       display: inline-flex;
       align-items: center;

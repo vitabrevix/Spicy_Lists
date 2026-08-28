@@ -74,6 +74,31 @@ function renderLegend() {
   }
 }
 
+function renderRoleSelectors() {
+  const bar = document.getElementById('role-bar');
+  if (!bar) return;
+
+  const active = activeRolePairs();
+  if (active.length === 0) {
+    bar.innerHTML = '';
+    bar.style.display = 'none';
+    return;
+  }
+
+  bar.style.display = 'flex';
+  let html = '';
+  active.forEach(pair => {
+    const sel = roleSelections[pair.key] || 'switch';
+    html += `<div class="role-selector"><span class="role-selector-label">I am</span><div class="role-seg">`;
+    pair.options.forEach(opt => {
+      html += `<button type="button" class="role-seg-btn${sel === opt.val ? ' active' : ''}"
+        onclick="setRoleSelection('${pair.key}','${opt.val}')">${esc(opt.label)}</button>`;
+    });
+    html += `</div></div>`;
+  });
+  bar.innerHTML = html;
+}
+
 // Shared desc renderer: {word}[url] = link, [url] = image, plain text = text
 function renderDesc(raw) {
   const frag = document.createDocumentFragment();
@@ -238,7 +263,12 @@ function renderLists() {
   const grid = document.getElementById('lists-grid');
   grid.innerHTML = '';
 
+  const activeKeys = _activeRoleKeys();
+
   lists.forEach(list => {
+    const hidden = hiddenColumnIndices(list, activeKeys);
+    const visibleColCount = list.columns.length - hidden.size;
+
     const block = document.createElement('div');
     block.className = 'list-block';
     block.dataset.lid = list.id;
@@ -262,12 +292,13 @@ function renderLists() {
 
     const table = document.createElement('table');
     table.className = 'list-table';
-    if (list.columns.length > 0) table.classList.add('has-columns');
+    if (visibleColCount > 0) table.classList.add('has-columns');
 
-    if (list.columns.length > 0) {
+    if (visibleColCount > 0) {
       const thead = document.createElement('thead');
       let headHtml = '<tr><th class="label-th"></th>';
       list.columns.forEach((col, ci) => {
+        if (hidden.has(ci)) return;
         headHtml += `<th>${esc(col)}${globalEditing ? `<button class="col-del-btn" onclick="removeColumn(${list.id},${ci})">X</button>` : ''}</th>`;
       });
       if (globalEditing) headHtml += '<th></th>';
@@ -285,6 +316,7 @@ function renderLists() {
       tr.appendChild(labelTd);
 
       list.columns.forEach((col, ci) => {
+        if (hidden.has(ci)) return;
         const td = document.createElement('td');
         td.dataset.col = col;
         const dotVal = item.dots[ci] != null ? item.dots[ci] : 0;
@@ -378,8 +410,7 @@ function renderLists() {
   // alter block dimensions and must trigger a full re-layout.
   if (_masonryCache && window.innerWidth > 600) {
     const blocks = Array.from(grid.querySelectorAll('.list-block'));
-    const key = lists.map(l => `${l.id}:${l.columns.length}`).join(',')
-              + '|L' + legend.length + '|E' + globalEditing;
+    const key = masonryKey();
     if (key === _masonryCache.key && grid.offsetWidth === _masonryCache.containerW) {
       grid.classList.add('masonry-active');
       grid.style.height = _masonryCache.gridHeight + 'px';
@@ -427,6 +458,7 @@ function render() {
   if (addListControls) {
     addListControls.style.display = globalEditing ? 'flex' : 'none';
   }
+  renderRoleSelectors();
   renderLegend();
   renderLists();
   if (openColorPicker !== null) positionColorPicker();

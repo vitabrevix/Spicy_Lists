@@ -53,9 +53,7 @@ function masonryLayout() {
   // so there is nothing left to do. Returning here also avoids the destructive
   // resetBlocks + masonry-active toggle that causes the blink.
   if (_masonryCache && _masonryCache.containerW === grid.offsetWidth) {
-    const cacheKey = lists.map(l => `${l.id}:${l.columns.length}`).join(',')
-                   + '|L' + legend.length + '|E' + globalEditing;
-    if (cacheKey === _masonryCache.key) return;
+    if (masonryKey() === _masonryCache.key) return;
   }
   if (blocks.length === 0) return;
 
@@ -228,8 +226,7 @@ function masonryLayout() {
   // Key must match the format used in renderLists() cache check.
   _masonryCache = {
     containerW: grid.offsetWidth,
-    key:        lists.map(l => `${l.id}:${l.columns.length}`).join(',')
-              + '|L' + legend.length + '|E' + globalEditing,
+    key:        masonryKey(),
     blockX:     blockX.slice(),
     blockTop:   blockTop.slice(),
     gridHeight: Math.max(...placed.map(p => p.bottom)),
